@@ -1,0 +1,45 @@
+======================================================================
+NEW CAR RECOMMENDATION MODEL - EVALUATION REPORT
+======================================================================
+
+Dataset: ../data/new_cars_dataset.csv
+Total Records: 842
+Training Set: 667 samples
+Test Set: 167 samples
+
+======================================================================
+MODEL PERFORMANCE COMPARISON
+======================================================================
+
+DECISION_TREE
+----------------------------------------
+Accuracy:       0.9042 (90.42%)
+Precision:      0.9047
+Recall:         0.9042
+F1 Score:       0.9039
+CV Score:       0.8500 (+/- 0.0326)
+
+RANDOM_FOREST
+----------------------------------------
+Accuracy:       0.8623 (86.23%)
+Precision:      0.8651
+Recall:         0.8623
+F1 Score:       0.8576
+CV Score:       0.8771 (+/- 0.0091)
+
+XGBOOST
+----------------------------------------
+Accuracy:       0.9461 (94.61%)
+Precision:      0.9468
+Recall:         0.9461
+F1 Score:       0.9444
+CV Score:       0.9025 (+/- 0.0266)
+
+======================================================================
+RECOMMENDATION
+======================================================================
+Best performing model: XGBOOST
+Accuracy: 0.9461 (94.61%)
+
+All models have been trained and saved successfully.
+The models can be used for real-time car recommendations.

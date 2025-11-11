@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}EMI Calculator - Auto Marketplace{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <h1 class="mb-4 text-center"><i class="bi bi-calculator"></i> EMI Calculator</h1>
+            <p class="text-center mb-4">Calculate your monthly car loan installments</p>
+
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <form id="emiForm">
+                        <div class="mb-3">
+                            <label class="form-label">Loan Amount (₹)</label>
+                            <input type="number" class="form-control" id="loanAmount" value="1000000" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Interest Rate (% per annum)</label>
+                            <input type="number" class="form-control" id="interestRate" value="8.5" step="0.1" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Tenure (Years)</label>
+                            <input type="number" class="form-control" id="tenure" value="5" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Calculate EMI</button>
+                    </form>
+
+                    <div id="emiResult" class="mt-4" style="display: none;">
+                        <h4 class="text-center mb-3">Monthly EMI: <span class="text-primary" id="emiAmount"></span></h4>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <p class="mb-0"><strong>Total Amount</strong></p>
+                                <h5 id="totalAmount"></h5>
+                            </div>
+                            <div class="col-6">
+                                <p class="mb-0"><strong>Total Interest</strong></p>
+                                <h5 id="totalInterest"></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$('#emiForm').on('submit', function(e) {
+    e.preventDefault();
+
+    var principal = parseFloat($('#loanAmount').val());
+    var rate = parseFloat($('#interestRate').val());
+    var years = parseInt($('#tenure').val());
+    var months = years * 12;
+
+    var monthlyRate = rate / (12 * 100);
+    var emi = principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+    var totalAmount = emi * months;
+    var totalInterest = totalAmount - principal;
+
+    $('#emiAmount').text('₹' + Math.round(emi).toLocaleString('en-IN'));
+    $('#totalAmount').text('₹' + Math.round(totalAmount).toLocaleString('en-IN'));
+    $('#totalInterest').text('₹' + Math.round(totalInterest).toLocaleString('en-IN'));
+    $('#emiResult').slideDown();
+});
+</script>
+{% endblock %}

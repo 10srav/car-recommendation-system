@@ -1,0 +1,46 @@
+======================================================================
+USED CAR PRICE PREDICTION MODEL - EVALUATION REPORT
+======================================================================
+
+Dataset: ../data/used_cars_dataset.csv
+Total Records: 600
+Training Set: 480 samples
+Test Set: 120 samples
+Price Range: Rs 96,366 - Rs 2,791,073
+
+======================================================================
+MODEL PERFORMANCE COMPARISON
+======================================================================
+
+RANDOM_FOREST
+----------------------------------------
+R² Score:       0.9749 (97.49%)
+MAE:            Rs 41,628
+RMSE:           Rs 76,968
+MAPE:           6.75%
+
+GRADIENT_BOOSTING
+----------------------------------------
+R² Score:       0.9700 (97.00%)
+MAE:            Rs 47,637
+RMSE:           Rs 84,140
+MAPE:           7.93%
+
+XGBOOST
+----------------------------------------
+R² Score:       0.9824 (98.24%)
+MAE:            Rs 38,941
+RMSE:           Rs 64,456
+MAPE:           6.68%
+
+======================================================================
+TARGET ACHIEVEMENT
+======================================================================
+Target Accuracy: 88.0%
+Best Model: XGBOOST
+Achieved Accuracy: 98.24%
+
+SUCCESS! Target accuracy exceeded by 10.24%
+
+======================================================================
+The model can accurately predict used car prices based on various features.

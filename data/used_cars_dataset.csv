@@ -1,0 +1,601 @@
+listing_id,brand,model,variant,body_type,registration_year,age_years,fuel_type,transmission,mileage_km,num_owners,original_price,current_price,condition_score,insurance_validity_months,service_history,accident_history,color,seating_capacity,engine_cc,fuel_efficiency_kmpl,rto,city,features,seller_name,seller_phone,listing_date,negotiable,test_drive_available
+1,Hyundai,i10,ZXI,Hatchback,2021,4,Petrol,Manual,37823,2,788323,322284,75.6,3,Unknown,No,Orange,5,1000,18.5,MH01,Lucknow,Power Windows,Seller_1,+91-6155940781,2025-09-12,No,Yes
+2,Honda,WR-V,LXI,SUV,2024,1,Diesel,Manual,4889,1,1755874,1460574,95.0,6,Complete,Minor,Grey,7,2200,17.1,UP32,Bangalore,"Power Windows, AC, ABS",Seller_2,+91-4835030564,2025-11-06,Yes,No
+3,Toyota,Fortuner,Base,SUV,2020,5,Diesel,Manual,58982,1,3154548,805842,79.6,12,Complete,No,Black,5,2500,21.0,GJ01,Chandigarh,"Power Windows, AC, Power Steering, ABS, Airbags",Seller_3,+91-8451462704,2025-10-09,Yes,No
+4,Honda,WR-V,ZXI,SUV,2019,6,Petrol,Manual,104711,1,3312155,865047,73.6,1,Unknown,No,Black,7,2000,14.1,GJ01,Bangalore,"Power Windows, AC, Power Steering, ABS, Airbags",Seller_4,+91-5787133150,2025-10-04,No,Yes
+5,Mahindra,XUV300,Base,SUV,2011,14,Diesel,Manual,160604,2,2185917,555953,50.3,10,Complete,No,Brown,7,1500,17.5,TN01,Indore,Power Windows,Seller_5,+91-8108013267,2025-10-11,Yes,Yes
+6,Tata,Punch,Mid,SUV,2010,15,Diesel,Manual,231483,4,3131061,811086,40.0,6,Complete,Minor,Red,5,1500,19.2,MP09,Lucknow,"Power Windows, Power Steering",Seller_6,+91-7510799118,2025-10-28,No,Yes
+7,Toyota,Glanza,Top,SUV,2024,1,Petrol,AMT,16856,1,3365562,2791073,91.0,8,Complete,Major,Silver,5,2200,12.9,DL01,Nagpur,"Power Windows, Sunroof",Seller_7,+91-8740164005,2025-09-22,Yes,No
+8,Tata,Harrier,Mid,SUV,2017,8,Diesel,Automatic,132670,1,1115595,292067,57.1,0,Partial,No,Red,5,2200,22.8,GJ01,Chandigarh,"Power Windows, AC, Power Steering",Seller_8,+91-6025634216,2025-09-16,Yes,Yes
+9,Mahindra,Thar,Top,SUV,2015,10,Petrol,Manual,111907,2,2471287,646397,55.8,4,Complete,No,Brown,7,2500,16.8,MP09,Kolkata,AC,Seller_9,+91-3561595148,2025-10-22,No,Yes
+10,Kia,Carens,ZXI,MPV,2014,11,Petrol,Manual,164979,3,2090828,535040,40.0,10,Complete,No,Grey,7,2200,13.8,TN01,Delhi,Power Steering,Seller_10,+91-9367632016,2025-10-27,Yes,No
+11,Ford,EcoSport,ZXI,SUV,2018,7,Diesel,Manual,112986,2,2656287,647285,59.8,10,Partial,Minor,Orange,5,2200,19.4,UP32,Chandigarh,Power Steering,Seller_11,+91-3166587603,2025-09-18,No,Yes
+12,Maruti Suzuki,XL6,Base,MPV,2016,9,Petrol,Manual,117417,3,1928730,480609,45.4,2,Complete,Minor,White,8,2000,18.9,KA01,Delhi,Basic,Seller_12,+91-6417080531,2025-09-22,No,Yes
+13,Mahindra,XUV700,VXI,SUV,2023,2,Petrol,Manual,28390,1,3165459,2247058,88.4,11,Partial,No,Black,5,1500,19.4,GJ01,Chennai,"Power Windows, AC, ABS",Seller_13,+91-9190586518,2025-09-30,No,Yes
+14,Ford,EcoSport,Top,SUV,2016,9,Diesel,Automatic,96689,2,2988364,775602,49.8,3,Unknown,Minor,Brown,5,2500,23.5,KA01,Kolkata,"Power Windows, Touchscreen Infotainment",Seller_14,+91-8313678377,2025-10-13,Yes,Yes
+15,Mahindra,Thar,VXI,SUV,2021,4,Petrol,Automatic,67080,2,2241823,867034,73.4,3,Partial,No,Black,5,2500,14.2,MP09,Hyderabad,"Power Windows, AC, Power Steering",Seller_15,+91-2400842710,2025-10-05,No,Yes
+16,Ford,Figo,ZXI,Hatchback,2012,13,Diesel,Automatic,124367,4,657816,170377,40.0,6,Partial,Minor,White,5,1200,16.0,TN01,Lucknow,Power Windows,Seller_16,+91-9740344713,2025-09-12,No,No
+17,Mahindra,Thar,Top,SUV,2011,14,Diesel,Manual,170258,2,1050140,251805,47.3,10,Complete,Major,Blue,5,2000,19.7,RJ14,Lucknow,"Power Windows, Power Steering",Seller_17,+91-5512567468,2025-11-08,No,Yes
+18,Honda,City,Base,Sedan,2011,14,Diesel,Manual,239015,4,656837,165067,40.0,1,Partial,No,Orange,5,1600,23.3,RJ14,Delhi,"Power Windows, Power Steering",Seller_18,+91-2639821465,2025-09-12,No,Yes
+19,Honda,City,VXI,Sedan,2023,2,Petrol,AMT,23184,1,1164742,827362,92.1,3,Partial,No,Brown,5,1500,12.3,RJ14,Hyderabad,"Power Windows, AC, ABS, Airbags, Touchscreen Infotainment",Seller_19,+91-0289517187,2025-11-10,No,Yes
+20,Tata,Tiago,LXI,Hatchback,2017,8,Petrol,Manual,109880,1,846570,215544,69.3,4,Partial,Major,Silver,5,800,18.1,DL01,Pune,"Power Windows, AC, Power Steering",Seller_20,+91-2386922219,2025-09-16,No,No
+21,Mahindra,Thar,VXI,SUV,2024,1,Diesel,Manual,14716,1,2727578,2281670,94.2,10,Partial,No,Silver,7,2200,21.4,GJ01,Ahmedabad,"Power Windows, AC, ABS, Airbags",Seller_21,+91-5944064090,2025-09-13,No,No
+22,Honda,Amaze,LXI,Sedan,2019,6,CNG,Manual,69876,1,1257937,304283,74.2,2,Partial,Minor,Blue,5,1200,20.6,RJ14,Coimbatore,"Power Windows, Power Steering, ABS",Seller_22,+91-3685160481,2025-10-12,No,No
+23,Honda,WR-V,Base,SUV,2016,9,Diesel,Manual,86805,3,904960,215769,46.2,7,Complete,No,Red,5,2500,19.5,MP09,Nagpur,"Power Windows, AC",Seller_23,+91-4053773515,2025-10-07,No,Yes
+24,Kia,Seltos,Top,SUV,2013,12,Diesel,Automatic,112487,2,1012141,244044,40.0,2,Partial,No,Silver,5,2000,15.1,TN01,Chandigarh,Power Windows,Seller_24,+91-7589178390,2025-09-25,No,No
+25,Ford,EcoSport,Base,SUV,2010,15,Diesel,Automatic,221528,4,2660435,679796,40.0,3,Unknown,Minor,Red,7,2500,19.0,DL01,Pune,Power Windows,Seller_25,+91-1161528098,2025-10-06,No,No
+26,Kia,Seltos,Base,SUV,2023,2,Diesel,AMT,17396,1,3318302,2340870,92.8,1,Complete,Minor,Grey,7,2000,23.1,MP09,Delhi,"Power Windows, AC, Power Steering, ABS, Touchscreen Infotainment",Seller_26,+91-4024455022,2025-10-05,No,Yes
+27,Tata,Harrier,Top,SUV,2020,5,Diesel,Manual,81979,1,2560905,618175,76.8,12,Partial,No,Silver,7,2500,19.9,RJ14,Chennai,"Power Windows, Power Steering",Seller_27,+91-8403690034,2025-10-28,Yes,Yes
+28,Toyota,Glanza,ZXI,SUV,2010,15,Petrol,Manual,217160,3,2898252,721671,40.0,11,Partial,No,Brown,5,2000,15.5,GJ01,Coimbatore,Power Windows,Seller_28,+91-1883552312,2025-10-25,Yes,Yes
+29,Tata,Safari,Mid,SUV,2022,3,Diesel,Manual,50886,2,3230465,1696569,76.4,10,Partial,No,Orange,7,2500,21.3,UP32,Delhi,Power Windows,Seller_29,+91-1998679807,2025-09-13,No,No
+30,Toyota,Urban Cruiser,Top,SUV,2018,7,Petrol,Manual,91763,2,964173,243402,68.3,12,Partial,No,Grey,7,2200,14.0,KA01,Delhi,"Power Windows, AC",Seller_30,+91-9148652816,2025-10-09,No,Yes
+31,Honda,Amaze,Mid,Sedan,2013,12,Petrol,Automatic,132451,3,762471,196507,47.1,2,Unknown,No,Brown,5,1600,17.8,RJ14,Kolkata,"Power Windows, AC, Power Steering",Seller_31,+91-3597746886,2025-10-31,Yes,No
+32,Honda,Jazz,Top,Hatchback,2020,5,Petrol,Automatic,82105,2,843491,204631,70.8,3,Unknown,No,White,5,800,15.2,HR26,Pune,"AC, Airbags",Seller_32,+91-2204727790,2025-09-14,Yes,Yes
+33,Mahindra,XUV700,Mid,SUV,2018,7,Diesel,Automatic,68467,2,2063119,519649,71.6,11,Partial,No,Brown,7,2000,20.7,KA01,Mumbai,"Power Windows, Power Steering",Seller_33,+91-8067065405,2025-09-21,Yes,Yes
+34,Hyundai,Venue,Top,SUV,2012,13,Petrol,Manual,205796,3,1365612,350991,41.5,10,Partial,No,Silver,7,2500,19.1,RJ14,Kochi,"Power Windows, Power Steering",Seller_34,+91-1616928451,2025-11-05,No,No
+35,Honda,Civic,LXI,SUV,2019,6,Diesel,Manual,92391,3,977650,242119,55.0,8,Partial,No,Black,7,1500,16.3,TN01,Coimbatore,Power Windows,Seller_35,+91-5719285654,2025-10-26,Yes,Yes
+36,Tata,Punch,VXI,SUV,2018,7,Petrol,Manual,88159,2,3366398,856910,66.8,5,Partial,Major,Silver,7,2200,18.8,KA01,Jaipur,"Power Windows, AC",Seller_36,+91-8957829114,2025-10-16,No,No
+37,Volkswagen,Tiguan,LXI,SUV,2022,3,Petrol,Manual,35797,1,2753846,1345524,86.9,2,Complete,Minor,White,5,2000,14.4,KA01,Coimbatore,"Power Windows, AC, ABS, Airbags, Touchscreen Infotainment",Seller_37,+91-8424981829,2025-10-04,Yes,Yes
+38,Renault,Duster,Top,SUV,2023,2,Diesel,Manual,13258,1,990680,711262,90.2,9,Partial,No,Orange,7,2200,19.8,GJ01,Nagpur,Basic,Seller_38,+91-5556258815,2025-10-26,No,Yes
+39,Ford,Endeavour,Top,SUV,2012,13,Petrol,Automatic,192117,3,2173365,548639,40.0,10,Unknown,No,White,5,2500,13.1,UP32,Coimbatore,"Power Windows, AC",Seller_39,+91-1687849912,2025-11-04,No,Yes
+40,Volkswagen,Taigun,ZXI,SUV,2022,3,Petrol,AMT,44238,1,963217,528010,87.9,5,Partial,No,Black,7,2200,16.1,MP09,Pune,"Power Windows, AC, ABS",Seller_40,+91-9409749930,2025-10-04,No,Yes
+41,Renault,Triber,Mid,SUV,2012,13,Diesel,Manual,115101,2,1600207,392600,54.6,2,Unknown,Minor,Grey,7,2200,21.1,TN01,Jaipur,Power Windows,Seller_41,+91-7575844198,2025-10-17,No,Yes
+42,Honda,Jazz,Base,Hatchback,2014,11,CNG,Manual,166918,4,512190,130830,40.1,1,Partial,No,Black,5,1200,27.4,RJ14,Pune,"Power Windows, Power Steering",Seller_42,+91-9380262067,2025-10-30,No,Yes
+43,Maruti Suzuki,Brezza,VXI,SUV,2019,6,Diesel,Manual,78416,3,1362875,348779,58.1,12,Partial,Minor,Red,7,2500,20.2,DL01,Bangalore,"Power Windows, Power Steering, Airbags",Seller_43,+91-7454990453,2025-11-07,No,Yes
+44,Honda,Amaze,ZXI,Sedan,2016,9,Petrol,Manual,89140,2,1244481,319266,61.2,10,Complete,Minor,Orange,5,1600,14.9,DL01,Jaipur,"AC, Power Steering",Seller_44,+91-1397187072,2025-10-09,No,Yes
+45,Maruti Suzuki,Ciaz,Mid,Sedan,2017,8,Petrol,Manual,68335,2,1456113,356277,70.3,2,Partial,Major,Brown,5,1500,15.6,GJ01,Kolkata,"Power Windows, AC, Power Steering",Seller_45,+91-8682300478,2025-10-14,No,Yes
+46,Mahindra,Thar,VXI,SUV,2015,10,Petrol,Manual,87138,1,1809427,452532,65.9,4,Partial,Major,Grey,7,2000,14.4,KA01,Lucknow,"Power Windows, AC",Seller_46,+91-2687056856,2025-10-15,Yes,Yes
+47,Tata,Safari,LXI,SUV,2018,7,Diesel,Manual,105046,3,2546960,617031,57.9,4,Unknown,Major,White,5,2000,23.0,MP09,Coimbatore,Power Steering,Seller_47,+91-1739363854,2025-10-17,No,No
+48,Toyota,Innova Crysta,Top,MPV,2014,11,Petrol,Automatic,168600,4,2397251,592110,40.0,3,Unknown,Minor,Grey,8,2500,15.7,HR26,Chennai,AC,Seller_48,+91-0100623120,2025-10-28,No,Yes
+49,Maruti Suzuki,XL6,LXI,MPV,2020,5,Petrol,AMT,75222,1,1916130,487368,76.9,12,Complete,No,Silver,7,2000,13.5,MP09,Jaipur,"Power Steering, Airbags",Seller_49,+91-3410166687,2025-11-07,No,Yes
+50,Tata,Tiago,VXI,Hatchback,2017,8,Diesel,Manual,128921,2,510843,132185,51.1,0,Partial,Minor,Black,5,1200,23.2,DL01,Kochi,"AC, Power Steering",Seller_50,+91-2185016315,2025-10-03,No,No
+51,Toyota,Glanza,Base,SUV,2020,5,Diesel,Manual,73205,1,2611301,766886,80.9,6,Partial,Major,Black,7,2200,18.6,DL01,Indore,Basic,Seller_51,+91-8861015819,2025-10-03,No,Yes
+52,Honda,Civic,LXI,SUV,2016,9,Diesel,Manual,159867,2,2396905,598974,59.3,9,Partial,Minor,Silver,7,1500,24.5,HR26,Bangalore,"Power Windows, Power Steering, Touchscreen Infotainment",Seller_52,+91-9245937526,2025-10-21,No,No
+53,Ford,Endeavour,LXI,SUV,2015,10,Diesel,Manual,102888,2,3283980,835196,44.5,2,Partial,No,Blue,5,2500,22.9,DL01,Chandigarh,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_53,+91-0589113529,2025-11-08,No,No
+54,Kia,Seltos,Base,SUV,2022,3,Petrol,Automatic,38277,2,2975995,1686780,80.0,11,Partial,No,White,5,2200,15.3,DL01,Ahmedabad,AC,Seller_54,+91-7177514010,2025-09-17,No,No
+55,Tata,Harrier,Top,SUV,2013,12,Diesel,Manual,165236,4,2737995,654555,40.0,1,Partial,No,Grey,7,1500,17.6,RJ14,Hyderabad,"Power Windows, AC, Power Steering",Seller_55,+91-9249912513,2025-10-22,Yes,Yes
+56,Tata,Nexon,ZXI,SUV,2016,9,Petrol,Automatic,132422,3,3465487,865037,45.6,3,Unknown,Minor,Orange,7,2500,17.7,RJ14,Pune,Power Windows,Seller_56,+91-2797881914,2025-09-22,No,Yes
+57,Maruti Suzuki,Celerio,LXI,SUV,2018,7,Petrol,Manual,85667,3,1902326,485604,59.0,10,Unknown,No,Black,5,2000,18.4,HR26,Kochi,"Power Windows, AC, ABS",Seller_57,+91-8126042232,2025-09-26,No,Yes
+58,Kia,Seltos,Top,SUV,2012,13,Diesel,Manual,193364,4,1116738,275225,40.0,1,Unknown,No,Brown,5,2500,17.7,UP32,Coimbatore,"Power Windows, AC, Power Steering",Seller_58,+91-1701277063,2025-09-27,Yes,No
+59,Tata,Safari,VXI,SUV,2024,1,Diesel,Manual,13007,1,1145696,949876,95.0,4,Partial,Major,Red,5,1500,15.0,RJ14,Pune,"AC, Power Steering",Seller_59,+91-6271361115,2025-10-18,No,Yes
+60,Tata,Harrier,Mid,SUV,2020,5,Petrol,Manual,87683,1,2272988,549404,73.2,12,Complete,Minor,Brown,7,2200,18.3,TN01,Kolkata,"Power Steering, ABS",Seller_60,+91-4389836403,2025-10-10,No,Yes
+61,Ford,EcoSport,Base,SUV,2018,7,Diesel,Manual,97597,2,2422517,591226,58.6,0,Complete,Minor,Blue,7,2500,22.0,DL01,Chandigarh,"Power Windows, AC, Touchscreen Infotainment",Seller_61,+91-2856914630,2025-10-26,Yes,Yes
+62,Ford,EcoSport,LXI,SUV,2014,11,Diesel,Manual,104723,3,847607,207069,47.7,1,Partial,Major,Silver,7,2200,15.6,KA01,Ahmedabad,Power Windows,Seller_62,+91-0030756220,2025-10-06,No,No
+63,Kia,Sonet,VXI,SUV,2015,10,Diesel,Manual,97124,2,1300803,309199,52.3,3,Partial,Minor,Blue,5,2500,18.7,RJ14,Indore,"Power Windows, AC, Power Steering",Seller_63,+91-0385050641,2025-10-28,No,Yes
+64,Ford,EcoSport,VXI,SUV,2012,13,Diesel,Manual,112139,4,2362344,580324,40.0,7,Partial,No,Silver,5,1500,16.6,KA01,Hyderabad,Power Windows,Seller_64,+91-1124903521,2025-09-26,Yes,Yes
+65,Volkswagen,Polo,VXI,Hatchback,2020,5,Petrol,Manual,44170,1,691479,190689,77.5,2,Complete,Minor,Grey,5,1200,19.5,DL01,Chandigarh,"Power Windows, Power Steering",Seller_65,+91-2151070296,2025-09-19,No,Yes
+66,Maruti Suzuki,WagonR,LXI,SUV,2020,5,Petrol,Manual,62110,1,1423405,448878,84.3,2,Complete,No,Red,5,2500,18.3,HR26,Chandigarh,"Power Windows, AC",Seller_66,+91-9304078593,2025-10-31,Yes,Yes
+67,Mahindra,Scorpio,Base,SUV,2018,7,Diesel,Manual,85590,3,2288158,563554,49.8,9,Partial,Minor,Red,7,2200,16.8,MH01,Coimbatore,Touchscreen Infotainment,Seller_67,+91-2525002921,2025-09-17,No,Yes
+68,Toyota,Urban Cruiser,LXI,SUV,2019,6,Petrol,Manual,65637,3,2130783,522404,64.1,11,Partial,No,Black,5,2500,18.8,MH01,Indore,"Power Steering, ABS",Seller_68,+91-5135521570,2025-10-25,Yes,Yes
+69,Hyundai,Venue,LXI,SUV,2014,11,Diesel,Manual,97991,4,2560153,626911,40.0,5,Partial,No,Silver,5,2500,16.6,DL01,Kolkata,"Power Windows, AC",Seller_69,+91-2962015336,2025-09-27,No,No
+70,Volkswagen,Taigun,Base,SUV,2020,5,Petrol,Manual,76552,2,2859186,700173,74.6,2,Partial,No,Orange,5,2200,18.3,RJ14,Coimbatore,"Power Windows, AC, Touchscreen Infotainment",Seller_70,+91-7047743490,2025-11-01,No,No
+71,Hyundai,Venue,Top,SUV,2022,3,Diesel,Manual,47209,1,2991868,1507802,85.4,1,Complete,Major,White,5,1500,24.5,RJ14,Jaipur,"AC, Power Steering, ABS, Sunroof",Seller_71,+91-6329451168,2025-10-16,No,Yes
+72,Volkswagen,Tiguan,LXI,SUV,2024,1,Diesel,AMT,11633,1,1427645,1203332,95.0,1,Partial,No,Blue,7,2500,17.6,RJ14,Coimbatore,"Power Windows, AC",Seller_72,+91-6530745054,2025-10-22,No,Yes
+73,Hyundai,Aura,LXI,Sedan,2012,13,Petrol,Automatic,171755,4,1234366,294054,40.0,3,Partial,No,Red,5,1500,12.4,HR26,Mumbai,"Power Windows, Power Steering",Seller_73,+91-5797279855,2025-10-31,No,No
+74,Hyundai,Verna,Top,Sedan,2010,15,Petrol,Manual,259136,3,1278827,332349,40.0,5,Unknown,No,Red,5,1500,17.4,GJ01,Ahmedabad,"Power Windows, Power Steering",Seller_74,+91-4417154544,2025-09-30,No,No
+75,Mahindra,XUV700,Base,SUV,2018,7,Diesel,Manual,126430,2,1386906,335974,56.9,11,Partial,Major,Orange,7,2200,23.5,MP09,Nagpur,Basic,Seller_75,+91-5135346554,2025-10-04,No,Yes
+76,Ford,EcoSport,Base,SUV,2023,2,Diesel,Manual,29659,1,2899154,2073934,91.2,2,Complete,No,Grey,7,2000,18.2,KA01,Pune,"Power Windows, AC, Power Steering",Seller_76,+91-2927129666,2025-10-14,No,Yes
+77,Maruti Suzuki,Ciaz,VXI,Sedan,2013,12,Petrol,Manual,163048,3,618786,152187,40.0,10,Partial,No,Orange,5,1200,13.3,GJ01,Kolkata,Power Steering,Seller_77,+91-0648909010,2025-11-07,No,Yes
+78,Ford,Aspire,Base,Sedan,2011,14,Petrol,Automatic,145478,2,915743,225682,40.9,6,Partial,No,White,5,1500,19.3,RJ14,Jaipur,"Power Windows, Power Steering",Seller_78,+91-1811437447,2025-11-07,Yes,Yes
+79,Honda,City,Base,Sedan,2022,3,Petrol,AMT,26250,1,610142,354260,85.9,11,Complete,No,Grey,5,1200,15.2,RJ14,Bangalore,"Power Steering, ABS",Seller_79,+91-0216979729,2025-10-17,No,No
+80,Tata,Punch,ZXI,SUV,2024,1,Diesel,Manual,8323,1,2118009,1777675,95.0,11,Partial,No,Grey,5,2500,21.6,TN01,Jaipur,"Power Windows, AC, Power Steering, Airbags, Touchscreen Infotainment",Seller_80,+91-0287721753,2025-10-20,No,Yes
+81,Mahindra,Bolero,Base,SUV,2020,5,CNG,AMT,80773,1,1169182,322753,73.0,0,Complete,Minor,Blue,5,2500,27.5,HR26,Nagpur,"Power Windows, AC, Power Steering, Airbags",Seller_81,+91-5711305548,2025-10-08,No,No
+82,Maruti Suzuki,Baleno,Top,Hatchback,2017,8,Petrol,Automatic,77182,2,498326,119887,66.5,7,Unknown,Major,Black,5,800,16.2,MH01,Ahmedabad,"Power Windows, AC, Power Steering",Seller_82,+91-2216995866,2025-10-03,No,Yes
+83,Kia,Seltos,ZXI,SUV,2014,11,Petrol,Automatic,199974,3,3097664,789463,40.0,5,Complete,No,Orange,7,2200,19.0,GJ01,Lucknow,"Power Windows, AC",Seller_83,+91-2442043805,2025-09-19,No,Yes
+84,Volkswagen,Vento,ZXI,Sedan,2021,4,Petrol,AMT,50938,2,901610,349865,76.7,0,Complete,Major,Blue,5,1600,19.0,RJ14,Hyderabad,"Power Windows, AC, Power Steering, ABS, Airbags",Seller_84,+91-3472122816,2025-11-08,No,Yes
+85,Honda,Amaze,Top,Sedan,2012,13,Petrol,Manual,105611,4,1344163,345659,40.0,2,Unknown,Minor,Brown,5,1500,13.8,TN01,Delhi,Power Windows,Seller_85,+91-0157399305,2025-10-17,Yes,Yes
+86,Volkswagen,Taigun,ZXI,SUV,2010,15,Diesel,Manual,249725,4,2841806,744284,40.0,12,Unknown,Major,Silver,5,1500,19.6,HR26,Indore,Touchscreen Infotainment,Seller_86,+91-6676650618,2025-11-10,No,No
+87,Hyundai,i10,Top,Hatchback,2021,4,Diesel,Manual,50929,2,445353,182569,77.4,11,Unknown,Minor,Blue,5,800,18.0,HR26,Chandigarh,"Power Windows, Power Steering",Seller_87,+91-8143536822,2025-10-30,Yes,No
+88,Mahindra,XUV300,Mid,SUV,2012,13,Diesel,Manual,223453,2,2019085,487224,40.0,9,Partial,No,Brown,5,2200,17.5,TN01,Bangalore,"Power Windows, AC",Seller_88,+91-7547812914,2025-09-17,Yes,No
+89,Honda,Jazz,Top,Hatchback,2021,4,Petrol,Manual,60747,2,703510,228630,75.3,12,Partial,No,Brown,5,1200,17.9,UP32,Hyderabad,AC,Seller_89,+91-9282722992,2025-09-24,No,Yes
+90,Maruti Suzuki,Dzire,Base,Sedan,2022,3,Petrol,Manual,38045,1,644887,344250,86.4,0,Partial,No,Silver,5,1600,17.1,UP32,Indore,"Power Windows, Power Steering",Seller_90,+91-1846386557,2025-09-21,No,No
+91,Volkswagen,Vento,ZXI,Sedan,2017,8,Petrol,Manual,131040,2,757538,182968,63.3,6,Complete,No,White,5,1600,16.7,KA01,Bangalore,"Power Windows, Power Steering",Seller_91,+91-9904137977,2025-10-31,Yes,Yes
+92,Tata,Safari,VXI,SUV,2019,6,Diesel,Manual,97547,2,2237267,569627,60.6,2,Complete,No,Orange,5,1500,15.9,KA01,Nagpur,"Power Windows, AC, ABS",Seller_92,+91-0863765991,2025-10-14,Yes,Yes
+93,Mahindra,XUV300,LXI,SUV,2014,11,Diesel,Automatic,132549,2,829838,202802,48.9,10,Unknown,No,Brown,7,2000,18.7,MP09,Jaipur,"Power Windows, AC, Power Steering",Seller_93,+91-1372138658,2025-10-02,No,No
+94,Maruti Suzuki,Baleno,LXI,Hatchback,2016,9,CNG,Manual,96156,3,446211,115124,60.5,10,Unknown,Minor,White,5,1200,27.3,MP09,Hyderabad,Power Steering,Seller_94,+91-3021465669,2025-10-29,No,Yes
+95,Hyundai,i20,Top,Hatchback,2018,7,Petrol,Manual,95381,2,717909,172603,57.8,8,Partial,Minor,Blue,5,1000,19.7,RJ14,Indore,"Power Windows, AC, Power Steering",Seller_95,+91-1416335658,2025-10-07,Yes,No
+96,Mahindra,Scorpio,VXI,SUV,2011,14,Petrol,Manual,133515,3,2798818,673106,40.0,1,Unknown,Minor,White,5,2500,15.0,HR26,Kochi,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_96,+91-4639208678,2025-11-08,No,Yes
+97,Tata,Punch,Base,SUV,2011,14,Diesel,Automatic,179531,2,1683959,423995,41.4,9,Partial,No,Blue,5,2500,23.6,TN01,Kochi,AC,Seller_97,+91-8857448906,2025-11-04,No,Yes
+98,Mahindra,Scorpio,Top,SUV,2017,8,Diesel,Manual,123443,2,2313984,580719,60.7,12,Partial,No,Grey,7,2500,23.9,GJ01,Chandigarh,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_98,+91-9961125355,2025-09-30,No,No
+99,Renault,Triber,VXI,SUV,2014,11,Diesel,Manual,197311,4,2536395,651277,40.0,8,Complete,No,Blue,5,1500,21.5,GJ01,Lucknow,"Power Windows, Touchscreen Infotainment",Seller_99,+91-5577848728,2025-10-30,No,No
+100,Renault,Triber,Top,SUV,2018,7,Diesel,Manual,98707,2,1175616,279453,65.0,7,Unknown,No,White,7,2200,21.0,MH01,Kochi,"Power Windows, Power Steering",Seller_100,+91-6341638944,2025-09-30,No,No
+101,Kia,Sonet,VXI,SUV,2023,2,Petrol,Manual,33338,1,1941413,1441084,87.3,0,Complete,No,Blue,5,2500,17.8,TN01,Chennai,Airbags,Seller_101,+91-0512046187,2025-10-30,Yes,Yes
+102,Maruti Suzuki,Swift,VXI,Hatchback,2022,3,Petrol,AMT,44820,2,417569,232045,80.1,4,Partial,No,White,5,1200,16.2,UP32,Indore,Power Windows,Seller_102,+91-6502491630,2025-11-08,No,No
+103,Renault,Kiger,Top,SUV,2015,10,Diesel,Manual,109020,1,3394784,835737,63.2,7,Partial,No,Brown,5,2200,24.0,RJ14,Kolkata,"Power Windows, AC, Power Steering",Seller_103,+91-7498218274,2025-09-19,No,No
+104,Ford,EcoSport,Mid,SUV,2022,3,Diesel,AMT,28423,2,2327042,1175357,80.6,8,Unknown,Minor,Black,7,2200,19.1,HR26,Lucknow,"AC, ABS, Touchscreen Infotainment",Seller_104,+91-7310967899,2025-10-25,Yes,Yes
+105,Renault,Kwid,LXI,Hatchback,2010,15,CNG,Automatic,142318,2,589229,143606,40.0,10,Partial,Minor,Brown,5,800,25.7,HR26,Indore,"Power Windows, AC",Seller_105,+91-2897558556,2025-09-23,No,Yes
+106,Toyota,Fortuner,Base,SUV,2019,6,Diesel,Automatic,101252,2,2697517,660913,66.4,3,Partial,No,White,7,2000,15.9,RJ14,Kochi,"Power Windows, Touchscreen Infotainment",Seller_106,+91-6931572791,2025-10-03,No,Yes
+107,Renault,Triber,Mid,SUV,2011,14,Diesel,Manual,193915,4,1305583,324619,40.0,9,Complete,No,Brown,7,2000,16.3,DL01,Chennai,"Power Windows, AC, Power Steering",Seller_107,+91-2783769389,2025-09-24,No,Yes
+108,Hyundai,Verna,Mid,Sedan,2022,3,Petrol,Manual,31305,1,983010,599874,88.9,9,Complete,Minor,Black,5,1200,19.4,TN01,Ahmedabad,"Power Steering, ABS",Seller_108,+91-2405147705,2025-10-28,No,No
+109,Mahindra,Bolero,LXI,SUV,2018,7,Diesel,Automatic,67506,3,3245299,776161,53.2,10,Partial,Major,Grey,5,1500,17.9,GJ01,Coimbatore,"Power Steering, Touchscreen Infotainment",Seller_109,+91-2387800384,2025-10-20,No,Yes
+110,Tata,Tiago,Base,Hatchback,2015,10,Petrol,Manual,128399,2,825665,206843,62.3,10,Partial,Minor,Red,5,800,15.4,UP32,Lucknow,"Power Windows, Power Steering",Seller_110,+91-2482629251,2025-10-06,No,No
+111,Tata,Tigor,Base,Sedan,2023,2,CNG,Automatic,31303,1,918083,574458,89.2,12,Complete,No,Black,5,1200,25.6,UP32,Bangalore,"Power Windows, AC, Power Steering",Seller_111,+91-2897526772,2025-10-31,Yes,Yes
+112,Kia,Sonet,Mid,SUV,2024,1,Petrol,Manual,7434,1,1542719,1235721,95.0,5,Complete,No,Brown,5,2500,17.8,GJ01,Pune,"Power Windows, AC, Power Steering, Airbags",Seller_112,+91-7703886086,2025-10-08,No,Yes
+113,Honda,Civic,Top,SUV,2016,9,Diesel,Manual,137749,3,2034885,490168,48.9,6,Partial,Minor,White,7,2000,23.8,DL01,Bangalore,"AC, Power Steering",Seller_113,+91-7518689268,2025-10-17,Yes,Yes
+114,Renault,Kiger,ZXI,SUV,2012,13,Diesel,Manual,116794,3,2098213,532918,40.0,7,Unknown,Minor,Silver,5,2000,23.8,UP32,Lucknow,"Power Windows, AC, Power Steering",Seller_114,+91-0994510162,2025-10-31,No,Yes
+115,Renault,Kiger,LXI,SUV,2017,8,Diesel,Manual,65221,2,2154012,539830,64.0,11,Partial,Minor,White,5,2500,22.2,UP32,Delhi,"Power Windows, AC, Touchscreen Infotainment",Seller_115,+91-7877293430,2025-11-03,Yes,Yes
+116,Hyundai,Aura,Base,Sedan,2022,3,Petrol,AMT,40094,1,966634,596812,86.5,4,Complete,Minor,Grey,5,1200,12.9,HR26,Kochi,"Power Windows, AC, Power Steering",Seller_116,+91-7702727857,2025-09-21,No,No
+117,Volkswagen,Taigun,Mid,SUV,2019,6,Diesel,Manual,106355,1,1673516,413159,70.3,8,Partial,Minor,Brown,5,2200,22.1,HR26,Bangalore,"Power Windows, ABS",Seller_117,+91-8421503178,2025-11-09,No,No
+118,Mahindra,Scorpio,Base,SUV,2024,1,Diesel,Automatic,6956,1,2964875,2389179,95.0,11,Partial,No,White,5,1500,18.3,MH01,Chennai,"AC, Power Steering, Airbags",Seller_118,+91-3344857142,2025-10-31,No,Yes
+119,Renault,Kwid,Mid,Hatchback,2013,12,Petrol,Manual,146599,3,700984,181137,47.5,11,Unknown,Minor,Grey,5,1000,18.5,MP09,Chennai,"AC, Power Steering",Seller_119,+91-1747733294,2025-09-13,No,Yes
+120,Toyota,Innova Crysta,Mid,MPV,2017,8,Petrol,Manual,123145,2,1803806,464138,60.3,8,Unknown,Minor,Brown,7,2000,19.8,GJ01,Hyderabad,Power Steering,Seller_120,+91-3219719975,2025-10-06,Yes,Yes
+121,Honda,Civic,Mid,SUV,2011,14,Diesel,Automatic,190194,2,1179722,307272,45.2,6,Partial,No,White,7,2000,23.5,MH01,Lucknow,"Power Windows, AC",Seller_121,+91-0369656666,2025-10-07,Yes,No
+122,Ford,Endeavour,ZXI,SUV,2013,12,Diesel,Manual,175547,3,1326591,321027,48.2,8,Unknown,Minor,Orange,7,2000,16.9,MH01,Pune,"Power Windows, AC",Seller_122,+91-0975197128,2025-09-17,No,Yes
+123,Hyundai,i20,VXI,Hatchback,2013,12,Petrol,Manual,206504,3,721409,184445,46.3,9,Partial,No,Orange,5,800,16.6,UP32,Lucknow,"Power Windows, AC",Seller_123,+91-2944401929,2025-09-24,Yes,No
+124,Toyota,Fortuner,Top,SUV,2014,11,Diesel,Manual,173346,2,2238008,534566,40.0,4,Complete,No,Black,7,2500,18.0,MP09,Ahmedabad,AC,Seller_124,+91-7658018569,2025-09-13,No,Yes
+125,Honda,City,Mid,Sedan,2022,3,Petrol,AMT,45623,2,1304527,716895,79.2,10,Complete,No,White,5,1200,16.2,RJ14,Pune,"Power Windows, AC",Seller_125,+91-3911192692,2025-09-14,Yes,No
+126,Honda,City,VXI,Sedan,2017,8,Petrol,Manual,122960,3,1325846,323660,44.1,7,Complete,Minor,Red,5,1500,13.4,RJ14,Lucknow,AC,Seller_126,+91-0119470720,2025-09-12,Yes,No
+127,Honda,Amaze,Base,Sedan,2021,4,Petrol,AMT,64716,2,1341978,431574,70.5,0,Unknown,Major,Orange,5,1600,16.3,HR26,Delhi,"Power Windows, ABS",Seller_127,+91-5174328063,2025-10-22,No,Yes
+128,Toyota,Urban Cruiser,Mid,SUV,2011,14,Diesel,Automatic,152748,2,1609889,408664,49.3,8,Unknown,Major,Black,5,1500,15.4,KA01,Indore,"Power Windows, Power Steering",Seller_128,+91-0417929111,2025-10-10,No,No
+129,Hyundai,Aura,ZXI,Sedan,2016,9,Petrol,Automatic,116787,2,937211,244275,49.8,0,Partial,No,Brown,5,1200,12.1,RJ14,Kochi,Power Steering,Seller_129,+91-7232487632,2025-10-02,No,Yes
+130,Tata,Harrier,VXI,SUV,2017,8,Diesel,Manual,104171,3,819168,198814,55.1,0,Partial,No,Black,7,2500,16.8,MH01,Chandigarh,Basic,Seller_130,+91-1082207811,2025-09-14,Yes,No
+131,Renault,Duster,Mid,SUV,2016,9,Petrol,Manual,102725,2,1755387,433901,64.0,2,Unknown,Major,Red,7,2200,13.6,KA01,Chandigarh,AC,Seller_131,+91-3492929831,2025-10-15,No,Yes
+132,Renault,Triber,ZXI,SUV,2023,2,Petrol,AMT,23142,1,2172778,1455085,92.3,0,Complete,No,White,5,2500,16.2,RJ14,Ahmedabad,"Power Windows, AC",Seller_132,+91-6325431074,2025-10-31,No,Yes
+133,Renault,Kwid,LXI,Hatchback,2017,8,Petrol,Manual,115158,2,728629,182929,59.7,12,Partial,Major,Silver,5,1000,17.9,MH01,Lucknow,"Power Windows, AC",Seller_133,+91-5281832538,2025-11-03,No,Yes
+134,Renault,Kiger,VXI,SUV,2022,3,Diesel,Manual,40528,1,2912108,1684870,85.7,1,Complete,Major,Blue,7,1500,16.9,RJ14,Ahmedabad,ABS,Seller_134,+91-2723804682,2025-10-11,No,Yes
+135,Maruti Suzuki,Brezza,VXI,SUV,2013,12,CNG,Manual,181421,3,2168628,530467,40.0,2,Partial,Major,Blue,5,2000,19.6,DL01,Bangalore,Basic,Seller_135,+91-5525782841,2025-09-13,Yes,Yes
+136,Tata,Punch,LXI,SUV,2024,1,Petrol,Automatic,15606,1,2015623,1623851,92.1,12,Partial,Major,Orange,5,2500,19.2,KA01,Kolkata,"Power Windows, ABS",Seller_136,+91-9398343018,2025-09-17,No,No
+137,Hyundai,Creta,Top,SUV,2013,12,Petrol,Manual,168493,3,2593654,643474,41.2,6,Partial,Minor,Silver,5,2200,15.8,MP09,Bangalore,"Power Windows, Power Steering",Seller_137,+91-6287923264,2025-10-06,No,Yes
+138,Renault,Duster,Top,SUV,2017,8,Diesel,Automatic,88863,1,1446023,347744,71.8,4,Unknown,No,Grey,7,2500,23.7,RJ14,Lucknow,"Power Windows, AC",Seller_138,+91-2572520456,2025-10-01,No,Yes
+139,Honda,WR-V,Top,SUV,2020,5,Diesel,Manual,51558,2,1501018,360087,71.9,9,Partial,No,White,7,2200,22.8,GJ01,Bangalore,"Power Windows, AC",Seller_139,+91-9888167112,2025-09-12,Yes,Yes
+140,Honda,City,Base,Sedan,2012,13,Diesel,Manual,164354,2,833159,210229,50.0,7,Complete,No,White,5,1500,21.7,DL01,Delhi,"Power Windows, AC",Seller_140,+91-4955289389,2025-11-06,Yes,No
+141,Volkswagen,Vento,VXI,Sedan,2021,4,Petrol,Automatic,47056,1,1360583,548892,87.2,1,Complete,No,Brown,5,1200,16.1,GJ01,Pune,AC,Seller_141,+91-8015716479,2025-09-24,No,No
+142,Mahindra,Bolero,VXI,SUV,2016,9,CNG,Manual,143157,2,853627,223603,45.3,1,Partial,No,Grey,7,1500,20.3,GJ01,Hyderabad,"Power Windows, Power Steering",Seller_142,+91-6579678427,2025-11-04,Yes,Yes
+143,Ford,Endeavour,LXI,SUV,2020,5,Diesel,Manual,44020,1,2889329,782698,78.2,12,Partial,Minor,Orange,7,2500,19.9,UP32,Hyderabad,"Power Windows, AC, Power Steering, Airbags, Touchscreen Infotainment",Seller_143,+91-1675677002,2025-10-06,No,Yes
+144,Tata,Punch,ZXI,SUV,2016,9,Petrol,Automatic,92448,3,3122738,766669,47.2,0,Complete,No,Grey,5,2200,15.0,GJ01,Kolkata,Power Windows,Seller_144,+91-1415208507,2025-09-29,No,No
+145,Kia,Seltos,LXI,SUV,2010,15,Diesel,Manual,198963,4,2152333,513736,40.0,9,Unknown,No,Silver,5,2200,17.7,MP09,Indore,"Power Windows, Power Steering, Touchscreen Infotainment",Seller_145,+91-8536649878,2025-10-30,Yes,No
+146,Volkswagen,Vento,ZXI,Sedan,2019,6,Petrol,Automatic,78062,3,1193616,295726,62.1,1,Partial,Minor,Blue,5,1500,17.2,UP32,Coimbatore,Power Windows,Seller_146,+91-7866032420,2025-10-25,No,No
+147,Tata,Harrier,Base,SUV,2023,2,Petrol,Manual,14187,1,2116612,1401633,91.6,10,Complete,Minor,Black,5,1500,16.2,MP09,Hyderabad,"AC, Airbags",Seller_147,+91-6363212347,2025-10-15,No,No
+148,Ford,Figo,LXI,Hatchback,2021,4,Diesel,AMT,62156,1,861076,361032,78.8,0,Partial,Major,White,5,1200,17.4,MP09,Indore,"Power Windows, AC, Power Steering, ABS",Seller_148,+91-7606441343,2025-09-16,Yes,Yes
+149,Toyota,Urban Cruiser,Mid,SUV,2022,3,Diesel,AMT,44746,2,2571531,1251294,75.8,9,Partial,Minor,White,5,2000,21.3,KA01,Kochi,Basic,Seller_149,+91-2965772429,2025-09-19,No,Yes
+150,Hyundai,Creta,ZXI,SUV,2015,10,CNG,Manual,87910,2,1173194,291396,44.9,7,Unknown,No,Red,5,2000,27.5,UP32,Indore,AC,Seller_150,+91-3626204439,2025-10-13,Yes,Yes
+151,Ford,EcoSport,LXI,SUV,2010,15,Diesel,Manual,216180,3,1106417,278251,40.0,9,Partial,No,Black,7,2200,23.8,KA01,Jaipur,AC,Seller_151,+91-4564494856,2025-09-14,Yes,Yes
+152,Ford,Endeavour,Top,SUV,2018,7,Diesel,Automatic,60192,2,1028871,262593,70.7,7,Unknown,Minor,Silver,5,1500,18.5,TN01,Coimbatore,Power Windows,Seller_152,+91-9089261371,2025-09-15,No,Yes
+153,Hyundai,Creta,Top,SUV,2015,10,Diesel,Manual,130519,1,1140003,296596,59.9,12,Partial,No,White,7,2200,23.0,DL01,Kochi,"Power Windows, AC",Seller_153,+91-0326642147,2025-09-20,No,No
+154,Renault,Kiger,Top,SUV,2015,10,Diesel,Manual,162264,3,2668320,648683,40.0,10,Partial,Minor,Silver,7,2500,15.8,RJ14,Chennai,"Power Windows, AC, Power Steering",Seller_154,+91-8108186617,2025-09-29,No,No
+155,Toyota,Innova Crysta,Base,MPV,2019,6,Petrol,Manual,61779,2,2448732,619762,73.6,4,Partial,No,Red,7,2200,19.0,DL01,Bangalore,Power Windows,Seller_155,+91-9749956412,2025-11-02,Yes,Yes
+156,Maruti Suzuki,Dzire,VXI,Sedan,2023,2,Petrol,AMT,19717,1,1056957,765848,90.6,2,Complete,Minor,White,5,1200,19.2,RJ14,Delhi,"Power Windows, AC, Power Steering",Seller_156,+91-0501667998,2025-10-23,Yes,Yes
+157,Ford,Aspire,Top,Sedan,2013,12,Petrol,Manual,183411,3,1180130,307100,44.4,5,Unknown,No,Blue,5,1600,15.1,GJ01,Indore,"Power Windows, AC, Power Steering",Seller_157,+91-4172232971,2025-09-21,No,Yes
+158,Mahindra,XUV700,Top,SUV,2018,7,Petrol,Manual,94541,2,2911743,694935,72.1,8,Partial,No,Silver,5,2500,18.4,DL01,Indore,"Power Windows, AC, Power Steering, ABS",Seller_158,+91-2135247871,2025-11-01,No,Yes
+159,Tata,Tiago,Base,Hatchback,2023,2,Petrol,AMT,15233,1,837682,585206,90.8,12,Complete,No,Red,5,1200,15.4,TN01,Bangalore,"AC, Power Steering, ABS, Airbags",Seller_159,+91-0720811556,2025-09-22,Yes,Yes
+160,Kia,Sonet,Base,SUV,2020,5,Diesel,Manual,83012,2,2980108,733416,65.2,4,Partial,Major,Brown,5,2500,22.0,GJ01,Ahmedabad,"Power Windows, AC",Seller_160,+91-8843188485,2025-09-23,No,Yes
+161,Maruti Suzuki,Ciaz,Top,Sedan,2019,6,Petrol,Manual,92834,1,1367543,349982,78.4,7,Partial,No,Red,5,1500,14.3,KA01,Kolkata,"Power Windows, AC",Seller_161,+91-1266110627,2025-10-28,No,Yes
+162,Volkswagen,Tiguan,Base,SUV,2019,6,Diesel,Automatic,78493,3,3469511,885691,63.4,2,Complete,Major,Red,7,1500,22.5,MP09,Ahmedabad,"Power Windows, AC, Power Steering",Seller_162,+91-2154544702,2025-11-01,No,Yes
+163,Honda,City,ZXI,Sedan,2013,12,Petrol,Automatic,93412,3,670846,173855,40.0,5,Complete,Minor,Brown,5,1200,19.2,HR26,Pune,"Power Windows, AC, Power Steering",Seller_163,+91-9481813989,2025-09-23,Yes,No
+164,Mahindra,Thar,VXI,SUV,2018,7,Diesel,Manual,114935,1,1953276,505994,64.3,0,Partial,Minor,Black,5,2200,18.8,DL01,Pune,Basic,Seller_164,+91-6209520046,2025-11-04,No,Yes
+165,Toyota,Innova Crysta,ZXI,MPV,2016,9,CNG,Manual,100787,2,1833852,460942,57.3,9,Complete,No,Black,8,2500,18.8,MP09,Chennai,AC,Seller_165,+91-8700794200,2025-09-12,No,Yes
+166,Honda,Civic,LXI,SUV,2015,10,Diesel,Manual,179231,2,990776,257203,55.2,5,Partial,Major,Orange,5,2200,18.4,RJ14,Chennai,"Power Windows, Power Steering",Seller_166,+91-0268768118,2025-11-09,No,Yes
+167,Hyundai,Venue,LXI,SUV,2023,2,Petrol,AMT,16944,1,1323297,888759,92.1,4,Partial,Major,Grey,5,2200,18.5,TN01,Hyderabad,"AC, Airbags",Seller_167,+91-3614987283,2025-09-29,No,No
+168,Renault,Kiger,Base,SUV,2011,14,Diesel,Manual,140471,3,2993956,741518,40.0,1,Unknown,Minor,Grey,5,2000,15.5,GJ01,Jaipur,"Power Windows, Touchscreen Infotainment",Seller_168,+91-3613325411,2025-11-09,No,Yes
+169,Renault,Duster,ZXI,SUV,2023,2,Petrol,Manual,23057,1,2199171,1540597,91.9,1,Partial,Minor,Silver,5,1500,15.0,DL01,Delhi,"Power Windows, Power Steering",Seller_169,+91-0804661963,2025-09-16,No,No
+170,Maruti Suzuki,Celerio,VXI,SUV,2016,9,Petrol,Manual,117501,3,2969348,759011,55.1,7,Partial,No,Black,5,1500,13.0,GJ01,Kochi,"Power Windows, AC",Seller_170,+91-9545089203,2025-10-09,No,Yes
+171,Toyota,Fortuner,LXI,SUV,2013,12,Diesel,Manual,110035,3,2795335,679477,40.0,3,Unknown,Minor,Red,7,2200,23.1,GJ01,Hyderabad,Power Steering,Seller_171,+91-4739500334,2025-10-30,Yes,Yes
+172,Tata,Tigor,ZXI,Sedan,2023,2,Petrol,Manual,17774,1,784630,543897,90.6,12,Complete,No,Red,5,1500,13.9,HR26,Chennai,"Power Windows, AC, Power Steering, ABS, Airbags, Touchscreen Infotainment",Seller_172,+91-2233865596,2025-10-01,Yes,Yes
+173,Renault,Kiger,Mid,SUV,2023,2,Diesel,Manual,25785,1,1023384,727719,90.7,7,Complete,Major,Silver,7,1500,16.7,GJ01,Kochi,"Power Windows, AC, Power Steering",Seller_173,+91-7774969033,2025-09-14,Yes,Yes
+174,Kia,Sonet,ZXI,SUV,2014,11,Petrol,Manual,154589,2,1363422,338867,42.9,4,Complete,No,Silver,5,2200,19.4,DL01,Chennai,Power Steering,Seller_174,+91-4392840445,2025-09-21,No,Yes
+175,Maruti Suzuki,Celerio,Mid,SUV,2020,5,Diesel,Manual,71288,1,1680279,412216,78.4,3,Complete,Major,Brown,7,2500,23.5,MH01,Hyderabad,"Power Windows, AC, ABS",Seller_175,+91-5366684590,2025-10-05,Yes,Yes
+176,Toyota,Urban Cruiser,Mid,SUV,2016,9,Petrol,Automatic,102543,1,2179260,570039,62.7,4,Partial,No,Blue,5,2500,12.5,MP09,Chandigarh,Power Steering,Seller_176,+91-1632346729,2025-10-05,No,No
+177,Volkswagen,Tiguan,VXI,SUV,2014,11,Diesel,Manual,164860,3,3005602,777687,43.9,6,Partial,No,Brown,7,2000,22.0,DL01,Ahmedabad,"Power Windows, AC",Seller_177,+91-1376815118,2025-09-22,No,Yes
+178,Tata,Tigor,Base,Sedan,2013,12,Petrol,Automatic,97443,4,999670,249186,40.0,4,Partial,No,White,5,1200,13.4,DL01,Lucknow,Power Windows,Seller_178,+91-3083708164,2025-10-13,Yes,No
+179,Maruti Suzuki,WagonR,Top,SUV,2022,3,Petrol,Manual,30325,1,2568665,1483272,90.8,1,Partial,No,Black,7,1500,18.5,HR26,Mumbai,"Power Windows, Airbags",Seller_179,+91-5520650637,2025-10-27,Yes,No
+180,Renault,Duster,ZXI,SUV,2010,15,Petrol,Manual,270350,2,3048908,725460,40.0,9,Unknown,Minor,Red,5,2000,12.2,DL01,Jaipur,"Power Windows, AC, Power Steering",Seller_180,+91-2630397524,2025-10-21,No,Yes
+181,Kia,Carens,Mid,MPV,2023,2,Petrol,Manual,23931,1,1518753,977029,93.0,10,Partial,Major,Red,8,2200,13.5,MH01,Lucknow,"AC, Power Steering, Airbags, Touchscreen Infotainment",Seller_181,+91-2983381674,2025-10-31,No,Yes
+182,Kia,Sonet,VXI,SUV,2019,6,Petrol,Automatic,67248,3,1135611,296784,58.4,7,Complete,Minor,Brown,5,2200,16.8,KA01,Coimbatore,Power Windows,Seller_182,+91-5273230085,2025-10-10,No,Yes
+183,Toyota,Urban Cruiser,LXI,SUV,2017,8,CNG,Automatic,66127,3,3172334,783988,58.8,6,Partial,No,Orange,7,1500,25.0,KA01,Mumbai,"AC, Power Steering, Touchscreen Infotainment",Seller_183,+91-0116691836,2025-10-31,No,Yes
+184,Honda,WR-V,Base,SUV,2018,7,Diesel,Automatic,123259,3,1172762,283467,59.4,7,Complete,No,Silver,7,2500,21.5,GJ01,Kochi,Power Steering,Seller_184,+91-3230234679,2025-11-04,No,Yes
+185,Honda,Jazz,LXI,Hatchback,2016,9,Petrol,Manual,117931,2,650555,162964,56.1,12,Partial,Minor,Orange,5,1000,16.8,HR26,Kochi,"Power Windows, AC, Power Steering",Seller_185,+91-0551076209,2025-11-03,No,Yes
+186,Mahindra,Scorpio,Mid,SUV,2017,8,Diesel,Automatic,133256,2,813124,201251,48.5,9,Complete,No,Brown,7,1500,22.3,UP32,Nagpur,"Power Windows, AC, Power Steering",Seller_186,+91-7148727178,2025-10-26,Yes,Yes
+187,Hyundai,i20,Base,Hatchback,2016,9,CNG,Manual,121424,2,515540,129864,51.8,9,Complete,Major,Grey,5,1200,25.4,GJ01,Pune,"Power Windows, AC, Power Steering",Seller_187,+91-1159319525,2025-10-17,No,No
+188,Honda,Jazz,LXI,Hatchback,2019,6,Petrol,Automatic,89883,2,818129,197264,64.0,4,Partial,Minor,Orange,5,1200,14.3,MH01,Bangalore,"Power Windows, Power Steering, Airbags",Seller_188,+91-3746052330,2025-09-12,Yes,Yes
+189,Kia,Seltos,LXI,SUV,2023,2,Diesel,Manual,20683,1,2445364,1572856,92.7,8,Partial,No,Blue,5,2500,16.0,HR26,Indore,"Power Windows, AC, Power Steering, ABS, Airbags",Seller_189,+91-2774233305,2025-09-25,No,Yes
+190,Tata,Punch,Base,SUV,2016,9,Diesel,Manual,76871,2,2787578,709994,64.6,2,Unknown,Major,Silver,7,2500,17.8,RJ14,Kochi,Power Windows,Seller_190,+91-9974192676,2025-10-22,No,Yes
+191,Toyota,Glanza,LXI,SUV,2021,4,Diesel,Manual,53883,1,3132285,1283778,80.2,10,Complete,No,Silver,5,1500,20.5,HR26,Bangalore,Touchscreen Infotainment,Seller_191,+91-1845826034,2025-11-08,No,Yes
+192,Volkswagen,Tiguan,LXI,SUV,2012,13,Diesel,Manual,216088,3,1215274,293589,40.0,7,Complete,No,Brown,5,2000,15.7,UP32,Indore,"Power Windows, AC",Seller_192,+91-6256609314,2025-11-03,No,Yes
+193,Volkswagen,Tiguan,ZXI,SUV,2011,14,Petrol,Manual,172061,3,1947757,506249,45.2,2,Partial,Minor,Black,7,2500,16.7,UP32,Kolkata,AC,Seller_193,+91-5396727578,2025-10-23,No,Yes
+194,Mahindra,Scorpio,Top,SUV,2020,5,Diesel,Automatic,73423,1,3462026,920792,82.0,0,Complete,Major,Black,7,1500,19.1,TN01,Ahmedabad,"Power Windows, AC, Power Steering, ABS, Airbags",Seller_194,+91-8909728321,2025-10-18,Yes,No
+195,Maruti Suzuki,WagonR,Top,SUV,2017,8,Petrol,Manual,107388,1,2016619,480732,70.0,7,Unknown,No,Grey,7,2200,14.4,DL01,Mumbai,AC,Seller_195,+91-8261702437,2025-10-16,No,Yes
+196,Kia,Sonet,ZXI,SUV,2018,7,Diesel,Manual,108493,2,1386675,360569,64.8,2,Partial,Minor,Blue,7,2500,20.5,KA01,Delhi,"Power Windows, AC, Power Steering",Seller_196,+91-1102258030,2025-09-28,No,Yes
+197,Maruti Suzuki,WagonR,Top,SUV,2017,8,Petrol,Automatic,93970,2,1846339,466712,66.2,3,Partial,No,Silver,7,1500,14.2,TN01,Bangalore,"Power Windows, AC, Power Steering",Seller_197,+91-3356708604,2025-11-03,No,Yes
+198,Toyota,Urban Cruiser,Mid,SUV,2013,12,Petrol,Manual,91950,3,1689098,432532,45.5,9,Partial,No,Blue,7,1500,19.1,KA01,Hyderabad,"Power Windows, AC",Seller_198,+91-7118954738,2025-09-25,Yes,Yes
+199,Mahindra,Thar,Mid,SUV,2018,7,Diesel,Manual,100319,1,2629244,661660,76.1,12,Partial,Major,Brown,5,2000,19.4,MP09,Ahmedabad,"Power Windows, AC",Seller_199,+91-0878844344,2025-10-06,Yes,Yes
+200,Maruti Suzuki,Ciaz,VXI,Sedan,2013,12,Petrol,Manual,147778,3,1429026,349928,46.6,0,Complete,No,Red,5,1500,13.4,MH01,Indore,"Power Windows, AC, Power Steering",Seller_200,+91-4983735439,2025-10-01,No,Yes
+201,Mahindra,XUV500,Base,SUV,2021,4,Petrol,AMT,41265,1,2726821,1064095,86.5,2,Complete,Minor,Red,5,1500,15.4,RJ14,Delhi,"Power Windows, AC, Airbags, Touchscreen Infotainment",Seller_201,+91-6601002314,2025-11-01,No,No
+202,Maruti Suzuki,Swift,Top,Hatchback,2018,7,Petrol,Manual,64058,2,651881,155167,60.7,0,Complete,Minor,Blue,5,1200,19.1,GJ01,Delhi,AC,Seller_202,+91-6172131451,2025-10-02,No,Yes
+203,Hyundai,i10,VXI,Hatchback,2019,6,Petrol,Automatic,100632,2,756218,186579,65.2,4,Complete,No,Black,5,1200,13.2,KA01,Kochi,"Power Windows, AC, Power Steering",Seller_203,+91-4215226557,2025-10-14,No,No
+204,Renault,Duster,Base,SUV,2012,13,Diesel,Manual,187473,4,3059669,799920,40.0,1,Complete,No,Grey,5,2200,19.6,MP09,Coimbatore,"Power Windows, AC",Seller_204,+91-2606501917,2025-09-18,No,Yes
+205,Tata,Tigor,VXI,Sedan,2012,13,Petrol,Manual,110977,4,756989,182819,40.0,6,Unknown,Major,Orange,5,1600,18.6,MP09,Jaipur,"Power Windows, Power Steering",Seller_205,+91-3690362891,2025-09-19,No,Yes
+206,Toyota,Urban Cruiser,VXI,SUV,2023,2,Petrol,Automatic,28090,1,1932124,1223209,91.9,4,Complete,Minor,Silver,5,1500,18.1,UP32,Delhi,Power Steering,Seller_206,+91-7005140546,2025-10-09,Yes,Yes
+207,Toyota,Fortuner,ZXI,SUV,2021,4,Diesel,Automatic,61938,1,2906283,1048730,78.6,2,Partial,Minor,Silver,5,2000,23.8,KA01,Nagpur,"Power Windows, Power Steering, Airbags, Sunroof",Seller_207,+91-5725459606,2025-10-26,Yes,No
+208,Hyundai,Grand i10,Top,Hatchback,2019,6,Petrol,Automatic,52814,2,801770,193656,64.9,4,Partial,No,Silver,5,800,17.7,RJ14,Delhi,"AC, ABS",Seller_208,+91-9705466927,2025-10-18,No,No
+209,Toyota,Glanza,Top,SUV,2020,5,Petrol,Manual,43681,2,3152167,989138,77.4,1,Partial,Minor,Orange,7,1500,12.7,DL01,Chandigarh,"Power Windows, AC, Power Steering, Sunroof",Seller_209,+91-7371470827,2025-11-01,No,Yes
+210,Renault,Kwid,LXI,Hatchback,2019,6,Petrol,Manual,85578,3,511893,126758,64.3,4,Unknown,Minor,Red,5,1000,13.5,MH01,Chandigarh,"AC, ABS",Seller_210,+91-7826596089,2025-10-29,Yes,No
+211,Renault,Kiger,Mid,SUV,2015,10,Diesel,Manual,79785,3,1418603,338211,48.1,11,Partial,Minor,Black,7,2000,18.5,TN01,Lucknow,"Power Windows, AC",Seller_211,+91-1776655868,2025-09-23,No,Yes
+212,Ford,Aspire,Top,Sedan,2015,10,Petrol,Manual,171061,3,898873,222724,40.0,7,Complete,Major,Orange,5,1600,18.4,UP32,Jaipur,"Power Windows, Power Steering",Seller_212,+91-5766053844,2025-09-15,No,Yes
+213,Kia,Carens,LXI,MPV,2013,12,Petrol,Automatic,97674,2,1121651,278423,40.0,10,Unknown,Major,Black,8,2000,15.5,DL01,Pune,Power Windows,Seller_213,+91-8253110609,2025-11-01,Yes,No
+214,Volkswagen,Polo,VXI,Hatchback,2019,6,Petrol,Manual,93465,2,525683,125529,65.5,1,Partial,Major,White,5,1200,18.9,DL01,Chandigarh,"Power Windows, AC, Airbags",Seller_214,+91-5361706171,2025-10-28,No,Yes
+215,Toyota,Urban Cruiser,ZXI,SUV,2022,3,Petrol,Manual,56821,1,1291602,652757,79.4,11,Complete,No,Red,5,1500,16.1,KA01,Lucknow,Power Steering,Seller_215,+91-2447315847,2025-09-24,No,Yes
+216,Kia,Sonet,Mid,SUV,2014,11,Petrol,Manual,155481,3,1494799,357415,40.0,2,Complete,Minor,Blue,7,2200,16.8,MP09,Lucknow,Power Windows,Seller_216,+91-5525105053,2025-10-12,No,Yes
+217,Volkswagen,Polo,VXI,Hatchback,2016,9,Petrol,Manual,148304,1,694103,178778,64.3,7,Complete,No,Brown,5,800,15.6,HR26,Delhi,Power Windows,Seller_217,+91-7426088050,2025-11-06,No,Yes
+218,Honda,City,Mid,Sedan,2015,10,Petrol,Automatic,97176,2,1117806,268416,51.6,5,Unknown,No,Black,5,1200,17.8,HR26,Delhi,"Power Windows, AC",Seller_218,+91-0414596422,2025-10-04,No,Yes
+219,Toyota,Fortuner,Top,SUV,2022,3,Diesel,AMT,42964,2,3012868,1602124,81.2,1,Partial,No,Silver,5,2000,21.9,DL01,Kolkata,"Power Windows, Airbags",Seller_219,+91-3988547281,2025-09-13,Yes,Yes
+220,Kia,Seltos,LXI,SUV,2023,2,Diesel,Manual,27191,1,1087894,748734,91.6,2,Complete,No,Silver,5,2500,16.9,MH01,Hyderabad,"Power Windows, AC",Seller_220,+91-6868507451,2025-11-07,No,Yes
+221,Kia,Sonet,VXI,SUV,2014,11,Petrol,Manual,188388,4,2975243,735770,40.0,1,Partial,Major,Blue,5,2000,18.3,HR26,Ahmedabad,"Power Windows, AC, Touchscreen Infotainment",Seller_221,+91-4325122572,2025-11-10,No,Yes
+222,Toyota,Glanza,LXI,SUV,2012,13,Diesel,Manual,135520,3,2787387,713208,40.0,8,Partial,Major,Orange,7,2500,15.1,HR26,Chennai,"Power Windows, Power Steering, Touchscreen Infotainment",Seller_222,+91-4802632570,2025-10-26,No,No
+223,Kia,Seltos,Base,SUV,2013,12,Diesel,Manual,167036,3,3429374,843906,40.0,9,Complete,Minor,Orange,7,2200,16.1,MH01,Lucknow,"Power Windows, AC",Seller_223,+91-4741407034,2025-09-19,No,Yes
+224,Ford,Figo,ZXI,Hatchback,2010,15,Petrol,Manual,131374,3,583615,144431,40.0,1,Partial,No,Blue,5,1200,15.5,HR26,Bangalore,"Power Windows, Power Steering",Seller_224,+91-4978266128,2025-10-13,No,Yes
+225,Toyota,Urban Cruiser,Base,SUV,2015,10,Petrol,Automatic,151023,1,2565460,652273,65.6,7,Unknown,No,Silver,7,1500,14.7,DL01,Mumbai,"Power Windows, AC, Power Steering",Seller_225,+91-0382872324,2025-10-01,No,No
+226,Ford,Endeavour,LXI,SUV,2011,14,Petrol,Manual,227811,3,1656869,394403,41.4,2,Partial,No,Red,7,2200,14.3,DL01,Ahmedabad,"Power Windows, AC, Power Steering",Seller_226,+91-6204719609,2025-10-22,Yes,No
+227,Renault,Triber,Base,SUV,2010,15,Diesel,Manual,156896,4,1961419,511119,40.0,1,Unknown,Minor,Orange,5,2200,16.3,HR26,Lucknow,"Power Windows, AC, Power Steering",Seller_227,+91-3117753312,2025-09-25,No,Yes
+228,Maruti Suzuki,XL6,Base,MPV,2014,11,Petrol,Manual,168706,2,1165045,282298,50.1,9,Complete,Major,Silver,7,2000,19.1,HR26,Hyderabad,"Power Windows, AC, Power Steering",Seller_228,+91-8733978559,2025-09-14,No,Yes
+229,Ford,Aspire,Mid,Sedan,2020,5,Petrol,Manual,82900,1,1420392,383321,76.0,4,Complete,Major,Grey,5,1200,19.7,DL01,Delhi,"Power Windows, Power Steering, ABS",Seller_229,+91-1974005643,2025-10-20,Yes,Yes
+230,Volkswagen,Taigun,VXI,SUV,2024,1,Diesel,Manual,14946,1,1105814,929249,92.9,12,Complete,No,Silver,5,2500,24.5,UP32,Pune,Power Windows,Seller_230,+91-3000389608,2025-10-11,Yes,Yes
+231,Tata,Punch,Top,SUV,2021,4,Petrol,AMT,40756,1,1612208,787607,85.3,12,Partial,Minor,White,5,2000,18.5,DL01,Kochi,"AC, Touchscreen Infotainment",Seller_231,+91-2967111483,2025-10-10,No,No
+232,Mahindra,Thar,VXI,SUV,2021,4,Petrol,Automatic,51635,1,2137391,803301,81.7,3,Complete,Minor,Red,5,1500,15.0,KA01,Chennai,"ABS, Airbags",Seller_232,+91-4496410496,2025-10-10,Yes,Yes
+233,Ford,EcoSport,LXI,SUV,2013,12,Petrol,Automatic,196544,3,931307,238162,40.0,11,Complete,No,Brown,7,2500,15.4,MP09,Indore,AC,Seller_233,+91-4138459609,2025-10-24,No,Yes
+234,Honda,WR-V,ZXI,SUV,2010,15,Petrol,Manual,182924,4,2740806,666523,40.0,2,Partial,Minor,White,5,1500,13.5,MP09,Hyderabad,"Power Windows, AC",Seller_234,+91-4058093511,2025-10-09,No,Yes
+235,Hyundai,Aura,ZXI,Sedan,2013,12,Petrol,Manual,173949,4,896835,226652,40.5,12,Partial,Minor,Grey,5,1500,18.6,MH01,Hyderabad,"Power Windows, Power Steering",Seller_235,+91-9898681809,2025-10-11,No,No
+236,Ford,Figo,LXI,Hatchback,2014,11,Petrol,Manual,132363,3,818909,206881,40.0,7,Unknown,No,Black,5,1200,14.0,GJ01,Nagpur,"Power Windows, AC, Power Steering",Seller_236,+91-8297327021,2025-10-15,No,No
+237,Ford,EcoSport,Top,SUV,2012,13,Diesel,Automatic,106831,2,1355232,353062,41.0,7,Unknown,Major,Orange,7,2200,22.6,KA01,Indore,"Power Windows, AC, Power Steering",Seller_237,+91-9576572894,2025-09-22,Yes,Yes
+238,Ford,Figo,LXI,Hatchback,2010,15,Petrol,Automatic,190383,4,567026,138345,40.0,9,Complete,No,Blue,5,800,13.7,MP09,Bangalore,"Power Windows, Power Steering",Seller_238,+91-0534967827,2025-10-23,Yes,No
+239,Hyundai,Alcazar,LXI,SUV,2024,1,Petrol,Manual,9470,1,2283614,1825324,95.0,2,Partial,No,Blue,5,2200,19.1,MH01,Ahmedabad,"Power Windows, AC, Power Steering, Airbags, Sunroof",Seller_239,+91-0032963347,2025-11-01,No,Yes
+240,Ford,Figo,Mid,Hatchback,2012,13,Petrol,Manual,212476,2,627708,156692,49.0,12,Unknown,Minor,Grey,5,1000,14.4,TN01,Jaipur,"AC, Power Steering",Seller_240,+91-1275156277,2025-10-03,No,No
+241,Maruti Suzuki,Brezza,LXI,SUV,2014,11,Diesel,Automatic,103168,3,1897251,476020,40.0,12,Complete,Minor,Grey,5,1500,23.0,DL01,Bangalore,Power Windows,Seller_241,+91-8328634255,2025-10-15,Yes,No
+242,Mahindra,XUV300,VXI,SUV,2010,15,Diesel,Manual,244759,4,977356,232482,40.0,8,Partial,No,Brown,7,2200,19.3,MH01,Hyderabad,"Power Windows, AC",Seller_242,+91-3684748836,2025-11-09,No,No
+243,Toyota,Glanza,Base,SUV,2017,8,Diesel,Manual,123659,3,3162036,782856,59.5,7,Partial,No,Orange,7,2200,22.4,KA01,Chennai,"AC, Power Steering",Seller_243,+91-7875357788,2025-09-17,No,No
+244,Hyundai,Creta,LXI,SUV,2021,4,Petrol,Manual,46138,2,1309514,563615,80.4,7,Partial,Major,Brown,5,2200,12.9,UP32,Pune,"Power Windows, AC, Airbags",Seller_244,+91-4839589477,2025-10-28,No,No
+245,Tata,Altroz,Base,Hatchback,2018,7,Petrol,Automatic,57325,3,493965,123104,66.5,2,Complete,No,Red,5,1200,12.1,TN01,Kolkata,"AC, Power Steering",Seller_245,+91-4883192134,2025-10-30,No,No
+246,Tata,Safari,LXI,SUV,2018,7,Diesel,Automatic,98294,2,3383218,877489,61.5,5,Complete,No,Black,7,2500,21.6,HR26,Jaipur,"Power Windows, AC",Seller_246,+91-8581932426,2025-10-06,No,Yes
+247,Honda,Jazz,LXI,Hatchback,2018,7,Diesel,Manual,59889,3,804092,191186,55.2,7,Partial,Minor,Red,5,1200,18.1,DL01,Mumbai,"Power Windows, AC, Power Steering",Seller_247,+91-6044090797,2025-10-10,Yes,Yes
+248,Volkswagen,Polo,Base,Hatchback,2010,15,Petrol,Manual,160626,2,619976,152921,40.0,0,Unknown,Minor,White,5,800,18.6,MP09,Delhi,Basic,Seller_248,+91-0448515791,2025-10-05,No,Yes
+249,Hyundai,Grand i10,VXI,Hatchback,2021,4,Petrol,Automatic,66069,1,813525,310421,84.2,3,Partial,Major,Black,5,800,15.0,UP32,Chennai,Basic,Seller_249,+91-4474175955,2025-09-22,No,No
+250,Tata,Tiago,Top,Hatchback,2023,2,Petrol,Manual,37943,1,510447,329077,84.2,5,Partial,Minor,Blue,5,1200,18.2,UP32,Delhi,Power Steering,Seller_250,+91-5596905150,2025-10-31,No,Yes
+251,Toyota,Glanza,Mid,SUV,2012,13,Diesel,Manual,141306,3,891225,232317,40.0,1,Unknown,Minor,Blue,7,1500,16.6,KA01,Lucknow,"Power Windows, AC, Power Steering",Seller_251,+91-2501425762,2025-10-12,Yes,No
+252,Mahindra,XUV700,Mid,SUV,2014,11,Petrol,Manual,163149,3,1446501,347009,40.0,2,Partial,No,Brown,7,2200,18.6,GJ01,Kochi,"Power Windows, AC",Seller_252,+91-2355580996,2025-09-13,Yes,No
+253,Tata,Punch,Base,SUV,2013,12,Petrol,Manual,164048,3,2585562,640215,47.1,12,Complete,No,Grey,7,2500,12.1,GJ01,Bangalore,"Power Windows, Touchscreen Infotainment",Seller_253,+91-8575851268,2025-09-23,No,No
+254,Tata,Tiago,Top,Hatchback,2015,10,Diesel,Manual,166814,3,425450,104162,46.6,6,Complete,Minor,Grey,5,1200,15.4,DL01,Chennai,"Power Windows, Power Steering",Seller_254,+91-7645793897,2025-11-08,Yes,Yes
+255,Maruti Suzuki,Baleno,VXI,Hatchback,2019,6,CNG,Automatic,94678,2,886245,230696,65.3,1,Partial,Minor,Blue,5,1200,23.1,TN01,Chennai,"Power Windows, Power Steering, Airbags",Seller_255,+91-2480962440,2025-10-15,Yes,Yes
+256,Tata,Tigor,ZXI,Sedan,2014,11,Petrol,Manual,104127,3,618950,159729,40.1,2,Unknown,Major,Orange,5,1600,17.6,GJ01,Hyderabad,Power Steering,Seller_256,+91-3854457702,2025-10-02,No,Yes
+257,Toyota,Urban Cruiser,LXI,SUV,2016,9,Diesel,Manual,117975,3,1784481,467729,52.1,6,Unknown,No,Red,7,2200,22.7,DL01,Pune,"Power Windows, AC, Power Steering",Seller_257,+91-6774722640,2025-10-07,No,Yes
+258,Tata,Harrier,Mid,SUV,2024,1,Petrol,AMT,16574,1,1592198,1348192,91.9,1,Partial,Minor,Brown,7,2000,13.3,RJ14,Mumbai,"Power Windows, AC, ABS, Airbags",Seller_258,+91-3275327352,2025-10-23,Yes,Yes
+259,Renault,Triber,Mid,SUV,2017,8,Petrol,Manual,89735,1,3333388,830864,62.6,6,Complete,Minor,Blue,5,1500,15.5,MH01,Nagpur,Power Steering,Seller_259,+91-7611249125,2025-10-15,No,Yes
+260,Mahindra,Thar,ZXI,SUV,2013,12,Petrol,Manual,189137,3,1890517,482830,40.0,9,Partial,Minor,Orange,7,2000,17.9,KA01,Chandigarh,Basic,Seller_260,+91-9045886792,2025-10-19,No,Yes
+261,Volkswagen,Taigun,VXI,SUV,2018,7,Diesel,Manual,119132,2,2830036,718121,57.2,5,Unknown,Minor,White,5,2000,18.6,MH01,Coimbatore,Power Windows,Seller_261,+91-1079833423,2025-10-27,No,No
+262,Tata,Tiago,Top,Hatchback,2019,6,Petrol,Manual,55089,1,875078,224925,71.2,5,Complete,No,Orange,5,1000,12.7,TN01,Delhi,"AC, Power Steering",Seller_262,+91-7399704694,2025-10-10,No,Yes
+263,Volkswagen,Tiguan,Mid,SUV,2018,7,Petrol,Manual,116112,2,1954643,488454,59.2,2,Complete,Minor,Blue,7,2200,17.1,MP09,Delhi,Power Windows,Seller_263,+91-7149392523,2025-09-22,No,Yes
+264,Renault,Kiger,Mid,SUV,2015,10,Diesel,Automatic,179350,2,1759336,451367,40.0,6,Complete,Minor,Grey,5,2500,22.7,MH01,Chandigarh,"Power Windows, Power Steering",Seller_264,+91-6588339874,2025-11-04,Yes,Yes
+265,Toyota,Urban Cruiser,Mid,SUV,2021,4,Diesel,Manual,60539,1,1975003,871418,77.5,4,Complete,Minor,Black,5,2200,24.8,GJ01,Nagpur,"Power Windows, AC, Power Steering",Seller_265,+91-8488402155,2025-09-14,No,No
+266,Tata,Tigor,LXI,Sedan,2017,8,Petrol,Manual,105908,2,867762,214195,57.5,9,Unknown,No,Grey,5,1600,15.9,HR26,Kochi,"Power Windows, AC, Power Steering",Seller_266,+91-1979316477,2025-09-15,No,Yes
+267,Toyota,Glanza,Base,SUV,2012,13,Diesel,Manual,204353,4,890108,231277,40.0,11,Partial,No,Black,7,2000,16.0,MP09,Hyderabad,"Power Windows, AC, Power Steering",Seller_267,+91-3334264335,2025-11-09,Yes,Yes
+268,Kia,Sonet,Top,SUV,2017,8,Diesel,Manual,109662,3,2639398,634798,57.0,7,Partial,Major,Grey,5,2000,24.9,MP09,Pune,"Power Windows, Touchscreen Infotainment",Seller_268,+91-1554164316,2025-09-15,No,Yes
+269,Toyota,Glanza,VXI,SUV,2012,13,Diesel,Manual,219401,3,2975258,720132,40.0,1,Partial,No,Orange,7,2500,21.3,UP32,Hyderabad,Power Windows,Seller_269,+91-6086982210,2025-10-19,Yes,Yes
+270,Hyundai,i20,LXI,Hatchback,2017,8,Petrol,Automatic,136559,2,849270,211845,55.2,11,Partial,No,Red,5,800,18.4,KA01,Jaipur,Basic,Seller_270,+91-2457988942,2025-10-21,No,Yes
+271,Tata,Nexon,ZXI,SUV,2021,4,Diesel,Manual,53018,1,1564086,688945,86.8,5,Complete,Major,Brown,5,2500,21.2,MP09,Ahmedabad,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_271,+91-5787158415,2025-10-14,No,Yes
+272,Tata,Tiago,VXI,Hatchback,2013,12,CNG,Manual,204060,3,857864,219711,40.0,8,Partial,Minor,White,5,1200,21.6,TN01,Kochi,"Power Windows, AC",Seller_272,+91-3289634064,2025-10-17,No,Yes
+273,Ford,Figo,LXI,Hatchback,2012,13,Petrol,Manual,100291,3,771374,190741,40.0,3,Partial,No,Silver,5,1000,13.1,GJ01,Hyderabad,"AC, Power Steering",Seller_273,+91-0184819737,2025-10-22,Yes,No
+274,Renault,Triber,ZXI,SUV,2012,13,Diesel,Manual,113973,3,1273275,324735,40.0,6,Unknown,No,Silver,7,2200,24.0,MP09,Coimbatore,"Power Windows, AC",Seller_274,+91-9739641789,2025-09-18,No,Yes
+275,Volkswagen,Tiguan,Top,SUV,2010,15,Diesel,Manual,258020,2,1800820,453218,40.0,0,Partial,No,Blue,7,1500,22.3,UP32,Nagpur,"Power Windows, AC",Seller_275,+91-4238856527,2025-09-17,Yes,Yes
+276,Renault,Kiger,Base,SUV,2015,10,Diesel,Manual,96462,2,3408017,858977,54.5,8,Partial,Minor,Black,5,2000,15.9,GJ01,Pune,Power Windows,Seller_276,+91-4991537038,2025-11-01,No,Yes
+277,Ford,Endeavour,ZXI,SUV,2023,2,Diesel,Manual,22738,1,2646986,1829351,91.4,9,Complete,Minor,Brown,5,2500,16.9,MP09,Jaipur,"Power Windows, AC, Power Steering, ABS, Airbags, Sunroof",Seller_277,+91-4655358512,2025-10-21,No,Yes
+278,Renault,Kiger,Base,SUV,2011,14,Diesel,Automatic,234930,2,3333743,866425,41.6,7,Partial,No,Grey,7,2200,24.5,MH01,Delhi,"Power Windows, AC, Power Steering",Seller_278,+91-8453986289,2025-10-21,Yes,No
+279,Toyota,Glanza,Top,SUV,2022,3,Diesel,Manual,51815,2,1476152,747196,76.5,10,Unknown,Major,Silver,5,1500,24.5,GJ01,Kolkata,"Power Windows, ABS",Seller_279,+91-6471246335,2025-09-30,No,Yes
+280,Ford,EcoSport,Mid,SUV,2018,7,CNG,Manual,95355,2,807251,195525,57.6,9,Unknown,No,Red,5,2000,24.0,KA01,Kolkata,"Power Windows, AC, Power Steering",Seller_280,+91-0814415298,2025-10-31,Yes,Yes
+281,Renault,Kiger,LXI,SUV,2019,6,Diesel,Automatic,103238,3,1288139,307820,59.2,7,Complete,Minor,Silver,7,2500,22.6,TN01,Chandigarh,Power Steering,Seller_281,+91-7071587964,2025-10-10,No,No
+282,Maruti Suzuki,Ciaz,LXI,Sedan,2023,2,Petrol,Manual,30687,1,1384179,918373,87.6,0,Complete,Minor,Red,5,1600,12.4,GJ01,Kolkata,"Power Windows, AC, Touchscreen Infotainment",Seller_282,+91-2351373990,2025-11-08,No,Yes
+283,Hyundai,Verna,VXI,Sedan,2010,15,Diesel,Manual,214561,3,1478483,382284,40.0,3,Unknown,No,White,5,1600,19.0,RJ14,Chandigarh,AC,Seller_283,+91-8524648449,2025-10-25,Yes,Yes
+284,Mahindra,XUV300,Base,SUV,2018,7,Diesel,Manual,74064,1,2766948,708224,72.3,7,Complete,Major,Red,5,2200,15.4,MH01,Kochi,"Power Windows, Power Steering, ABS",Seller_284,+91-6624813235,2025-09-29,No,Yes
+285,Ford,EcoSport,LXI,SUV,2023,2,Petrol,Manual,24660,1,2131916,1495219,93.5,2,Partial,No,Grey,5,1500,17.5,MH01,Mumbai,"Power Windows, AC, Power Steering, ABS",Seller_285,+91-9810796496,2025-10-13,No,Yes
+286,Ford,Figo,LXI,Hatchback,2015,10,Diesel,Automatic,107531,2,517356,129875,60.2,3,Unknown,No,Grey,5,1000,19.2,GJ01,Hyderabad,"Power Windows, AC, Power Steering",Seller_286,+91-8333393957,2025-10-06,No,Yes
+287,Honda,Amaze,Top,Sedan,2016,9,Petrol,Manual,154447,2,1473346,357523,43.9,9,Partial,No,Black,5,1500,16.6,TN01,Chandigarh,Basic,Seller_287,+91-9801110005,2025-09-17,Yes,Yes
+288,Mahindra,XUV500,Mid,SUV,2012,13,Diesel,Manual,118999,3,3247160,794030,40.0,3,Complete,Major,Black,7,1500,22.6,KA01,Nagpur,"Power Windows, AC, Touchscreen Infotainment",Seller_288,+91-7992707955,2025-11-05,No,Yes
+289,Tata,Nexon,Top,SUV,2014,11,Diesel,Manual,106227,3,2026202,527618,40.0,7,Partial,No,White,5,2200,17.6,GJ01,Chandigarh,"Power Windows, Power Steering",Seller_289,+91-9090463766,2025-11-08,No,No
+290,Kia,Seltos,Mid,SUV,2015,10,Diesel,Automatic,147315,2,2252232,580300,46.7,1,Partial,No,Black,5,2000,20.7,TN01,Kolkata,"Power Windows, AC, Touchscreen Infotainment",Seller_290,+91-2975191023,2025-09-13,No,Yes
+291,Hyundai,i20,Base,Hatchback,2010,15,Petrol,Manual,167479,2,602847,157835,40.0,11,Complete,Major,Silver,5,800,18.8,TN01,Hyderabad,"AC, Power Steering",Seller_291,+91-5380442101,2025-10-10,No,No
+292,Renault,Triber,Base,SUV,2011,14,Diesel,Automatic,111189,3,3266832,789801,40.0,11,Partial,Minor,Orange,7,2200,24.2,GJ01,Nagpur,"Power Windows, AC",Seller_292,+91-2562650622,2025-10-04,Yes,Yes
+293,Maruti Suzuki,WagonR,Base,SUV,2017,8,Petrol,Manual,130610,2,2073064,510666,51.6,1,Complete,No,Orange,7,2000,13.9,RJ14,Lucknow,"Power Windows, AC",Seller_293,+91-6919284552,2025-10-18,No,Yes
+294,Maruti Suzuki,Celerio,ZXI,SUV,2015,10,Petrol,Manual,118360,3,1976633,493594,45.4,7,Complete,No,Silver,5,2200,12.7,RJ14,Pune,"Power Windows, AC, Power Steering",Seller_294,+91-4250733055,2025-09-19,No,Yes
+295,Tata,Safari,VXI,SUV,2014,11,Diesel,Automatic,149525,3,1589347,383193,40.0,0,Complete,Major,Brown,7,2500,22.8,KA01,Delhi,Power Windows,Seller_295,+91-3974292501,2025-11-07,No,No
+296,Toyota,Fortuner,LXI,SUV,2015,10,Diesel,Automatic,165547,3,2158468,516299,46.3,2,Complete,Minor,Black,5,1500,22.5,HR26,Indore,"Power Windows, AC, Power Steering",Seller_296,+91-6281372143,2025-10-26,Yes,No
+297,Volkswagen,Polo,ZXI,Hatchback,2010,15,Petrol,Manual,233324,2,514819,128594,40.0,5,Complete,Minor,Grey,5,800,15.2,KA01,Jaipur,"Power Windows, AC, Power Steering",Seller_297,+91-3945354614,2025-10-13,Yes,Yes
+298,Volkswagen,Tiguan,LXI,SUV,2013,12,Petrol,Manual,134695,3,1699017,434096,40.0,11,Partial,Minor,Brown,5,2500,15.8,UP32,Lucknow,"Power Windows, AC, Power Steering",Seller_298,+91-0040476921,2025-11-07,No,Yes
+299,Mahindra,Thar,Mid,SUV,2021,4,Diesel,Manual,52188,2,893929,387151,79.6,3,Complete,Major,White,7,2000,15.1,DL01,Nagpur,"Power Windows, AC, Power Steering, ABS",Seller_299,+91-1231660076,2025-09-18,No,Yes
+300,Maruti Suzuki,XL6,Top,MPV,2024,1,Petrol,Manual,12214,1,2307581,1905437,95.0,3,Complete,Major,Orange,7,1500,19.0,GJ01,Kochi,"Power Windows, AC, Power Steering, ABS, Airbags",Seller_300,+91-5778255882,2025-10-21,No,No
+301,Kia,Sonet,Mid,SUV,2019,6,Petrol,Manual,74164,3,3074439,771622,61.0,10,Partial,No,Grey,5,2200,16.3,KA01,Jaipur,"Power Windows, AC, Power Steering, ABS, Airbags",Seller_301,+91-1880819048,2025-09-29,Yes,No
+302,Toyota,Urban Cruiser,VXI,SUV,2011,14,Diesel,Automatic,233415,3,3220194,784264,40.0,6,Partial,No,Silver,5,1500,15.2,UP32,Coimbatore,"Power Steering, Touchscreen Infotainment",Seller_302,+91-5609456534,2025-10-14,No,No
+303,Renault,Kwid,Base,Hatchback,2020,5,Petrol,Manual,81191,1,416274,108029,78.9,10,Complete,No,Brown,5,1000,18.1,DL01,Mumbai,"Power Windows, AC, ABS, Airbags",Seller_303,+91-5397054873,2025-10-02,No,Yes
+304,Tata,Nexon,LXI,SUV,2023,2,Diesel,Manual,34871,1,1089824,768845,87.5,10,Partial,No,Blue,5,2500,16.7,RJ14,Lucknow,Basic,Seller_304,+91-3773062604,2025-10-30,Yes,Yes
+305,Renault,Triber,Mid,SUV,2013,12,Diesel,Manual,113650,3,1353643,335779,40.0,1,Complete,No,Grey,7,2000,24.1,KA01,Ahmedabad,Power Steering,Seller_305,+91-4712961803,2025-10-29,Yes,Yes
+306,Kia,Sonet,Mid,SUV,2015,10,Petrol,Manual,165296,1,2072317,533821,48.6,2,Partial,Minor,Black,5,2500,16.1,DL01,Coimbatore,"Power Windows, Power Steering",Seller_306,+91-0605603567,2025-10-03,Yes,No
+307,Ford,Aspire,ZXI,Sedan,2020,5,CNG,Manual,92605,1,1121282,344425,71.8,5,Complete,Minor,Blue,5,1600,26.1,HR26,Ahmedabad,"Power Windows, AC, Airbags",Seller_307,+91-9899927517,2025-10-20,No,No
+308,Hyundai,Verna,Top,Sedan,2020,5,Petrol,Automatic,68409,2,838909,210097,72.8,6,Partial,No,Brown,5,1600,13.5,KA01,Chandigarh,"Power Windows, AC, ABS, Airbags",Seller_308,+91-7982143395,2025-10-30,No,Yes
+309,Mahindra,Thar,VXI,SUV,2017,8,Diesel,Automatic,135025,2,1868397,490026,56.5,9,Partial,Minor,Brown,7,1500,24.8,RJ14,Hyderabad,"Power Windows, AC",Seller_309,+91-0014188421,2025-09-12,No,No
+310,Mahindra,XUV300,ZXI,SUV,2024,1,Diesel,Manual,4986,1,2216021,1795238,95.0,3,Partial,Minor,Blue,7,2000,16.5,MP09,Nagpur,"Power Windows, AC, ABS",Seller_310,+91-2199471136,2025-10-27,Yes,Yes
+311,Tata,Altroz,Mid,Hatchback,2024,1,Petrol,Manual,6963,1,751881,606221,95.0,3,Complete,No,Silver,5,1200,15.6,KA01,Pune,"Power Windows, Power Steering",Seller_311,+91-7685507896,2025-09-18,No,No
+312,Toyota,Fortuner,VXI,SUV,2021,4,Diesel,Manual,56869,1,2117899,790725,83.3,10,Partial,No,Silver,5,2500,20.7,HR26,Ahmedabad,"Power Windows, AC, Power Steering, ABS",Seller_312,+91-5472239898,2025-09-20,Yes,Yes
+313,Toyota,Glanza,Base,SUV,2022,3,Petrol,Manual,32596,1,1850216,993859,90.5,2,Complete,Minor,Blue,5,2000,19.0,MH01,Bangalore,"Power Windows, AC, Power Steering, ABS, Airbags",Seller_313,+91-6230391114,2025-09-19,Yes,No
+314,Ford,Figo,VXI,Hatchback,2021,4,Petrol,Manual,43239,1,848479,312494,86.6,7,Complete,No,Red,5,1200,18.7,UP32,Coimbatore,"Power Windows, AC, Power Steering, ABS",Seller_314,+91-6204787688,2025-09-25,No,No
+315,Volkswagen,Taigun,VXI,SUV,2022,3,Diesel,AMT,39933,1,1500010,801079,86.9,4,Complete,Minor,Brown,7,2200,18.7,HR26,Pune,"Power Windows, AC, ABS, Airbags",Seller_315,+91-2463203747,2025-10-16,No,No
+316,Toyota,Fortuner,VXI,SUV,2017,8,CNG,Manual,77112,2,1022798,264576,62.7,1,Partial,No,Red,5,1500,27.9,KA01,Chennai,"Power Windows, AC",Seller_316,+91-5975954508,2025-10-04,Yes,Yes
+317,Kia,Carens,LXI,MPV,2010,15,Petrol,Manual,158871,3,2185412,550078,40.0,3,Complete,No,Black,7,2200,17.8,DL01,Coimbatore,AC,Seller_317,+91-5957498855,2025-10-08,Yes,No
+318,Renault,Duster,Top,SUV,2022,3,Diesel,Manual,30482,1,2827509,1383309,89.4,9,Complete,No,Silver,5,2000,23.4,TN01,Coimbatore,"Power Windows, Power Steering, ABS",Seller_318,+91-6695413297,2025-09-12,No,Yes
+319,Maruti Suzuki,WagonR,Top,SUV,2016,9,Diesel,Manual,135826,1,2199999,531568,53.5,2,Partial,Minor,Brown,5,1500,15.8,MH01,Coimbatore,"AC, Power Steering",Seller_319,+91-0072024559,2025-11-05,Yes,Yes
+320,Toyota,Glanza,Base,SUV,2010,15,Diesel,Manual,124708,3,1512756,374157,40.0,5,Partial,Major,Orange,7,2200,24.5,UP32,Kochi,AC,Seller_320,+91-5337220109,2025-09-15,Yes,Yes
+321,Ford,Endeavour,Top,SUV,2012,13,Diesel,Manual,175105,3,2819963,687519,40.0,2,Unknown,Minor,Brown,7,2500,16.3,HR26,Kochi,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_321,+91-2461752023,2025-10-09,No,Yes
+322,Mahindra,XUV500,ZXI,SUV,2012,13,Petrol,Manual,178158,3,811481,207561,42.2,0,Unknown,Major,Blue,7,1500,14.3,MH01,Jaipur,"Power Windows, AC, Power Steering",Seller_322,+91-9935937440,2025-09-19,Yes,No
+323,Honda,Civic,LXI,SUV,2014,11,Petrol,Manual,167875,4,809438,193277,40.0,9,Partial,Minor,Blue,5,2000,19.4,GJ01,Kochi,"Power Windows, Power Steering",Seller_323,+91-7012424462,2025-09-14,No,Yes
+324,Tata,Tigor,VXI,Sedan,2011,14,Petrol,Manual,186865,2,679928,172837,40.0,4,Complete,No,Silver,5,1200,15.1,TN01,Kolkata,Power Windows,Seller_324,+91-1225288375,2025-11-09,No,Yes
+325,Hyundai,Creta,Top,SUV,2013,12,Petrol,Automatic,207368,3,2873559,705111,40.0,7,Complete,No,Silver,5,2000,15.8,MP09,Lucknow,"Power Windows, AC, Touchscreen Infotainment",Seller_325,+91-4864010424,2025-09-19,No,Yes
+326,Toyota,Urban Cruiser,Mid,SUV,2011,14,Diesel,Manual,132383,3,2057536,492720,40.0,0,Partial,No,Silver,7,2200,16.0,GJ01,Kochi,"Power Windows, Power Steering",Seller_326,+91-1190170756,2025-10-07,Yes,Yes
+327,Renault,Kiger,Base,SUV,2011,14,Petrol,Manual,118555,3,1331256,333738,40.0,5,Partial,Minor,Brown,7,2200,14.0,DL01,Nagpur,"Power Windows, Power Steering",Seller_327,+91-2929132033,2025-09-24,Yes,No
+328,Kia,Sonet,Top,SUV,2013,12,Petrol,Manual,134130,2,2533740,624134,55.8,10,Partial,Minor,Orange,7,1500,14.0,GJ01,Chennai,"Power Windows, Power Steering",Seller_328,+91-4244260781,2025-10-04,No,Yes
+329,Mahindra,Thar,Mid,SUV,2013,12,Diesel,Manual,191143,3,1473010,381582,40.0,8,Partial,Major,Brown,5,1500,17.4,UP32,Mumbai,Power Steering,Seller_329,+91-2780205869,2025-10-20,Yes,Yes
+330,Tata,Tiago,LXI,Hatchback,2021,4,Petrol,AMT,47915,2,504578,188657,76.0,3,Partial,No,Grey,5,1000,18.1,MP09,Kolkata,"Power Windows, Power Steering",Seller_330,+91-6037681187,2025-09-26,Yes,Yes
+331,Mahindra,XUV700,Mid,SUV,2015,10,Petrol,Automatic,99294,3,1676963,430028,52.6,11,Complete,Minor,Red,7,2200,12.8,MP09,Kochi,"Power Windows, AC",Seller_331,+91-2019043223,2025-09-24,Yes,No
+332,Mahindra,XUV700,VXI,SUV,2013,12,Petrol,Automatic,137555,2,1294408,334698,40.0,6,Complete,No,Black,5,2000,15.3,GJ01,Hyderabad,AC,Seller_332,+91-9957298937,2025-10-14,Yes,No
+333,Honda,City,Mid,Sedan,2014,11,Petrol,Manual,125013,3,993767,253719,40.0,2,Complete,Minor,Black,5,1200,18.4,TN01,Jaipur,"Power Windows, AC, Power Steering",Seller_333,+91-8144582206,2025-10-10,Yes,Yes
+334,Hyundai,Grand i10,ZXI,Hatchback,2019,6,Petrol,Automatic,98055,2,641643,166231,70.6,11,Complete,No,Grey,5,1200,18.5,DL01,Bangalore,"Power Steering, Airbags",Seller_334,+91-9025561844,2025-10-25,Yes,Yes
+335,Tata,Nexon,ZXI,SUV,2020,5,Diesel,AMT,66571,2,1121299,338329,74.9,0,Complete,Minor,White,7,2000,18.8,HR26,Mumbai,AC,Seller_335,+91-4835505429,2025-10-17,No,Yes
+336,Maruti Suzuki,Celerio,Top,SUV,2010,15,Petrol,Automatic,202533,3,1327503,332394,40.2,6,Partial,Minor,Silver,7,2000,13.2,DL01,Pune,"AC, Power Steering",Seller_336,+91-4642036258,2025-10-14,Yes,Yes
+337,Honda,Jazz,Base,Hatchback,2017,8,Diesel,Manual,112662,2,896050,234299,55.0,11,Complete,Major,Silver,5,1000,18.1,UP32,Ahmedabad,"Power Windows, AC, Power Steering",Seller_337,+91-1538882452,2025-10-12,No,No
+338,Toyota,Glanza,LXI,SUV,2014,11,Diesel,Manual,139415,3,1706529,427750,47.3,11,Complete,Minor,White,5,2000,20.9,TN01,Lucknow,"Power Windows, Power Steering",Seller_338,+91-1198756178,2025-09-17,No,No
+339,Volkswagen,Polo,Base,Hatchback,2010,15,CNG,Manual,131817,2,575420,139736,40.0,5,Partial,No,White,5,1000,24.0,DL01,Delhi,"Power Windows, AC, Power Steering",Seller_339,+91-5092632239,2025-10-03,No,Yes
+340,Mahindra,Thar,ZXI,SUV,2014,11,Petrol,Manual,129577,3,1345479,323469,43.1,2,Unknown,No,White,5,2000,14.9,GJ01,Hyderabad,"Power Windows, Power Steering",Seller_340,+91-3123455068,2025-10-06,Yes,Yes
+341,Hyundai,Alcazar,VXI,SUV,2020,5,Diesel,AMT,83321,2,1684405,433473,63.8,7,Partial,No,Blue,7,2000,19.1,TN01,Hyderabad,Power Steering,Seller_341,+91-9085991449,2025-10-30,Yes,No
+342,Honda,WR-V,VXI,SUV,2022,3,Petrol,AMT,53307,2,2043240,1010424,74.3,7,Complete,Minor,Blue,7,2500,17.1,TN01,Bangalore,"AC, ABS, Airbags",Seller_342,+91-3231234266,2025-10-05,No,Yes
+343,Renault,Kwid,LXI,Hatchback,2018,7,Petrol,Automatic,71986,3,867459,219084,65.9,5,Partial,Minor,Black,5,1200,18.1,UP32,Chandigarh,"Power Windows, AC, Power Steering, ABS",Seller_343,+91-9650826958,2025-09-28,Yes,Yes
+344,Honda,Jazz,VXI,Hatchback,2022,3,Petrol,AMT,42608,2,438170,239899,78.0,2,Partial,Minor,Grey,5,1000,19.8,DL01,Lucknow,Basic,Seller_344,+91-8400273008,2025-10-14,No,Yes
+345,Hyundai,i10,VXI,Hatchback,2011,14,Diesel,Manual,125536,3,826934,200446,40.0,9,Unknown,Major,Brown,5,800,15.5,HR26,Chandigarh,Basic,Seller_345,+91-7266292508,2025-09-20,Yes,No
+346,Ford,Aspire,VXI,Sedan,2024,1,Petrol,Manual,22122,1,670038,550140,87.0,8,Complete,No,Red,5,1200,15.6,DL01,Hyderabad,"Power Windows, AC, ABS",Seller_346,+91-1781703211,2025-10-03,Yes,Yes
+347,Hyundai,Aura,LXI,Sedan,2022,3,Petrol,Automatic,33167,1,1172640,722935,87.6,4,Complete,No,White,5,1200,18.9,HR26,Indore,"AC, Airbags",Seller_347,+91-0373416781,2025-09-12,Yes,Yes
+348,Ford,Endeavour,VXI,SUV,2024,1,Petrol,Manual,12564,1,3270416,2598683,95.0,6,Complete,Minor,Grey,7,2500,13.9,GJ01,Indore,"Power Windows, Power Steering",Seller_348,+91-5605397079,2025-10-07,No,No
+349,Kia,Carens,Base,MPV,2024,1,Diesel,AMT,10597,1,1841161,1432021,95.0,12,Complete,No,White,7,1500,21.6,KA01,Pune,"AC, Airbags",Seller_349,+91-0587146921,2025-10-08,No,Yes
+350,Renault,Kiger,Mid,SUV,2015,10,Diesel,Automatic,172986,2,1786580,453894,50.2,8,Unknown,Major,Blue,7,2000,18.0,HR26,Jaipur,"Power Windows, AC, Power Steering",Seller_350,+91-8707152386,2025-10-13,No,Yes
+351,Volkswagen,Vento,Top,Sedan,2010,15,Diesel,Manual,209772,2,1354354,339676,40.0,10,Complete,Minor,Black,5,1600,22.9,HR26,Chandigarh,Basic,Seller_351,+91-9579001248,2025-10-30,No,Yes
+352,Honda,City,Base,Sedan,2012,13,Diesel,Automatic,231881,3,747172,194909,40.0,5,Unknown,No,Blue,5,1600,21.8,HR26,Delhi,"AC, Power Steering",Seller_352,+91-9269335895,2025-11-04,Yes,No
+353,Volkswagen,Tiguan,VXI,SUV,2015,10,Diesel,Manual,147433,2,865567,223583,48.2,7,Unknown,No,White,7,2000,17.7,MH01,Hyderabad,Basic,Seller_353,+91-3132593678,2025-11-04,Yes,Yes
+354,Toyota,Glanza,Mid,SUV,2010,15,Diesel,Manual,153567,3,1165479,286949,41.8,2,Partial,No,Brown,5,2200,23.6,MP09,Pune,"Power Windows, AC, Power Steering",Seller_354,+91-8548596559,2025-10-23,Yes,No
+355,Honda,WR-V,ZXI,SUV,2024,1,Petrol,AMT,8860,1,1370950,1117575,95.0,4,Complete,Major,Red,5,1500,19.7,KA01,Lucknow,"Power Windows, AC, Power Steering",Seller_355,+91-5570836821,2025-10-23,No,Yes
+356,Volkswagen,Tiguan,VXI,SUV,2016,9,Diesel,Automatic,96425,2,2574493,635180,58.0,3,Complete,Minor,Red,5,1500,22.4,TN01,Kochi,"Power Windows, Power Steering",Seller_356,+91-0601836472,2025-10-28,No,No
+357,Toyota,Glanza,Mid,SUV,2018,7,Petrol,Manual,106196,2,2268374,557193,63.7,9,Complete,Minor,Orange,5,1500,15.1,MP09,Pune,"Power Windows, AC, Power Steering, ABS",Seller_357,+91-7399205222,2025-10-05,No,No
+358,Kia,Sonet,LXI,SUV,2011,14,Diesel,Manual,242452,3,1790996,447440,40.0,2,Unknown,No,Red,7,2200,23.7,RJ14,Mumbai,"Power Windows, AC",Seller_358,+91-2927120539,2025-10-12,No,Yes
+359,Hyundai,Aura,ZXI,Sedan,2017,8,Petrol,Manual,86615,2,737015,191316,66.2,4,Unknown,Minor,Orange,5,1600,16.0,RJ14,Jaipur,"Power Windows, Power Steering",Seller_359,+91-8600304436,2025-09-30,Yes,No
+360,Toyota,Glanza,Base,SUV,2017,8,CNG,Manual,135309,1,1425854,356868,61.6,0,Partial,No,Brown,5,2000,24.9,RJ14,Ahmedabad,AC,Seller_360,+91-1767201911,2025-11-03,No,Yes
+361,Tata,Altroz,LXI,Hatchback,2010,15,Petrol,Manual,226953,3,746930,180189,40.0,12,Partial,No,Silver,5,1000,12.2,MP09,Delhi,"Power Windows, AC",Seller_361,+91-2946209355,2025-09-25,No,Yes
+362,Maruti Suzuki,Dzire,Base,Sedan,2021,4,Petrol,Automatic,44959,1,1463495,617583,87.9,5,Partial,No,Brown,5,1200,13.7,MH01,Chennai,Power Steering,Seller_362,+91-1592738740,2025-10-31,No,No
+363,Ford,EcoSport,Base,SUV,2016,9,Petrol,Automatic,102771,2,1980272,471917,55.6,0,Complete,No,Grey,7,2500,16.5,RJ14,Nagpur,"Power Windows, AC",Seller_363,+91-5462347124,2025-10-12,No,Yes
+364,Maruti Suzuki,Ciaz,Mid,Sedan,2010,15,Petrol,Manual,127905,2,1445253,378446,40.0,11,Complete,Minor,Silver,5,1600,12.3,RJ14,Hyderabad,Power Steering,Seller_364,+91-8474362130,2025-11-09,No,Yes
+365,Toyota,Innova Crysta,Base,MPV,2017,8,Petrol,Automatic,141293,3,862251,224658,54.6,6,Unknown,Minor,Black,8,1500,16.2,KA01,Delhi,"Power Windows, AC",Seller_365,+91-5901107977,2025-11-03,No,Yes
+366,Honda,WR-V,LXI,SUV,2013,12,Diesel,Manual,206080,2,2121402,556321,45.7,10,Partial,Major,Silver,7,2500,21.9,GJ01,Hyderabad,"Power Windows, AC",Seller_366,+91-4077943325,2025-10-14,Yes,Yes
+367,Volkswagen,Taigun,ZXI,SUV,2019,6,Diesel,Manual,87088,1,1907773,478877,77.9,2,Complete,No,Brown,5,1500,21.3,UP32,Mumbai,"AC, Power Steering, ABS, Airbags",Seller_367,+91-9989897211,2025-10-13,Yes,No
+368,Volkswagen,Taigun,VXI,SUV,2024,1,Diesel,Manual,13111,1,2473534,2127828,94.3,7,Complete,Minor,Red,7,2200,19.4,MH01,Lucknow,Power Windows,Seller_368,+91-2369149611,2025-09-12,Yes,No
+369,Renault,Duster,LXI,SUV,2022,3,Petrol,Manual,48197,2,2801252,1505812,78.5,12,Complete,Minor,Brown,7,2500,12.4,MP09,Delhi,"Power Windows, ABS",Seller_369,+91-6517962409,2025-09-12,No,No
+370,Honda,WR-V,Top,SUV,2016,9,Petrol,Manual,130716,2,2700270,659892,56.2,8,Partial,No,Red,7,2000,16.9,GJ01,Chennai,Basic,Seller_370,+91-6091141319,2025-09-14,No,Yes
+371,Renault,Kiger,LXI,SUV,2023,2,Diesel,AMT,18347,1,1694828,1206793,92.1,4,Complete,Minor,Silver,7,1500,24.1,HR26,Pune,Power Windows,Seller_371,+91-0344096617,2025-09-23,No,Yes
+372,Hyundai,Grand i10,Top,Hatchback,2021,4,Petrol,Manual,71692,2,401495,170656,69.7,1,Partial,No,Black,5,1000,17.0,UP32,Nagpur,"Power Windows, AC, Power Steering, ABS",Seller_372,+91-9874869415,2025-10-20,No,Yes
+373,Maruti Suzuki,Swift,Top,Hatchback,2011,14,Petrol,Manual,128253,3,529182,127344,40.0,8,Partial,No,Grey,5,800,15.0,MH01,Lucknow,"AC, Power Steering",Seller_373,+91-2046648966,2025-10-10,No,Yes
+374,Kia,Seltos,LXI,SUV,2012,13,Petrol,Manual,172968,3,2855331,740663,40.0,12,Partial,Major,Black,7,2200,17.6,MH01,Kochi,"AC, Power Steering",Seller_374,+91-6221224276,2025-09-15,No,No
+375,Ford,Figo,Mid,Hatchback,2016,9,Petrol,Manual,83319,1,454345,107976,71.6,8,Complete,No,Orange,5,1200,19.9,RJ14,Lucknow,"Power Windows, AC",Seller_375,+91-7047264261,2025-11-01,No,Yes
+376,Maruti Suzuki,Dzire,Mid,Sedan,2018,7,Petrol,Automatic,93970,3,962512,251407,53.7,2,Partial,No,Silver,5,1600,17.6,TN01,Chandigarh,"Power Windows, AC, ABS",Seller_376,+91-6445475231,2025-11-03,Yes,Yes
+377,Ford,Figo,ZXI,Hatchback,2022,3,Petrol,AMT,30555,1,872472,503370,86.4,7,Complete,No,Red,5,1200,16.3,KA01,Coimbatore,"Power Windows, AC, Touchscreen Infotainment",Seller_377,+91-6304530693,2025-10-21,No,No
+378,Tata,Tigor,VXI,Sedan,2019,6,Diesel,Manual,73229,1,1499508,375408,70.8,1,Unknown,No,Black,5,1500,17.5,HR26,Chennai,"AC, Power Steering",Seller_378,+91-9937810539,2025-11-03,Yes,No
+379,Volkswagen,Taigun,Mid,SUV,2023,2,Diesel,AMT,39098,1,2585032,1698050,83.8,9,Complete,No,Grey,5,2500,16.0,RJ14,Ahmedabad,"Power Windows, ABS, Airbags, Touchscreen Infotainment",Seller_379,+91-6424238397,2025-10-31,No,Yes
+380,Renault,Kwid,Top,Hatchback,2012,13,Diesel,Manual,185034,3,490388,117872,40.0,0,Unknown,Major,Brown,5,800,20.5,UP32,Delhi,Basic,Seller_380,+91-5319807468,2025-09-30,Yes,Yes
+381,Honda,Civic,VXI,SUV,2023,2,Diesel,Automatic,14771,1,815308,563185,93.2,2,Complete,No,Blue,7,2500,23.3,HR26,Kolkata,"AC, ABS",Seller_381,+91-0654113407,2025-10-07,No,Yes
+382,Renault,Duster,VXI,SUV,2022,3,Diesel,Manual,44941,1,3155931,1801578,84.0,9,Partial,Minor,Brown,7,2500,22.8,MP09,Bangalore,"AC, Power Steering, ABS, Sunroof",Seller_382,+91-7915059625,2025-10-12,Yes,No
+383,Kia,Sonet,Mid,SUV,2021,4,Diesel,Manual,29881,1,2610315,1011179,81.0,2,Complete,No,Blue,5,2200,24.3,DL01,Delhi,"Power Windows, Power Steering, ABS",Seller_383,+91-1274692118,2025-09-28,No,No
+384,Honda,Jazz,VXI,Hatchback,2019,6,Petrol,Automatic,63681,2,492812,127932,73.2,11,Partial,No,Black,5,1200,14.8,UP32,Delhi,"Power Windows, AC",Seller_384,+91-2570900163,2025-09-12,No,Yes
+385,Honda,Jazz,LXI,Hatchback,2017,8,Petrol,Manual,103196,2,663768,160677,66.0,11,Partial,Major,Orange,5,800,13.1,GJ01,Hyderabad,"AC, Power Steering",Seller_385,+91-5801195092,2025-09-17,No,Yes
+386,Hyundai,Venue,Base,SUV,2012,13,Petrol,Manual,179971,4,1023305,261233,40.0,11,Partial,No,Black,7,2500,16.7,TN01,Kochi,"Power Windows, AC",Seller_386,+91-1982734813,2025-09-14,No,Yes
+387,Honda,City,Top,Sedan,2010,15,Petrol,Automatic,172496,2,1091018,275162,40.0,3,Partial,No,Red,5,1500,19.7,HR26,Jaipur,"Power Windows, Power Steering",Seller_387,+91-8055077406,2025-10-18,No,No
+388,Toyota,Glanza,ZXI,SUV,2015,10,Diesel,Manual,117989,2,840823,201446,51.5,1,Unknown,Minor,Brown,5,2000,18.3,UP32,Delhi,"Power Windows, AC",Seller_388,+91-9535412012,2025-10-30,No,Yes
+389,Toyota,Glanza,LXI,SUV,2010,15,Petrol,Manual,139629,2,2214573,551633,41.4,8,Complete,No,Grey,5,2000,17.3,DL01,Chandigarh,AC,Seller_389,+91-3910452036,2025-11-08,No,No
+390,Honda,Jazz,VXI,Hatchback,2011,14,Petrol,Manual,163296,3,685969,177052,40.0,0,Complete,Minor,Brown,5,1000,15.8,MH01,Indore,"Power Windows, AC, Power Steering",Seller_390,+91-3394495300,2025-10-16,No,Yes
+391,Tata,Tigor,Mid,Sedan,2015,10,Petrol,Manual,132181,1,1117189,269506,64.7,12,Partial,No,Grey,5,1200,12.6,MH01,Coimbatore,"Power Windows, AC, Power Steering",Seller_391,+91-8868430211,2025-10-17,No,Yes
+392,Tata,Nexon,Mid,SUV,2024,1,Diesel,AMT,17690,1,3134061,2606059,90.7,2,Complete,No,Brown,5,2500,15.5,TN01,Chennai,"Power Windows, AC",Seller_392,+91-2147709207,2025-11-03,Yes,Yes
+393,Mahindra,XUV500,Mid,SUV,2022,3,Diesel,Manual,35359,2,1505685,866012,83.0,12,Complete,Minor,Orange,5,2200,20.7,GJ01,Indore,Basic,Seller_393,+91-5977216880,2025-09-26,Yes,Yes
+394,Ford,Endeavour,LXI,SUV,2011,14,Diesel,Automatic,249140,4,1523006,370418,40.0,10,Partial,No,Blue,7,2200,19.9,UP32,Delhi,"Power Windows, AC, Power Steering",Seller_394,+91-5993020203,2025-11-07,No,No
+395,Tata,Altroz,Base,Hatchback,2023,2,Petrol,AMT,33202,1,845899,580217,86.4,12,Complete,Minor,Silver,5,1000,19.1,GJ01,Pune,"Power Steering, ABS",Seller_395,+91-7775691983,2025-11-02,Yes,No
+396,Tata,Nexon,Mid,SUV,2011,14,CNG,Automatic,181669,2,1467403,349020,40.0,0,Partial,Minor,Grey,7,2500,22.6,MH01,Coimbatore,"Power Windows, AC, Power Steering",Seller_396,+91-4944407663,2025-09-28,No,No
+397,Mahindra,Bolero,Mid,SUV,2016,9,Petrol,Automatic,99092,2,1343060,350566,51.6,8,Partial,No,Black,5,2500,19.6,DL01,Delhi,"Power Windows, AC",Seller_397,+91-9964338532,2025-09-25,No,Yes
+398,Toyota,Glanza,Base,SUV,2015,10,Diesel,Manual,119491,2,945686,246259,48.1,9,Partial,Minor,Grey,7,2500,20.9,UP32,Kochi,"Power Windows, AC, Power Steering",Seller_398,+91-9746698616,2025-10-28,No,Yes
+399,Tata,Tigor,Mid,Sedan,2014,11,Petrol,Manual,191642,3,1132724,296797,48.5,2,Partial,No,Silver,5,1200,15.1,UP32,Chennai,AC,Seller_399,+91-6145430796,2025-10-27,No,Yes
+400,Hyundai,i10,VXI,Hatchback,2010,15,Petrol,Manual,245512,3,882215,224529,40.0,10,Unknown,No,Silver,5,800,17.1,KA01,Ahmedabad,"Power Windows, AC, Power Steering",Seller_400,+91-2377729665,2025-10-15,Yes,Yes
+401,Maruti Suzuki,Swift,LXI,Hatchback,2014,11,CNG,Manual,117675,2,412890,107819,40.5,1,Unknown,No,Blue,5,1200,24.9,DL01,Hyderabad,Power Windows,Seller_401,+91-0313695528,2025-09-22,No,Yes
+402,Maruti Suzuki,XL6,VXI,MPV,2020,5,Petrol,AMT,60795,1,2308138,556882,81.1,11,Complete,No,Red,7,1500,14.3,RJ14,Nagpur,"Power Windows, AC, Power Steering",Seller_402,+91-1850761087,2025-11-08,No,Yes
+403,Renault,Triber,Top,SUV,2022,3,Diesel,Manual,35069,1,1213853,690034,90.9,8,Complete,Minor,Black,5,2500,21.7,GJ01,Indore,"Power Windows, AC, Power Steering",Seller_403,+91-4223322280,2025-10-01,Yes,No
+404,Honda,Amaze,Top,Sedan,2015,10,Petrol,Manual,108086,2,1024701,249633,63.3,10,Complete,Minor,White,5,1500,17.5,RJ14,Chennai,AC,Seller_404,+91-1852013626,2025-09-29,Yes,No
+405,Kia,Sonet,Base,SUV,2019,6,Diesel,Automatic,85242,1,2116302,522106,71.4,6,Partial,No,Silver,7,2200,19.3,MH01,Lucknow,"Power Windows, AC, Power Steering, Airbags",Seller_405,+91-7520702042,2025-10-14,Yes,No
+406,Hyundai,Alcazar,ZXI,SUV,2011,14,Petrol,Manual,178718,3,3197353,774188,40.0,7,Unknown,Major,White,7,2500,17.2,GJ01,Ahmedabad,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_406,+91-4319165430,2025-10-09,No,No
+407,Toyota,Fortuner,ZXI,SUV,2013,12,Petrol,Manual,207358,3,898645,228376,40.0,6,Unknown,Minor,Blue,7,2500,19.4,DL01,Lucknow,"Power Windows, Power Steering",Seller_407,+91-0635537309,2025-09-24,No,Yes
+408,Kia,Carens,LXI,MPV,2012,13,Diesel,Manual,131664,3,1088050,266952,40.0,4,Partial,Minor,Brown,8,2500,21.6,TN01,Kolkata,Basic,Seller_408,+91-4149169993,2025-09-23,No,Yes
+409,Honda,City,Mid,Sedan,2019,6,Petrol,Manual,103931,3,876608,211006,62.8,11,Unknown,Major,Red,5,1600,18.5,MP09,Lucknow,"Power Windows, AC, Airbags",Seller_409,+91-7202170754,2025-09-14,No,Yes
+410,Honda,Civic,Base,SUV,2015,10,CNG,Manual,85104,1,979980,251825,64.0,3,Unknown,No,Brown,7,2500,19.9,HR26,Coimbatore,"Power Windows, AC, Power Steering",Seller_410,+91-9314584345,2025-10-16,No,Yes
+411,Hyundai,Aura,Mid,Sedan,2024,1,Petrol,Automatic,7140,1,911032,784482,95.0,11,Complete,No,Red,5,1500,15.7,KA01,Hyderabad,Basic,Seller_411,+91-6800852946,2025-09-23,No,Yes
+412,Hyundai,Alcazar,LXI,SUV,2017,8,Diesel,Manual,124365,2,957453,234104,60.7,6,Partial,No,Orange,7,2000,17.0,KA01,Kochi,"Power Windows, Power Steering",Seller_412,+91-1330303346,2025-10-12,No,Yes
+413,Hyundai,Creta,LXI,SUV,2022,3,CNG,AMT,42305,1,3357151,1827438,85.6,5,Complete,No,Silver,5,2000,25.3,MP09,Nagpur,"Power Windows, AC, Touchscreen Infotainment",Seller_413,+91-0284719017,2025-09-26,Yes,Yes
+414,Tata,Tigor,Base,Sedan,2010,15,CNG,Automatic,220882,4,1365090,329466,40.0,10,Unknown,Major,Black,5,1600,26.7,DL01,Kolkata,Basic,Seller_414,+91-8448237337,2025-10-05,Yes,Yes
+415,Tata,Tiago,Top,Hatchback,2011,14,CNG,Automatic,225469,3,765370,183756,40.0,9,Partial,Major,Grey,5,1200,21.2,DL01,Bangalore,Power Windows,Seller_415,+91-7220542216,2025-10-30,No,No
+416,Honda,WR-V,Top,SUV,2024,1,Diesel,Manual,6223,1,3063156,2496271,95.0,0,Complete,Minor,Orange,7,1500,17.7,MH01,Jaipur,"Power Windows, ABS, Airbags",Seller_416,+91-5377492663,2025-10-31,No,No
+417,Kia,Sonet,ZXI,SUV,2014,11,Diesel,Manual,116344,3,3179171,828495,51.1,12,Unknown,No,White,7,2200,22.6,GJ01,Bangalore,Power Steering,Seller_417,+91-4206615498,2025-11-09,No,No
+418,Toyota,Glanza,LXI,SUV,2013,12,Petrol,Manual,104034,3,1458648,361641,48.6,7,Unknown,No,White,5,2200,14.1,MP09,Delhi,Basic,Seller_418,+91-2987787358,2025-10-21,No,Yes
+419,Kia,Seltos,Top,SUV,2023,2,Petrol,Manual,37654,1,1342328,1009196,87.4,12,Complete,No,Silver,5,1500,14.4,DL01,Hyderabad,Airbags,Seller_419,+91-8911797269,2025-10-02,No,No
+420,Renault,Kwid,ZXI,Hatchback,2020,5,Petrol,Manual,53083,1,429891,109309,82.8,3,Partial,No,Grey,5,1200,15.2,DL01,Hyderabad,AC,Seller_420,+91-0582692990,2025-11-07,No,Yes
+421,Kia,Sonet,ZXI,SUV,2023,2,Petrol,Manual,21347,1,3131236,2042062,90.0,12,Complete,No,Orange,5,2200,17.1,MP09,Pune,"Power Windows, AC, Power Steering",Seller_421,+91-1013282339,2025-11-01,Yes,No
+422,Volkswagen,Vento,Top,Sedan,2015,10,Diesel,Manual,169373,2,1342650,340186,40.0,8,Complete,Major,Blue,5,1200,21.2,RJ14,Hyderabad,"Power Windows, AC",Seller_422,+91-9838457202,2025-09-27,No,Yes
+423,Kia,Carens,VXI,MPV,2016,9,Petrol,Manual,153287,2,1478791,378502,54.8,2,Complete,Minor,Blue,8,2000,18.1,GJ01,Chandigarh,"Power Windows, AC",Seller_423,+91-0897474859,2025-09-17,No,Yes
+424,Honda,Jazz,ZXI,Hatchback,2018,7,Petrol,Manual,70634,3,527156,135431,62.2,8,Complete,No,Blue,5,800,18.3,KA01,Kolkata,"Power Windows, AC",Seller_424,+91-0262706648,2025-10-03,Yes,Yes
+425,Tata,Tigor,ZXI,Sedan,2018,7,Diesel,Manual,76404,2,1298063,340573,61.7,8,Partial,Minor,Red,5,1200,24.3,RJ14,Mumbai,"Power Windows, AC",Seller_425,+91-6199530564,2025-11-04,No,Yes
+426,Mahindra,Thar,ZXI,SUV,2018,7,Diesel,Manual,107892,1,2908282,736596,65.5,3,Unknown,No,Silver,5,2200,24.2,UP32,Mumbai,"Power Windows, Power Steering, ABS",Seller_426,+91-6865240622,2025-11-03,No,Yes
+427,Renault,Triber,Base,SUV,2023,2,Petrol,AMT,19858,1,1558330,1077807,93.5,4,Complete,No,Blue,7,2500,19.2,UP32,Ahmedabad,"Power Windows, AC",Seller_427,+91-3835071245,2025-09-25,No,Yes
+428,Tata,Harrier,VXI,SUV,2023,2,Diesel,Manual,15189,1,2454176,1771959,93.5,12,Complete,No,Black,7,2500,16.6,UP32,Chandigarh,"Power Windows, AC",Seller_428,+91-2294252516,2025-11-03,No,Yes
+429,Toyota,Glanza,ZXI,SUV,2017,8,Petrol,Manual,129116,2,2094000,535634,57.2,11,Partial,No,Orange,7,2200,17.6,RJ14,Delhi,Power Steering,Seller_429,+91-3318361133,2025-09-19,No,No
+430,Tata,Punch,VXI,SUV,2024,1,Petrol,Manual,13241,1,2279022,1780136,94.4,8,Complete,No,Grey,5,2200,13.5,RJ14,Chandigarh,"Power Windows, AC, Power Steering",Seller_430,+91-8018915673,2025-10-23,No,Yes
+431,Hyundai,Alcazar,ZXI,SUV,2017,8,Diesel,Manual,143168,1,2101876,530069,67.5,9,Complete,Major,White,5,2200,19.8,MH01,Delhi,"Power Windows, Power Steering",Seller_431,+91-6844246488,2025-10-22,No,No
+432,Ford,Figo,LXI,Hatchback,2017,8,Petrol,Manual,128639,2,795435,206756,56.4,10,Complete,No,Blue,5,1200,13.5,RJ14,Jaipur,"Power Windows, AC, Power Steering",Seller_432,+91-5143672868,2025-11-04,Yes,Yes
+433,Mahindra,XUV500,Base,SUV,2010,15,Petrol,Automatic,248674,2,3224820,812420,40.0,5,Partial,No,Brown,7,2000,13.8,HR26,Nagpur,AC,Seller_433,+91-0532601193,2025-09-21,No,Yes
+434,Mahindra,Bolero,LXI,SUV,2012,13,Diesel,Automatic,166670,3,2266168,542162,42.8,5,Unknown,No,Brown,7,2000,24.2,DL01,Kochi,Power Steering,Seller_434,+91-0058561547,2025-09-29,Yes,Yes
+435,Toyota,Urban Cruiser,Top,SUV,2023,2,Petrol,Manual,28380,1,1285239,838850,91.8,2,Partial,No,Orange,5,2500,12.2,KA01,Ahmedabad,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_435,+91-8164416101,2025-10-02,No,Yes
+436,Mahindra,Scorpio,Top,SUV,2018,7,Diesel,Manual,102321,1,2365754,586837,63.3,8,Complete,No,Blue,7,2500,16.2,TN01,Chandigarh,"Power Windows, AC, Power Steering",Seller_436,+91-4909228849,2025-10-09,No,Yes
+437,Toyota,Glanza,VXI,SUV,2023,2,Diesel,Automatic,36049,1,1369522,982278,85.6,6,Partial,Minor,Silver,5,2500,23.4,UP32,Kochi,"Power Windows, AC",Seller_437,+91-1873877583,2025-09-25,Yes,Yes
+438,Honda,Civic,ZXI,SUV,2017,8,Petrol,Manual,70017,1,3411745,877459,61.4,0,Partial,No,Black,5,1500,16.9,HR26,Coimbatore,Power Windows,Seller_438,+91-9419324538,2025-09-30,Yes,Yes
+439,Ford,Figo,VXI,Hatchback,2011,14,CNG,Manual,179458,4,414764,105201,40.0,3,Partial,Minor,Silver,5,1200,26.3,MH01,Delhi,Power Steering,Seller_439,+91-8672020095,2025-09-22,Yes,Yes
+440,Tata,Tiago,LXI,Hatchback,2019,6,Petrol,Automatic,106006,1,405230,96366,73.2,12,Unknown,No,Orange,5,800,18.0,MH01,Delhi,"Power Windows, Airbags",Seller_440,+91-7167221045,2025-09-16,No,Yes
+441,Kia,Sonet,VXI,SUV,2017,8,Petrol,Manual,121223,3,1877245,450202,56.0,6,Complete,No,Grey,5,2200,18.0,KA01,Bangalore,"Power Windows, AC, Power Steering",Seller_441,+91-7269032655,2025-11-04,Yes,Yes
+442,Kia,Sonet,LXI,SUV,2020,5,CNG,Manual,62796,2,2306133,681401,72.6,9,Complete,No,Brown,7,2200,25.3,MP09,Jaipur,"Power Windows, Power Steering, ABS, Airbags",Seller_442,+91-3760088447,2025-10-25,Yes,No
+443,Mahindra,Thar,LXI,SUV,2023,2,Diesel,Manual,31292,1,3198668,2184961,90.8,0,Complete,Minor,Red,5,2000,22.9,TN01,Pune,Airbags,Seller_443,+91-9865462202,2025-11-06,Yes,Yes
+444,Ford,Endeavour,Base,SUV,2023,2,CNG,Manual,18168,1,1055682,737613,93.9,6,Complete,No,Silver,5,1500,23.2,DL01,Lucknow,"Power Steering, Airbags, Touchscreen Infotainment",Seller_444,+91-2327379897,2025-09-24,No,No
+445,Kia,Sonet,VXI,SUV,2018,7,Diesel,Manual,94327,1,3096856,752467,71.8,6,Complete,No,Red,5,1500,20.2,DL01,Ahmedabad,"Power Windows, AC, Power Steering",Seller_445,+91-4203401535,2025-09-23,Yes,Yes
+446,Kia,Sonet,Top,SUV,2017,8,Diesel,Manual,139758,3,2611697,665245,50.1,2,Partial,Major,Red,7,2200,24.7,KA01,Jaipur,Power Windows,Seller_446,+91-2735364235,2025-10-12,Yes,Yes
+447,Hyundai,Grand i10,ZXI,Hatchback,2019,6,Petrol,Manual,102667,1,687808,178250,76.3,6,Complete,No,White,5,1200,13.4,MH01,Ahmedabad,AC,Seller_447,+91-1232961512,2025-11-09,No,Yes
+448,Toyota,Glanza,VXI,SUV,2017,8,Diesel,Automatic,105284,2,2108860,551803,63.8,1,Complete,No,Red,7,2500,22.2,TN01,Mumbai,"Power Windows, Power Steering, Touchscreen Infotainment",Seller_448,+91-6822512726,2025-10-13,Yes,No
+449,Kia,Carens,LXI,MPV,2022,3,Petrol,Automatic,41168,1,1378943,728064,83.7,7,Partial,No,Blue,8,1500,17.3,MH01,Ahmedabad,"Power Windows, ABS",Seller_449,+91-7422354340,2025-10-22,No,Yes
+450,Kia,Carens,Base,MPV,2012,13,CNG,Manual,177708,3,2067940,519592,40.0,8,Partial,Minor,Red,8,2000,21.1,HR26,Mumbai,"Power Windows, AC, Power Steering",Seller_450,+91-4968066405,2025-09-17,Yes,Yes
+451,Tata,Tiago,Mid,Hatchback,2012,13,Diesel,Manual,145326,2,820556,196081,40.0,2,Complete,Major,Red,5,1200,19.5,MH01,Delhi,AC,Seller_451,+91-3171978601,2025-09-15,No,Yes
+452,Toyota,Glanza,Mid,SUV,2021,4,Diesel,Manual,69795,2,2757311,1217691,70.9,3,Partial,Minor,Black,5,1500,19.7,KA01,Indore,"Power Windows, AC, Power Steering",Seller_452,+91-0371616088,2025-11-03,No,Yes
+453,Tata,Altroz,LXI,Hatchback,2020,5,Petrol,AMT,63467,1,806267,234261,83.2,0,Complete,No,White,5,1200,17.7,HR26,Chandigarh,"Power Windows, AC, Power Steering",Seller_453,+91-3236221690,2025-09-21,No,No
+454,Kia,Carens,Base,MPV,2015,10,Diesel,Automatic,152676,3,2479497,592284,44.3,1,Unknown,No,Black,7,1500,19.8,MH01,Pune,Power Steering,Seller_454,+91-2431983924,2025-10-07,No,No
+455,Mahindra,XUV300,Top,SUV,2010,15,Petrol,Automatic,263837,2,2127047,509996,40.0,0,Partial,No,Silver,7,2500,15.4,KA01,Nagpur,"Power Windows, AC, Power Steering",Seller_455,+91-5512817751,2025-11-02,Yes,No
+456,Renault,Triber,Top,SUV,2018,7,Petrol,Manual,94909,3,1474344,367206,62.2,2,Complete,No,Silver,5,1500,15.7,MH01,Ahmedabad,"Power Windows, AC, ABS",Seller_456,+91-3703175438,2025-11-09,Yes,Yes
+457,Hyundai,Verna,VXI,Sedan,2018,7,Diesel,Manual,95776,2,1189952,312274,69.4,7,Unknown,Minor,Blue,5,1200,19.5,GJ01,Bangalore,"Power Windows, Power Steering, ABS",Seller_457,+91-8676259238,2025-10-14,No,No
+458,Renault,Kwid,LXI,Hatchback,2016,9,CNG,Manual,151804,3,710022,177048,45.7,9,Unknown,Major,Silver,5,1000,24.0,RJ14,Nagpur,Power Windows,Seller_458,+91-7897755426,2025-09-17,Yes,No
+459,Maruti Suzuki,Dzire,VXI,Sedan,2023,2,Petrol,Automatic,18786,1,1100020,720343,93.2,0,Partial,No,Black,5,1200,15.9,DL01,Chandigarh,"Power Windows, AC, Power Steering, ABS",Seller_459,+91-1620429851,2025-10-23,No,No
+460,Renault,Kiger,ZXI,SUV,2010,15,Diesel,Manual,175516,3,1585091,406554,43.0,3,Complete,Minor,Red,5,2200,21.9,MH01,Ahmedabad,Basic,Seller_460,+91-3172947638,2025-11-10,No,Yes
+461,Maruti Suzuki,WagonR,LXI,SUV,2022,3,Diesel,Automatic,24551,1,3382777,1936704,86.6,3,Complete,Minor,Black,7,2000,20.4,DL01,Kochi,"AC, Power Steering",Seller_461,+91-6026676527,2025-09-16,Yes,No
+462,Honda,City,Top,Sedan,2013,12,Petrol,Manual,212405,2,1074631,281010,40.0,2,Complete,No,Black,5,1200,19.2,UP32,Kochi,Power Windows,Seller_462,+91-2533320235,2025-11-06,Yes,Yes
+463,Toyota,Innova Crysta,ZXI,MPV,2023,2,CNG,Manual,26709,1,1489041,1036351,89.7,8,Partial,No,Red,7,2000,19.9,KA01,Lucknow,"Power Steering, Touchscreen Infotainment",Seller_463,+91-9831244129,2025-11-07,No,Yes
+464,Kia,Seltos,Top,SUV,2024,1,Diesel,Manual,5855,1,1398287,1166896,95.0,4,Partial,No,Blue,5,1500,18.8,UP32,Bangalore,"Power Windows, AC, Power Steering, Airbags",Seller_464,+91-6713175362,2025-10-14,No,Yes
+465,Tata,Harrier,VXI,SUV,2023,2,Diesel,AMT,25528,1,1231533,833253,89.8,12,Complete,No,White,5,2200,18.2,KA01,Lucknow,"Power Steering, Touchscreen Infotainment",Seller_465,+91-5143219143,2025-09-29,Yes,No
+466,Ford,Aspire,Mid,Sedan,2020,5,Petrol,AMT,86673,1,1326059,377573,73.1,5,Partial,Minor,Silver,5,1200,17.9,MH01,Lucknow,"Power Windows, AC",Seller_466,+91-3329986515,2025-09-16,No,Yes
+467,Toyota,Urban Cruiser,Base,SUV,2021,4,Diesel,Automatic,59900,1,2980053,1063013,82.9,12,Complete,Major,Brown,7,2000,19.0,KA01,Indore,AC,Seller_467,+91-3551962822,2025-10-30,No,Yes
+468,Volkswagen,Vento,Base,Sedan,2015,10,Petrol,Automatic,107433,3,780463,196949,47.8,12,Complete,Minor,Brown,5,1200,18.7,RJ14,Pune,AC,Seller_468,+91-9563217400,2025-09-26,Yes,No
+469,Maruti Suzuki,Swift,Top,Hatchback,2019,6,Petrol,Manual,71560,2,470500,111993,72.6,8,Partial,Minor,Orange,5,800,14.6,UP32,Chandigarh,"Power Windows, AC, Power Steering, ABS",Seller_469,+91-6438500953,2025-10-12,Yes,Yes
+470,Kia,Sonet,ZXI,SUV,2017,8,Diesel,Manual,90039,2,1631425,403332,58.1,4,Partial,No,Red,5,2500,19.7,GJ01,Ahmedabad,"Power Windows, AC",Seller_470,+91-4942904617,2025-10-21,No,Yes
+471,Volkswagen,Tiguan,Base,SUV,2010,15,Diesel,Automatic,256843,3,2057367,489178,40.0,5,Partial,Minor,Grey,5,2500,23.4,KA01,Indore,"Power Windows, AC",Seller_471,+91-1009538557,2025-09-24,No,Yes
+472,Kia,Carens,VXI,MPV,2014,11,Petrol,Manual,98380,3,1800248,445389,43.7,6,Complete,Minor,Orange,8,2500,14.1,GJ01,Coimbatore,"Power Windows, Power Steering",Seller_472,+91-1541858990,2025-11-07,Yes,Yes
+473,Tata,Nexon,LXI,SUV,2023,2,Petrol,Automatic,22631,1,2705984,1854868,91.4,6,Complete,No,Grey,5,2000,17.6,RJ14,Nagpur,"AC, Power Steering",Seller_473,+91-0671822266,2025-09-15,No,No
+474,Honda,Jazz,Base,Hatchback,2019,6,Petrol,Automatic,101251,3,572541,140339,60.8,2,Unknown,Minor,White,5,1000,18.4,HR26,Indore,"Power Windows, AC, Power Steering",Seller_474,+91-4861867066,2025-10-28,Yes,Yes
+475,Kia,Sonet,VXI,SUV,2019,6,Diesel,Manual,92790,2,2934775,720696,63.8,12,Partial,No,Orange,7,1500,20.3,UP32,Delhi,"Power Windows, Power Steering",Seller_475,+91-3135490145,2025-09-22,No,No
+476,Ford,EcoSport,Base,SUV,2016,9,Diesel,Manual,125954,3,1596292,406949,59.8,12,Complete,Minor,Silver,7,1500,18.9,GJ01,Pune,Power Windows,Seller_476,+91-0164928150,2025-10-29,No,Yes
+477,Ford,EcoSport,LXI,SUV,2024,1,Diesel,Manual,14642,1,978389,836245,93.9,0,Partial,Major,Silver,5,2500,16.5,KA01,Ahmedabad,"Power Windows, AC, ABS",Seller_477,+91-0072889592,2025-09-30,No,Yes
+478,Honda,Jazz,VXI,Hatchback,2011,14,Petrol,Manual,213724,2,777084,197622,40.0,4,Partial,No,Red,5,1200,15.1,KA01,Kolkata,"Power Windows, Power Steering",Seller_478,+91-4242536909,2025-11-05,Yes,Yes
+479,Toyota,Fortuner,Base,SUV,2010,15,Diesel,Automatic,133539,4,2682652,682712,40.0,3,Unknown,Major,Blue,5,1500,18.5,RJ14,Coimbatore,Power Windows,Seller_479,+91-2360667998,2025-10-15,No,No
+480,Tata,Tigor,Top,Sedan,2019,6,Petrol,Automatic,62328,1,869035,227393,79.8,9,Unknown,No,Red,5,1500,15.0,KA01,Nagpur,"Power Windows, AC, Power Steering, ABS",Seller_480,+91-7688777925,2025-09-13,No,Yes
+481,Hyundai,Aura,Top,Sedan,2014,11,Petrol,Manual,181423,3,700291,174483,42.4,6,Partial,Minor,Silver,5,1500,17.9,TN01,Kochi,"Power Windows, AC, Power Steering",Seller_481,+91-9752872099,2025-10-07,No,No
+482,Kia,Seltos,Mid,SUV,2012,13,Diesel,Manual,162405,3,3405018,886612,40.0,9,Complete,Major,Grey,5,1500,15.9,HR26,Pune,AC,Seller_482,+91-7240434741,2025-09-26,Yes,Yes
+483,Hyundai,Aura,Mid,Sedan,2017,8,Petrol,Manual,113628,1,654347,171209,66.2,2,Partial,Minor,Silver,5,1200,16.1,TN01,Lucknow,Basic,Seller_483,+91-7489047607,2025-09-24,No,Yes
+484,Mahindra,Scorpio,Mid,SUV,2011,14,Diesel,Manual,221673,3,1119674,293118,40.0,0,Complete,Minor,Grey,5,2200,18.5,DL01,Jaipur,"Power Windows, AC",Seller_484,+91-5391607700,2025-10-23,Yes,No
+485,Maruti Suzuki,Brezza,Top,SUV,2015,10,Diesel,Manual,167926,1,1842890,461355,53.9,8,Unknown,Major,Blue,5,2500,20.3,MH01,Chandigarh,Power Steering,Seller_485,+91-9333562303,2025-10-03,No,Yes
+486,Maruti Suzuki,Ciaz,Mid,Sedan,2024,1,Petrol,Manual,18062,1,644639,550563,90.9,0,Partial,No,White,5,1600,12.9,DL01,Chandigarh,"Power Windows, AC, Power Steering, ABS",Seller_486,+91-2661158485,2025-10-06,Yes,Yes
+487,Kia,Sonet,LXI,SUV,2012,13,Diesel,Manual,232123,2,2038446,528137,40.0,10,Partial,Major,Red,7,1500,17.9,DL01,Delhi,"Power Windows, AC, Power Steering",Seller_487,+91-6262359605,2025-10-27,Yes,Yes
+488,Kia,Sonet,Top,SUV,2021,4,Diesel,Manual,41627,1,3130036,1121090,80.7,3,Complete,Minor,Brown,7,1500,18.7,KA01,Hyderabad,"Power Windows, AC, ABS",Seller_488,+91-1039091203,2025-10-01,Yes,Yes
+489,Tata,Tiago,LXI,Hatchback,2019,6,Petrol,Manual,70199,2,698017,178283,69.6,6,Complete,No,Orange,5,1000,19.5,HR26,Kolkata,"Power Steering, ABS",Seller_489,+91-9445381180,2025-10-01,No,Yes
+490,Volkswagen,Tiguan,Top,SUV,2015,10,Diesel,Manual,126066,2,2469907,592934,44.4,6,Partial,No,Brown,7,1500,18.0,KA01,Mumbai,"Power Windows, AC, Touchscreen Infotainment",Seller_490,+91-5015301731,2025-10-14,No,Yes
+491,Kia,Sonet,Mid,SUV,2015,10,Diesel,Manual,138292,2,1872316,488626,56.8,7,Complete,No,Orange,5,2500,19.3,UP32,Delhi,"Power Windows, AC",Seller_491,+91-5974876805,2025-09-28,No,Yes
+492,Mahindra,XUV500,Mid,SUV,2021,4,Petrol,Manual,66871,1,825078,353297,77.6,2,Partial,Major,Orange,5,2000,16.5,GJ01,Hyderabad,"Power Steering, ABS",Seller_492,+91-7699242773,2025-10-02,No,Yes
+493,Volkswagen,Taigun,LXI,SUV,2020,5,Petrol,Manual,46199,1,1854289,515432,78.1,4,Complete,Major,Silver,5,1500,18.4,RJ14,Lucknow,"Power Windows, ABS",Seller_493,+91-7569991383,2025-11-03,Yes,Yes
+494,Kia,Seltos,VXI,SUV,2013,12,Petrol,Automatic,122693,4,2684921,641183,40.0,6,Complete,No,Grey,7,2000,17.0,DL01,Bangalore,Power Windows,Seller_494,+91-0675826762,2025-10-18,No,Yes
+495,Tata,Tiago,ZXI,Hatchback,2023,2,Petrol,AMT,25582,1,747267,500650,89.4,12,Complete,Minor,Silver,5,1200,15.6,HR26,Chennai,"Power Windows, AC",Seller_495,+91-7984914986,2025-11-08,No,No
+496,Toyota,Innova Crysta,ZXI,MPV,2010,15,CNG,Manual,224616,3,1253987,305704,40.0,0,Complete,No,Orange,7,2000,27.1,MP09,Pune,Power Windows,Seller_496,+91-7871888223,2025-10-13,No,No
+497,Ford,EcoSport,Base,SUV,2015,10,Diesel,Manual,92395,1,2412372,574416,56.0,10,Partial,Minor,Brown,7,2200,20.7,GJ01,Chandigarh,"AC, Touchscreen Infotainment",Seller_497,+91-6108092616,2025-10-16,Yes,Yes
+498,Kia,Seltos,VXI,SUV,2015,10,Diesel,Automatic,164647,2,2186401,522128,48.5,8,Unknown,No,Brown,5,2200,21.8,HR26,Kochi,Basic,Seller_498,+91-1899740233,2025-10-08,No,No
+499,Maruti Suzuki,Ciaz,VXI,Sedan,2022,3,Petrol,Automatic,42783,2,666608,379914,78.5,4,Partial,No,Brown,5,1200,12.4,HR26,Mumbai,"Power Windows, AC, Power Steering, Airbags",Seller_499,+91-1349096197,2025-10-03,No,No
+500,Tata,Safari,Mid,SUV,2014,11,Petrol,Manual,106170,3,2432593,616675,40.4,3,Partial,Major,White,7,1500,13.1,GJ01,Nagpur,"AC, Touchscreen Infotainment",Seller_500,+91-1589258490,2025-10-12,Yes,Yes
+501,Maruti Suzuki,Dzire,LXI,Sedan,2011,14,Petrol,Automatic,220181,3,1158461,297918,40.0,8,Unknown,Major,Blue,5,1600,15.4,TN01,Delhi,"Power Windows, Power Steering",Seller_501,+91-9427674831,2025-09-17,No,Yes
+502,Maruti Suzuki,WagonR,Top,SUV,2016,9,Petrol,Manual,123294,1,2766034,721094,61.8,3,Partial,Minor,Black,7,1500,15.6,MP09,Hyderabad,"Power Windows, Touchscreen Infotainment",Seller_502,+91-6548708477,2025-10-04,No,No
+503,Hyundai,Alcazar,ZXI,SUV,2016,9,Petrol,Manual,156167,1,2697641,667032,55.1,6,Partial,Minor,Blue,7,2500,13.6,MH01,Jaipur,"Power Windows, AC, Power Steering",Seller_503,+91-2190518812,2025-09-12,No,No
+504,Volkswagen,Tiguan,ZXI,SUV,2023,2,Diesel,Manual,29928,1,911370,624028,88.9,9,Complete,No,White,5,2000,19.8,KA01,Ahmedabad,"Power Windows, Power Steering, ABS, Touchscreen Infotainment",Seller_504,+91-6497035067,2025-10-21,No,No
+505,Kia,Carens,Top,MPV,2022,3,Petrol,Manual,33930,1,2248119,1223700,88.3,10,Complete,No,Grey,8,1500,17.5,HR26,Kolkata,"Power Windows, AC, ABS",Seller_505,+91-3844404588,2025-10-28,Yes,Yes
+506,Hyundai,Verna,Base,Sedan,2024,1,Petrol,Manual,7173,1,837839,652208,95.0,8,Complete,No,Grey,5,1500,18.6,MP09,Chandigarh,"Power Windows, AC, Power Steering, Airbags",Seller_506,+91-2344568446,2025-10-11,No,Yes
+507,Mahindra,Thar,Base,SUV,2021,4,Diesel,Automatic,29503,1,1714061,657824,80.5,9,Complete,No,Orange,5,2000,21.6,TN01,Indore,"Power Steering, ABS, Airbags",Seller_507,+91-5854233241,2025-10-17,No,Yes
+508,Volkswagen,Taigun,Top,SUV,2020,5,Diesel,Manual,89856,1,900520,230243,70.6,5,Partial,Major,Grey,7,1500,24.2,RJ14,Jaipur,"AC, Power Steering",Seller_508,+91-2218169814,2025-09-14,Yes,Yes
+509,Honda,Civic,Mid,SUV,2016,9,Diesel,Manual,158291,2,2842011,741354,47.9,12,Partial,Minor,Grey,5,2500,22.1,KA01,Nagpur,AC,Seller_509,+91-6610256342,2025-09-20,Yes,Yes
+510,Tata,Harrier,Mid,SUV,2021,4,Diesel,Automatic,74476,1,1103543,446037,75.3,11,Complete,No,Orange,7,1500,18.3,UP32,Coimbatore,AC,Seller_510,+91-1746564260,2025-11-03,No,Yes
+511,Ford,Endeavour,Top,SUV,2016,9,Petrol,Manual,128718,2,3243802,844948,50.5,8,Partial,No,Black,7,2200,12.5,TN01,Indore,"Power Windows, AC, Touchscreen Infotainment",Seller_511,+91-2288390473,2025-10-27,Yes,Yes
+512,Honda,Civic,Top,SUV,2021,4,Diesel,Manual,59396,1,3233785,1343426,79.0,9,Complete,No,Silver,5,2200,15.1,HR26,Bangalore,"AC, Power Steering",Seller_512,+91-5800187314,2025-10-28,No,Yes
+513,Hyundai,i20,Mid,Hatchback,2014,11,Petrol,Automatic,186152,3,730986,181038,45.8,8,Complete,No,Brown,5,1200,17.3,TN01,Coimbatore,"Power Windows, AC",Seller_513,+91-0230286550,2025-09-28,No,Yes
+514,Honda,Jazz,Mid,Hatchback,2011,14,Petrol,Manual,119872,4,651867,158600,40.0,9,Partial,No,Black,5,1000,15.0,MH01,Mumbai,"AC, Power Steering",Seller_514,+91-4339133252,2025-10-08,No,Yes
+515,Tata,Altroz,LXI,Hatchback,2021,4,Petrol,Automatic,58621,1,466186,197205,84.1,2,Complete,Minor,Brown,5,800,14.1,MH01,Pune,"Power Windows, AC",Seller_515,+91-3498529735,2025-10-16,Yes,Yes
+516,Tata,Punch,Top,SUV,2016,9,Petrol,Manual,114432,3,1461467,368347,54.3,5,Partial,No,Orange,7,2500,15.5,HR26,Kochi,"Power Windows, Power Steering",Seller_516,+91-9853243679,2025-11-01,No,Yes
+517,Ford,EcoSport,ZXI,SUV,2012,13,Diesel,Automatic,149809,3,2158877,553322,40.0,12,Complete,Minor,Silver,5,1500,16.0,MP09,Kolkata,"Power Windows, AC",Seller_517,+91-0720148967,2025-10-06,No,Yes
+518,Tata,Punch,VXI,SUV,2021,4,Petrol,Manual,39701,1,1624010,652265,83.3,9,Partial,No,Brown,7,2200,18.0,TN01,Coimbatore,"Power Windows, Airbags, Touchscreen Infotainment",Seller_518,+91-4036948112,2025-09-30,No,No
+519,Honda,WR-V,Base,SUV,2017,8,Petrol,Manual,121982,2,1716249,431966,61.2,4,Complete,No,Red,5,2200,19.8,TN01,Hyderabad,"Power Windows, AC, Power Steering",Seller_519,+91-1409841016,2025-10-10,No,Yes
+520,Hyundai,Verna,Top,Sedan,2024,1,Petrol,Manual,9731,1,896669,697972,95.0,0,Complete,No,Black,5,1200,13.2,MP09,Nagpur,"Power Windows, AC, Airbags, Touchscreen Infotainment",Seller_520,+91-1990342134,2025-10-09,No,Yes
+521,Volkswagen,Taigun,Mid,SUV,2024,1,Petrol,Automatic,7458,1,2584538,1973718,95.0,9,Complete,No,Brown,5,2200,18.3,DL01,Mumbai,"Power Windows, AC, Power Steering, Airbags",Seller_521,+91-4024702881,2025-10-23,Yes,Yes
+522,Volkswagen,Tiguan,Top,SUV,2023,2,Diesel,Automatic,23417,1,1114920,739964,90.9,7,Complete,No,Brown,5,2000,20.5,DL01,Hyderabad,"AC, ABS",Seller_522,+91-4232154013,2025-11-05,No,Yes
+523,Maruti Suzuki,WagonR,Mid,SUV,2019,6,Diesel,Manual,82278,3,3097922,746515,65.5,5,Partial,Minor,Silver,7,2200,20.2,HR26,Nagpur,"Power Windows, AC, Power Steering, ABS, Touchscreen Infotainment",Seller_523,+91-1956756355,2025-09-22,No,Yes
+524,Tata,Punch,VXI,SUV,2020,5,Diesel,AMT,54165,1,1358970,325574,77.4,10,Complete,No,Red,7,2500,23.6,UP32,Mumbai,"AC, ABS, Airbags",Seller_524,+91-6689041728,2025-11-01,Yes,Yes
+525,Tata,Altroz,Top,Hatchback,2018,7,Petrol,Manual,93914,2,520255,136565,70.4,9,Partial,No,White,5,800,12.3,MP09,Chennai,AC,Seller_525,+91-5053572289,2025-11-02,Yes,Yes
+526,Hyundai,Venue,ZXI,SUV,2017,8,Diesel,Manual,145088,2,922518,233241,62.2,12,Partial,Minor,Silver,7,2200,19.7,GJ01,Nagpur,"Power Windows, Power Steering",Seller_526,+91-8930635780,2025-09-28,Yes,Yes
+527,Renault,Kwid,VXI,Hatchback,2020,5,Petrol,Manual,75525,1,830974,213648,75.2,9,Partial,No,White,5,1000,13.5,MH01,Jaipur,"Power Windows, AC, ABS",Seller_527,+91-9860610656,2025-10-12,Yes,Yes
+528,Honda,City,Top,Sedan,2017,8,CNG,Automatic,103077,3,1034503,258079,62.4,6,Partial,Major,Brown,5,1500,21.0,RJ14,Chennai,"Power Windows, Power Steering",Seller_528,+91-2423480041,2025-10-12,No,Yes
+529,Hyundai,Venue,ZXI,SUV,2015,10,CNG,Manual,168118,2,2723238,661856,52.5,2,Partial,Major,Blue,5,2000,26.5,HR26,Kolkata,"Power Windows, AC",Seller_529,+91-9662991721,2025-10-10,No,Yes
+530,Tata,Safari,VXI,SUV,2012,13,Petrol,Automatic,217246,2,2306521,550402,40.0,8,Partial,No,Black,5,2500,12.8,MH01,Bangalore,Basic,Seller_530,+91-0000295616,2025-11-01,Yes,Yes
+531,Honda,Civic,Mid,SUV,2011,14,Diesel,Manual,197997,3,810306,193976,40.0,5,Unknown,No,Orange,7,2000,19.4,DL01,Indore,"Power Windows, AC",Seller_531,+91-7766650527,2025-09-30,No,Yes
+532,Maruti Suzuki,XL6,ZXI,MPV,2012,13,Petrol,Manual,209512,2,1653078,398852,40.0,10,Unknown,No,Grey,7,1500,19.0,GJ01,Lucknow,"Power Windows, AC",Seller_532,+91-4294300037,2025-09-18,No,Yes
+533,Volkswagen,Vento,VXI,Sedan,2023,2,Petrol,Manual,20134,1,872266,571921,92.3,3,Complete,Minor,Blue,5,1500,17.3,TN01,Delhi,"Power Windows, AC, Airbags, Touchscreen Infotainment",Seller_533,+91-2011406526,2025-10-16,No,Yes
+534,Ford,Endeavour,Top,SUV,2023,2,Diesel,Manual,23726,1,1567887,1091629,90.0,7,Complete,Major,Brown,7,2500,24.8,UP32,Kolkata,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_534,+91-5104625069,2025-11-02,No,Yes
+535,Kia,Carens,LXI,MPV,2024,1,Petrol,Manual,6230,1,1684371,1378270,95.0,2,Partial,No,Grey,7,2500,16.7,TN01,Indore,"AC, Power Steering, Sunroof",Seller_535,+91-5022347780,2025-10-23,No,Yes
+536,Renault,Triber,Mid,SUV,2023,2,Diesel,Automatic,23323,1,2021828,1483562,91.2,2,Complete,No,Orange,5,2000,16.9,KA01,Jaipur,"Power Windows, AC, Power Steering, Touchscreen Infotainment",Seller_536,+91-7063632863,2025-11-10,Yes,Yes
+537,Tata,Tiago,Top,Hatchback,2023,2,CNG,Automatic,31891,1,466322,297339,89.2,12,Complete,Minor,Orange,5,1200,21.8,MP09,Chandigarh,"AC, Power Steering, Airbags",Seller_537,+91-6054946920,2025-10-06,No,Yes
+538,Renault,Kwid,Mid,Hatchback,2011,14,CNG,Manual,193303,3,596188,149189,41.2,10,Complete,No,Blue,5,800,18.6,MH01,Chandigarh,Basic,Seller_538,+91-3814837475,2025-10-19,No,Yes
+539,Maruti Suzuki,XL6,VXI,MPV,2020,5,Petrol,AMT,82501,1,1391045,335755,76.8,7,Partial,No,Brown,7,2500,17.6,GJ01,Nagpur,"Power Steering, Airbags",Seller_539,+91-9976759833,2025-10-31,No,Yes
+540,Maruti Suzuki,Ertiga,Mid,MPV,2023,2,Petrol,Manual,26390,1,1335997,912134,91.6,2,Partial,No,Red,7,2000,16.6,MP09,Kolkata,Basic,Seller_540,+91-8015846687,2025-10-03,Yes,Yes
+541,Maruti Suzuki,Baleno,VXI,Hatchback,2022,3,Petrol,Manual,34312,1,651128,341655,86.5,5,Partial,Major,White,5,1000,13.0,MP09,Bangalore,"Power Windows, Airbags",Seller_541,+91-0897207382,2025-10-11,No,Yes
+542,Hyundai,i20,Base,Hatchback,2024,1,Petrol,Automatic,10524,1,467251,379123,95.0,0,Partial,No,White,5,800,13.2,MH01,Ahmedabad,"Power Windows, AC",Seller_542,+91-0577719619,2025-10-04,No,Yes
+543,Kia,Seltos,VXI,SUV,2021,4,Diesel,Automatic,59728,1,2505905,1019099,83.2,0,Complete,Minor,Grey,5,2200,24.4,GJ01,Bangalore,"Power Windows, Power Steering, ABS, Airbags",Seller_543,+91-9143907054,2025-10-11,No,Yes
+544,Maruti Suzuki,Swift,VXI,Hatchback,2015,10,Petrol,Manual,93916,1,790710,197058,56.0,5,Unknown,Minor,Red,5,1000,14.3,MP09,Hyderabad,"Power Windows, Power Steering",Seller_544,+91-1463866432,2025-11-09,Yes,Yes
+545,Tata,Safari,Base,SUV,2020,5,Petrol,Manual,66861,2,2197007,566324,73.6,11,Partial,No,Brown,5,1500,14.4,GJ01,Chandigarh,"Power Windows, Power Steering",Seller_545,+91-1630335636,2025-10-03,No,Yes
+546,Hyundai,i10,VXI,Hatchback,2010,15,Petrol,Manual,254096,3,434585,103763,40.0,11,Partial,No,Blue,5,800,17.1,GJ01,Indore,Power Windows,Seller_546,+91-1226815947,2025-09-14,No,Yes
+547,Maruti Suzuki,Ertiga,VXI,MPV,2024,1,Petrol,Manual,5041,1,1531594,1273224,95.0,0,Partial,Minor,Orange,7,2500,16.9,UP32,Nagpur,"Power Windows, Power Steering",Seller_547,+91-7650167671,2025-10-09,No,Yes
+548,Tata,Harrier,Mid,SUV,2018,7,Diesel,Manual,101790,3,3084834,745904,55.5,2,Partial,Minor,Brown,7,1500,20.7,TN01,Pune,"Power Windows, Power Steering, ABS",Seller_548,+91-9890749935,2025-10-05,No,Yes
+549,Toyota,Innova Crysta,Base,MPV,2019,6,Petrol,Automatic,65077,2,2065131,491981,65.8,1,Partial,No,Orange,8,2200,15.9,TN01,Delhi,"Power Windows, AC, ABS, Airbags",Seller_549,+91-1887114860,2025-11-07,No,Yes
+550,Maruti Suzuki,XL6,Top,MPV,2012,13,Petrol,Manual,217685,4,1533124,370667,40.0,12,Complete,Minor,Grey,7,2000,13.8,TN01,Bangalore,Power Windows,Seller_550,+91-7302426624,2025-09-27,No,Yes
+551,Mahindra,Thar,LXI,SUV,2022,3,Diesel,Automatic,25572,1,1185966,594031,86.2,6,Partial,Minor,Blue,7,2500,22.9,HR26,Mumbai,"Power Windows, Airbags",Seller_551,+91-8865834834,2025-10-06,No,Yes
+552,Toyota,Urban Cruiser,LXI,SUV,2020,5,Petrol,AMT,59793,1,2057089,611058,79.8,9,Complete,No,Black,7,2000,17.3,UP32,Kochi,"Power Windows, AC, Power Steering, ABS, Touchscreen Infotainment",Seller_552,+91-0450509284,2025-10-16,No,Yes
+553,Maruti Suzuki,Alto,LXI,Hatchback,2017,8,Petrol,Manual,141309,1,765398,194900,63.8,3,Complete,No,Brown,5,1000,16.5,HR26,Bangalore,Basic,Seller_553,+91-2814353127,2025-10-03,No,No
+554,Mahindra,XUV700,VXI,SUV,2022,3,Diesel,Manual,24511,1,1396582,783665,89.6,7,Complete,No,Brown,7,2000,23.1,HR26,Coimbatore,Basic,Seller_554,+91-4514609193,2025-10-21,Yes,Yes
+555,Honda,City,ZXI,Sedan,2023,2,Petrol,Manual,26380,1,1402023,984227,91.3,3,Complete,No,Brown,5,1200,18.8,HR26,Delhi,"Power Windows, ABS, Airbags",Seller_555,+91-1260848187,2025-10-16,Yes,Yes
+556,Renault,Kwid,Top,Hatchback,2016,9,Petrol,Manual,163052,2,410578,103569,48.0,2,Partial,Major,Brown,5,800,17.4,DL01,Ahmedabad,"Power Windows, AC",Seller_556,+91-0485142025,2025-10-03,Yes,Yes
+557,Toyota,Glanza,Top,SUV,2023,2,Diesel,Manual,20536,1,1833126,1239983,93.0,9,Partial,No,Silver,7,2200,20.9,UP32,Indore,"Power Windows, ABS",Seller_557,+91-9531029771,2025-09-28,No,Yes
+558,Maruti Suzuki,WagonR,Base,SUV,2012,13,Diesel,Manual,208517,3,2435052,614467,40.0,3,Unknown,Minor,Silver,7,2500,17.2,RJ14,Kochi,"Power Windows, AC, Power Steering",Seller_558,+91-7459915304,2025-10-24,No,Yes
+559,Tata,Tiago,Top,Hatchback,2012,13,Petrol,Automatic,213901,4,690954,167654,40.0,6,Unknown,Major,Grey,5,1200,12.6,KA01,Chennai,"AC, Power Steering",Seller_559,+91-7210513346,2025-11-07,Yes,No
+560,Tata,Altroz,Base,Hatchback,2010,15,Petrol,Manual,207742,3,416528,106613,40.0,9,Complete,Minor,Blue,5,1000,15.4,KA01,Chandigarh,Basic,Seller_560,+91-0716348508,2025-09-18,No,Yes
+561,Tata,Altroz,Base,Hatchback,2017,8,Petrol,Manual,71404,1,726220,175855,71.8,6,Unknown,No,Red,5,1000,17.9,DL01,Ahmedabad,"Power Windows, AC, Power Steering",Seller_561,+91-1266783055,2025-10-10,Yes,Yes
+562,Mahindra,Bolero,VXI,SUV,2023,2,Diesel,AMT,21148,1,1495722,1043369,91.1,10,Complete,No,Blue,7,2500,16.8,GJ01,Chennai,ABS,Seller_562,+91-4215248319,2025-10-16,No,No
+563,Mahindra,Thar,ZXI,SUV,2014,11,Diesel,Manual,159783,4,3287873,837593,40.0,1,Partial,Minor,Black,5,1500,21.6,KA01,Indore,"Power Windows, Touchscreen Infotainment",Seller_563,+91-2911872282,2025-10-24,No,Yes
+564,Mahindra,XUV300,VXI,SUV,2011,14,Diesel,Automatic,247373,2,2815188,688254,40.0,6,Partial,Minor,Grey,5,1500,24.9,MH01,Jaipur,"Power Windows, AC, Power Steering",Seller_564,+91-3163129755,2025-10-13,Yes,No
+565,Hyundai,Creta,LXI,SUV,2019,6,Petrol,Automatic,106412,1,1171950,306992,70.3,2,Complete,No,Red,5,2500,12.6,RJ14,Chandigarh,"Power Windows, AC, Power Steering",Seller_565,+91-1317985490,2025-09-23,Yes,Yes
+566,Renault,Kwid,Mid,Hatchback,2013,12,Petrol,Manual,215077,3,594810,150244,40.0,2,Partial,No,Grey,5,1000,18.5,DL01,Delhi,"Power Windows, AC",Seller_566,+91-4762123601,2025-09-27,No,Yes
+567,Renault,Duster,Base,SUV,2015,10,Diesel,Manual,114827,2,2434150,618371,60.5,5,Unknown,No,Blue,5,2000,22.0,RJ14,Nagpur,"Power Windows, AC",Seller_567,+91-1133973670,2025-10-11,No,Yes
+568,Ford,Endeavour,LXI,SUV,2021,4,Petrol,Manual,49200,2,1519955,553635,75.4,3,Complete,Minor,Red,5,2500,14.5,MH01,Bangalore,"AC, Power Steering",Seller_568,+91-4202435094,2025-10-13,No,Yes
+569,Hyundai,i20,LXI,Hatchback,2020,5,Petrol,AMT,45845,1,543636,151260,84.9,3,Complete,No,Grey,5,1200,13.1,HR26,Chennai,"Power Windows, AC, Power Steering, Airbags",Seller_569,+91-1035659429,2025-10-04,Yes,Yes
+570,Tata,Altroz,VXI,Hatchback,2017,8,Petrol,Automatic,125273,3,714545,173131,59.2,10,Complete,Minor,Red,5,1000,13.0,KA01,Kochi,Power Steering,Seller_570,+91-4889334375,2025-11-04,No,No
+571,Kia,Carens,ZXI,MPV,2014,11,Petrol,Automatic,152948,3,1396175,361349,46.6,10,Partial,Minor,Blue,8,1500,14.0,GJ01,Nagpur,"Power Windows, AC, Power Steering",Seller_571,+91-7650471883,2025-11-10,Yes,No
+572,Toyota,Innova Crysta,VXI,MPV,2012,13,Petrol,Automatic,148702,3,2350994,608619,40.0,9,Complete,No,Blue,8,1500,12.6,TN01,Lucknow,"Power Windows, Power Steering",Seller_572,+91-5665051886,2025-11-09,No,Yes
+573,Ford,Figo,VXI,Hatchback,2014,11,Petrol,Manual,124493,3,592905,152539,40.0,3,Unknown,No,Blue,5,800,18.6,UP32,Mumbai,"Power Windows, AC",Seller_573,+91-7140250385,2025-09-16,No,Yes
+574,Tata,Safari,LXI,SUV,2016,9,Diesel,Manual,143984,3,1845925,442310,48.6,12,Complete,No,Orange,7,2200,15.8,TN01,Jaipur,Power Steering,Seller_574,+91-7586703656,2025-11-01,Yes,Yes
+575,Kia,Sonet,Top,SUV,2014,11,Petrol,Manual,163956,4,1825948,454044,40.0,4,Partial,Minor,Orange,7,2000,17.4,KA01,Nagpur,"Power Windows, AC",Seller_575,+91-9774759443,2025-10-23,No,No
+576,Tata,Nexon,Top,SUV,2015,10,Diesel,Automatic,154467,1,1806742,442563,57.6,1,Partial,Minor,Red,5,1500,21.2,MH01,Chandigarh,"Power Windows, AC",Seller_576,+91-5823445385,2025-09-30,No,Yes
+577,Mahindra,Scorpio,ZXI,SUV,2012,13,Diesel,Manual,193701,2,3447854,825570,40.0,9,Unknown,No,Silver,5,2200,20.0,RJ14,Delhi,"Power Windows, Sunroof",Seller_577,+91-8687047966,2025-09-29,No,Yes
+578,Tata,Harrier,Base,SUV,2019,6,Petrol,Manual,85879,2,3318255,803056,68.0,11,Partial,Minor,Brown,7,1500,14.5,RJ14,Nagpur,"Power Windows, AC, ABS",Seller_578,+91-1866047473,2025-10-28,No,No
+579,Honda,Civic,ZXI,SUV,2021,4,Diesel,Automatic,42262,1,2055071,1006156,81.1,11,Partial,No,Red,7,2000,23.4,DL01,Kochi,"Power Windows, AC, Power Steering, ABS, Touchscreen Infotainment, Sunroof",Seller_579,+91-7413135183,2025-11-10,Yes,Yes
+580,Toyota,Fortuner,LXI,SUV,2014,11,Diesel,Automatic,149111,2,2264910,577884,54.2,10,Complete,No,Brown,7,1500,18.8,HR26,Kolkata,"Power Windows, Power Steering",Seller_580,+91-9180038146,2025-10-29,No,Yes
+581,Renault,Kiger,VXI,SUV,2014,11,Diesel,Manual,198676,4,1815703,442552,40.0,5,Partial,No,Red,5,1500,18.2,MH01,Coimbatore,AC,Seller_581,+91-0965984557,2025-10-15,No,No
+582,Mahindra,XUV500,Mid,SUV,2022,3,Diesel,Manual,49454,2,3278884,1639124,80.5,6,Partial,Major,Silver,5,1500,19.2,DL01,Nagpur,"Power Windows, AC, Power Steering, Sunroof",Seller_582,+91-8224216826,2025-09-19,No,Yes
+583,Hyundai,Alcazar,LXI,SUV,2015,10,Diesel,Automatic,109172,3,1412412,368893,58.2,5,Unknown,No,Black,7,1500,22.0,KA01,Jaipur,Power Steering,Seller_583,+91-2438712951,2025-10-23,No,Yes
+584,Maruti Suzuki,Ertiga,ZXI,MPV,2020,5,CNG,Manual,83814,1,2490333,631914,77.2,4,Complete,No,Orange,8,2200,18.4,MH01,Kochi,"Power Steering, ABS",Seller_584,+91-4301655623,2025-10-09,No,Yes
+585,Volkswagen,Tiguan,ZXI,SUV,2021,4,Diesel,Automatic,58781,1,1664041,610102,82.6,1,Complete,Major,Red,7,1500,24.2,RJ14,Jaipur,"Power Windows, Power Steering, ABS",Seller_585,+91-8035148953,2025-10-06,Yes,No
+586,Honda,City,ZXI,Sedan,2011,14,Petrol,Manual,174072,2,979256,245071,44.8,8,Unknown,Major,Brown,5,1500,15.0,KA01,Coimbatore,"Power Windows, Power Steering",Seller_586,+91-8280183235,2025-10-28,Yes,Yes
+587,Volkswagen,Taigun,Base,SUV,2016,9,Diesel,Manual,137225,3,3480741,839429,51.3,3,Partial,Major,Red,7,2200,24.0,HR26,Delhi,"Power Windows, Power Steering, Sunroof",Seller_587,+91-1148626751,2025-09-18,No,No
+588,Renault,Triber,VXI,SUV,2016,9,Petrol,Automatic,124648,1,2302359,567010,57.4,8,Partial,No,Silver,5,1500,12.7,HR26,Pune,"Power Windows, AC",Seller_588,+91-3492766809,2025-10-01,No,Yes
+589,Maruti Suzuki,Swift,ZXI,Hatchback,2022,3,Petrol,Manual,32626,1,503040,264111,85.5,3,Complete,Minor,Brown,5,1200,15.9,HR26,Pune,"Power Windows, Power Steering",Seller_589,+91-6746272053,2025-10-16,No,Yes
+590,Renault,Kwid,VXI,Hatchback,2011,14,Petrol,Manual,234448,4,633018,158208,40.0,5,Partial,Minor,Black,5,800,15.1,GJ01,Delhi,AC,Seller_590,+91-7890751991,2025-10-03,No,Yes
+591,Ford,Figo,Base,Hatchback,2015,10,Petrol,Manual,125542,2,716677,175085,47.9,7,Unknown,No,Brown,5,1000,16.7,MH01,Kochi,Power Windows,Seller_591,+91-4368771569,2025-10-30,Yes,No
+592,Renault,Duster,Top,SUV,2022,3,Diesel,Manual,49562,2,1810789,1036229,80.1,10,Complete,No,Silver,7,2500,19.5,TN01,Kolkata,"Power Windows, AC, ABS, Airbags",Seller_592,+91-7225578564,2025-11-04,Yes,Yes
+593,Ford,Figo,LXI,Hatchback,2011,14,Petrol,Manual,200467,3,724835,183991,40.0,6,Complete,No,Blue,5,1200,12.9,TN01,Chandigarh,"Power Windows, Power Steering",Seller_593,+91-0714697147,2025-09-29,No,Yes
+594,Mahindra,Scorpio,Mid,SUV,2011,14,Diesel,Manual,243751,2,2973494,708825,40.0,6,Unknown,Minor,Blue,5,2500,20.4,KA01,Lucknow,"Power Windows, Power Steering",Seller_594,+91-9389676353,2025-09-21,No,Yes
+595,Toyota,Innova Crysta,Base,MPV,2021,4,Petrol,AMT,37992,1,1753060,697422,87.0,1,Complete,Minor,White,8,2000,12.4,RJ14,Delhi,Power Windows,Seller_595,+91-3579671480,2025-10-29,No,No
+596,Maruti Suzuki,Celerio,ZXI,SUV,2020,5,Diesel,Automatic,76771,2,1443270,375138,73.2,7,Partial,Major,Silver,7,2500,24.4,DL01,Bangalore,Airbags,Seller_596,+91-2526119789,2025-09-20,Yes,Yes
+597,Honda,Civic,LXI,SUV,2022,3,Diesel,AMT,36451,1,2361545,1261792,86.7,8,Complete,Major,Grey,5,2500,24.2,TN01,Delhi,Power Windows,Seller_597,+91-9376841847,2025-11-05,No,Yes
+598,Tata,Altroz,Mid,Hatchback,2010,15,Diesel,Manual,167715,3,539965,134120,40.0,8,Partial,Minor,Brown,5,1200,21.0,MH01,Bangalore,"Power Windows, AC, Power Steering",Seller_598,+91-0488868041,2025-10-09,No,No
+599,Maruti Suzuki,Dzire,LXI,Sedan,2024,1,CNG,AMT,13254,1,1434504,1133496,95.0,9,Complete,Minor,White,5,1600,27.1,TN01,Kolkata,"Power Windows, Power Steering, Airbags",Seller_599,+91-7034251970,2025-11-03,No,Yes
+600,Toyota,Glanza,ZXI,SUV,2013,12,Petrol,Automatic,182508,4,1962963,511803,40.0,0,Unknown,No,Blue,5,2000,18.9,TN01,Jaipur,"AC, Power Steering",Seller_600,+91-1065735174,2025-10-20,No,Yes

@@ -1,0 +1,85 @@
+========================================
+HOW TO RUN THE APPLICATION
+========================================
+
+SETUP INSTRUCTIONS:
+
+1. Make sure Python 3.8+ is installed
+   Check: python --version
+
+2. Install required packages
+   Command: pip install -r requirements.txt
+
+   (This might take 5-10 minutes depending on internet speed)
+
+3. The datasets are already generated in /data folder
+   Files: new_cars_dataset.csv, used_cars_dataset.csv
+
+4. The ML models are already trained in /models/trained_models folder
+   (If you want to retrain, run the training scripts in /models)
+
+5. Database is ready with all data loaded
+   File: automotive_marketplace.db
+
+6. Run the application
+   Command: python run.py
+
+7. Open web browser and go to:
+   http://127.0.0.1:5000
+
+8. To stop the server, press: CTRL+C in terminal
+
+
+FEATURES TO TEST:
+
+1. HOME PAGE (/)
+   - Shows statistics and featured cars
+
+2. RECOMMENDATIONS (/recommendations)
+   - Fill the form with budget and preferences
+   - Click "Get Recommendations"
+   - View top 5 personalized car suggestions
+
+3. MARKETPLACE (/marketplace)
+   - Browse used cars
+   - Apply filters
+   - Click on any car to see details
+
+4. BUY-BACK VALUATION (/buyback)
+   - Enter car details
+   - Get instant valuation with price range
+
+5. EMI CALCULATOR (/emi-calculator)
+   - Calculate monthly EMI for car loan
+
+
+TROUBLESHOOTING:
+
+Problem: Port 5000 already in use
+Solution: Change port in run.py (line 18) to 5001 or any other port
+
+Problem: Module not found error
+Solution: pip install --upgrade -r requirements.txt
+
+Problem: Database error
+Solution: Delete automotive_marketplace.db and run: python utils/load_data.py
+
+
+PROJECT STRUCTURE:
+- app/ - Main Flask application code
+- models/ - ML model training scripts
+- data/ - Datasets
+- templates/ - HTML files
+- static/ - CSS, JS files
+- utils/ - Helper functions
+
+
+ML MODELS USED:
+- XGBoost (Best: 94.6% accuracy for recommendations)
+- Random Forest
+- Decision Tree
+- Gradient Boosting
+
+For more details, check README.md
+
+========================================

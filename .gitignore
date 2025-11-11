@@ -1,0 +1,34 @@
+# Python stuff
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+*.egg-info/
+
+# Flask
+instance/
+.webassets-cache
+
+# Database
+*.db
+*.sqlite
+
+# IDE - VS Code
+.vscode/
+.idea/
+
+# ML Models temp files
+models/trained_models/*.log
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
