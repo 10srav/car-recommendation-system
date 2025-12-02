@@ -53,11 +53,23 @@
                 {% for car in cars %}
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 hover-card">
-                        <div class="card-header text-white text-center py-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <i class="bi bi-car-front-fill fs-2"></i>
-                            <h6 class="mt-2 mb-0">{{ car.brand }} {{ car.model }}</h6>
+                        <div class="position-relative">
+                            <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ car.brand }} {{ car.model }}"
+                                 style="height: 180px; object-fit: cover;"
+                                 onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                            <div class="position-absolute top-0 start-0 m-2">
+                                <span class="badge bg-warning text-dark">{{ car.registration_year }}</span>
+                            </div>
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    {{ car.condition_score|int }}/100
+                                </span>
+                            </div>
                         </div>
                         <div class="card-body">
+                            <h6 class="card-title mb-1">{{ car.brand }} {{ car.model }}</h6>
                             <div class="text-center mb-3">
                                 <h4 class="text-primary mb-0">₹{{ "{:,.0f}".format(car.current_price) }}</h4>
                                 <small class="text-muted">{{ car.registration_year }} Model</small>
@@ -77,8 +89,8 @@
                                     <p class="mb-0"><small>{{ car.num_owners }} Owner(s)</small></p>
                                 </div>
                                 <div class="col-6">
-                                    <i class="bi bi-award text-danger"></i>
-                                    <p class="mb-0"><small>{{ car.condition_score }}/100</small></p>
+                                    <i class="bi bi-gear text-danger"></i>
+                                    <p class="mb-0"><small>{{ car.transmission }}</small></p>
                                 </div>
                             </div>
                             <a href="{{ url_for('main.car_details', listing_id=car.listing_id) }}" class="btn btn-primary btn-sm w-100">

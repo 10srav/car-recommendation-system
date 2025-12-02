@@ -178,63 +178,175 @@ $(document).ready(function() {
         var container = $('#recommendationsContainer');
         container.empty();
 
+        // Car image mapping for common brands
+        var carImages = {
+            'Maruti Suzuki': {
+                'Swift': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/54399/swift-exterior-right-front-three-quarter-64.jpeg',
+                'Dzire': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/55883/dzire-exterior-right-front-three-quarter-2.jpeg',
+                'Alto': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/113501/alto-k10-exterior-right-front-three-quarter-2.jpeg',
+                'WagonR': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/135591/wagon-r-exterior-right-front-three-quarter-5.jpeg',
+                'Baleno': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/132427/baleno-exterior-right-front-three-quarter-28.jpeg',
+                'Celerio': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/51349/celerio-exterior-right-front-three-quarter.jpeg',
+                'Ciaz': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/48542/ciaz-exterior-right-front-three-quarter-3.jpeg',
+                'Ertiga': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/115025/ertiga-exterior-right-front-three-quarter-2.jpeg',
+                'Grand Vitara': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/100837/grand-vitara-exterior-right-front-three-quarter-4.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/54399/swift-exterior-right-front-three-quarter-64.jpeg'
+            },
+            'Hyundai': {
+                'i20': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/150579/i20-exterior-right-front-three-quarter-5.jpeg',
+                'Grand i10 Nios': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/141113/grand-i10-nios-exterior-right-front-three-quarter-7.jpeg',
+                'i10': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/141113/grand-i10-nios-exterior-right-front-three-quarter-7.jpeg',
+                'Verna': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/121943/verna-exterior-right-front-three-quarter.jpeg',
+                'Creta': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg',
+                'Venue': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/141115/venue-exterior-right-front-three-quarter-6.jpeg',
+                'Tucson': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/97835/tucson-exterior-right-front-three-quarter-66.jpeg',
+                'Aura': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/48035/aura-exterior-right-front-three-quarter.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/150579/i20-exterior-right-front-three-quarter-5.jpeg'
+            },
+            'Tata': {
+                'Nexon': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/141867/nexon-exterior-right-front-three-quarter-69.jpeg',
+                'Punch': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/114551/punch-exterior-right-front-three-quarter-20.jpeg',
+                'Harrier': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/140893/harrier-exterior-right-front-three-quarter-74.jpeg',
+                'Safari': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/137507/safari-exterior-right-front-three-quarter-14.jpeg',
+                'Altroz': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/149035/altroz-exterior-right-front-three-quarter-5.jpeg',
+                'Tiago': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/118925/tiago-exterior-right-front-three-quarter-4.jpeg',
+                'Tigor': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/146699/tigor-exterior-right-front-three-quarter-4.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/141867/nexon-exterior-right-front-three-quarter-69.jpeg'
+            },
+            'Mahindra': {
+                'Thar': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/159771/thar-roxx-exterior-right-front-three-quarter-12.jpeg',
+                'Scorpio N': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/99009/scorpio-n-exterior-right-front-three-quarter-10.jpeg',
+                'Scorpio': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/99009/scorpio-n-exterior-right-front-three-quarter-10.jpeg',
+                'XUV700': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/42355/xuv700-exterior-right-front-three-quarter.jpeg',
+                'XUV300': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/102089/xuv300-exterior-right-front-three-quarter-5.jpeg',
+                'Bolero': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/107605/bolero-exterior-right-front-three-quarter.jpeg',
+                'Marazzo': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/26280/marazzo-exterior-right-front-three-quarter.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/99009/scorpio-n-exterior-right-front-three-quarter-10.jpeg'
+            },
+            'Toyota': {
+                'Innova': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-hycross-exterior-right-front-three-quarter-5.jpeg',
+                'Innova Hycross': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-hycross-exterior-right-front-three-quarter-5.jpeg',
+                'Fortuner': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/44709/fortuner-exterior-right-front-three-quarter-19.jpeg',
+                'Glanza': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/133649/glanza-exterior-right-front-three-quarter-3.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-hycross-exterior-right-front-three-quarter-5.jpeg'
+            },
+            'Honda': {
+                'City': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/134287/city-exterior-right-front-three-quarter-77.jpeg',
+                'Amaze': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/161995/amaze-exterior-right-front-three-quarter-5.jpeg',
+                'Jazz': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/27074/jazz-exterior-right-front-three-quarter-3.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/134287/city-exterior-right-front-three-quarter-77.jpeg'
+            },
+            'Kia': {
+                'Seltos': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/149839/seltos-exterior-right-front-three-quarter-13.jpeg',
+                'Sonet': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/146271/sonet-exterior-right-front-three-quarter-22.jpeg',
+                'Carens': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/143459/carens-exterior-right-front-three-quarter-11.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/149839/seltos-exterior-right-front-three-quarter-13.jpeg'
+            },
+            'MG': {
+                'Hector': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/130583/hector-exterior-right-front-three-quarter-73.jpeg',
+                'Hector Plus': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/48047/hector-plus-exterior-right-front-three-quarter-3.jpeg',
+                'Astor': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/115139/astor-exterior-right-front-three-quarter-5.jpeg',
+                'Comet EV': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/108821/comet-ev-exterior-right-front-three-quarter.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/130583/hector-exterior-right-front-three-quarter-73.jpeg'
+            },
+            'Renault': {
+                'Kwid': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/141863/kwid-exterior-right-front-three-quarter-2.jpeg',
+                'Triber': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/51811/triber-exterior-right-front-three-quarter.jpeg',
+                'Kiger': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/118273/kiger-exterior-right-front-three-quarter-14.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/118273/kiger-exterior-right-front-three-quarter-14.jpeg'
+            },
+            'Nissan': {
+                'Magnite': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/127597/magnite-exterior-right-front-three-quarter-42.jpeg',
+                'default': 'https://imgd.aeplcdn.com/664x374/n/cw/ec/127597/magnite-exterior-right-front-three-quarter-42.jpeg'
+            }
+        };
+        
+        var defaultImage = 'https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg';
+        
+        function getCarImage(brand, model) {
+            if (carImages[brand]) {
+                if (carImages[brand][model]) {
+                    return carImages[brand][model];
+                }
+                // Try partial match
+                for (var key in carImages[brand]) {
+                    if (model.toLowerCase().includes(key.toLowerCase()) || key.toLowerCase().includes(model.toLowerCase())) {
+                        return carImages[brand][key];
+                    }
+                }
+                return carImages[brand]['default'] || defaultImage;
+            }
+            return defaultImage;
+        }
+
         recommendations.forEach(function(car, index) {
+            var carImage = getCarImage(car.brand, car.model);
             var card = `
                 <div class="col-md-6">
-                    <div class="card h-100 shadow-sm ${index === 0 ? 'border-primary' : ''}">
+                    <div class="card h-100 shadow-sm hover-card ${index === 0 ? 'border-primary border-2' : ''}">
                         ${index === 0 ? '<div class="card-header bg-primary text-white text-center"><strong>🏆 Top Recommendation</strong></div>' : ''}
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                <h5 class="card-title">${car.brand} ${car.model}</h5>
+                        <div class="position-relative">
+                            <img src="${carImage}" 
+                                 class="card-img-top" 
+                                 alt="${car.brand} ${car.model}"
+                                 style="height: 200px; object-fit: cover;"
+                                 onerror="this.src='${defaultImage}'">
+                            <div class="position-absolute top-0 end-0 m-2">
                                 <span class="badge bg-success">${car.confidence}% Match</span>
                             </div>
+                            <div class="position-absolute top-0 start-0 m-2">
+                                <span class="badge bg-info">${car.body_type}</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">${car.brand} ${car.model}</h5>
+                            </div>
 
-                            <p class="text-muted mb-3">${car.variant}</p>
+                            <p class="text-muted mb-3 small">${car.variant}</p>
 
                             <div class="row mb-3">
                                 <div class="col-6">
                                     <strong>Price:</strong><br>
-                                    <h5 class="text-primary">₹${(car.price).toLocaleString('en-IN')}</h5>
+                                    <h5 class="text-primary mb-0">₹${(car.price).toLocaleString('en-IN')}</h5>
                                 </div>
                                 <div class="col-6">
                                     <strong>Mileage:</strong><br>
-                                    <h5 class="text-success">${car.mileage} km/l</h5>
+                                    <h5 class="text-success mb-0">${car.mileage} km/l</h5>
                                 </div>
                             </div>
 
-                            <hr>
+                            <hr class="my-2">
 
                             <div class="row text-center mb-3">
                                 <div class="col-4">
-                                    <div><strong>Power</strong></div>
-                                    <div>${car.power_hp} HP</div>
+                                    <div><i class="bi bi-lightning-charge text-warning"></i></div>
+                                    <div class="small"><strong>${car.power_hp} HP</strong></div>
                                 </div>
                                 <div class="col-4">
-                                    <div><strong>Safety</strong></div>
-                                    <div>
+                                    <div><i class="bi bi-shield-check text-success"></i></div>
+                                    <div class="small">
                                         ${'★'.repeat(car.safety_rating)}${'☆'.repeat(5 - car.safety_rating)}
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div><strong>Seats</strong></div>
-                                    <div>${car.seating_capacity}</div>
+                                    <div><i class="bi bi-people text-info"></i></div>
+                                    <div class="small"><strong>${car.seating_capacity} Seats</strong></div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <small class="text-muted">
-                                    <i class="bi bi-fuel-pump"></i> ${car.fuel_type} |
-                                    <i class="bi bi-gear"></i> ${car.transmission} |
-                                    <i class="bi bi-car-front"></i> ${car.body_type}
-                                </small>
+                                <span class="badge bg-secondary me-1"><i class="bi bi-fuel-pump"></i> ${car.fuel_type}</span>
+                                <span class="badge bg-secondary me-1"><i class="bi bi-gear"></i> ${car.transmission}</span>
                             </div>
 
-                            <div class="mb-3">
-                                <strong>Resale Value:</strong><br>
-                                <small>After 3 years: ${car.resale_value_3yr_percent}% | After 5 years: ${car.resale_value_5yr_percent}%</small>
+                            <div class="mb-3 small">
+                                <strong>Resale Value:</strong>
+                                <span class="text-success">3yr: ${car.resale_value_3yr_percent}%</span> |
+                                <span class="text-warning">5yr: ${car.resale_value_5yr_percent}%</span>
                             </div>
 
-                            <div class="d-grid gap-2">
+                            <div class="d-grid">
                                 <button class="btn btn-outline-primary" onclick="viewDetails(${car.car_id})">
                                     <i class="bi bi-info-circle"></i> View Full Details
                                 </button>

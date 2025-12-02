@@ -4,16 +4,31 @@
 
 {% block content %}
 <div class="container my-5">
-    <!-- Car Header -->
-    <div class="card shadow-lg mb-4 border-0">
-        <div class="card-header text-white text-center py-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-            <i class="bi bi-car-front-fill display-1"></i>
-            <h2 class="mt-3 mb-0">{{ car.brand }} {{ car.model }}</h2>
-            <p class="mb-0 text-white-50">{{ car.variant }}</p>
-        </div>
-        <div class="card-body text-center py-4" style="background: linear-gradient(to bottom, #f8f9fa, #ffffff);">
-            <h1 class="text-primary display-4 mb-0">₹{{ "{:,.0f}".format(car.current_price) }}</h1>
-            <p class="text-muted">{{ car.registration_year }} Model | {{ car.body_type }}</p>
+    <!-- Car Header with Image -->
+    <div class="card shadow-lg mb-4 border-0 overflow-hidden">
+        <div class="row g-0">
+            <div class="col-lg-6">
+                <img src="{{ get_large_url(get_car_image(car.brand, car.model, car.body_type)) }}" 
+                     class="img-fluid w-100" 
+                     alt="{{ car.brand }} {{ car.model }}"
+                     style="height: 350px; object-fit: cover;"
+                     onerror="this.src='https://imgd.aeplcdn.com/1056x594/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+            </div>
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <div class="card-body text-center py-4">
+                    <span class="badge bg-warning text-dark mb-2">{{ car.registration_year }} Model</span>
+                    <span class="badge bg-info mb-2">{{ car.body_type }}</span>
+                    <h2 class="mt-2 mb-1">{{ car.brand }} {{ car.model }}</h2>
+                    <p class="text-muted mb-3">{{ car.variant }}</p>
+                    <h1 class="text-primary display-4 mb-2">₹{{ "{:,.0f}".format(car.current_price) }}</h1>
+                    <p class="text-muted mb-0">
+                        <del>Original: ₹{{ "{:,.0f}".format(car.original_price) }}</del>
+                        <span class="badge bg-success ms-2">
+                            Save ₹{{ "{:,.0f}".format(car.original_price - car.current_price) }}
+                        </span>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -209,8 +224,15 @@
                 {% for similar in similar_cars %}
                 <div class="col-md-3 col-sm-6">
                     <div class="card h-100 shadow-sm border-0 hover-card">
-                        <div class="card-header text-white text-center py-3" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <i class="bi bi-car-front-fill fs-3"></i>
+                        <div class="position-relative">
+                            <img src="{{ get_thumbnail_url(get_car_image(similar.brand, similar.model, similar.body_type)) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ similar.brand }} {{ similar.model }}"
+                                 style="height: 140px; object-fit: cover;"
+                                 onerror="this.src='https://imgd.aeplcdn.com/370x208/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge bg-warning text-dark">{{ similar.registration_year }}</span>
+                            </div>
                         </div>
                         <div class="card-body text-center">
                             <h6 class="card-title mb-2">{{ similar.brand }} {{ similar.model }}</h6>

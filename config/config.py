@@ -2,6 +2,7 @@
 # Contains all settings and configurations
 
 import os
+from datetime import timedelta
 
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
@@ -11,11 +12,15 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         f'sqlite:///{os.path.join(BASE_DIR, "automotive_marketplace.db")}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        'pool_pre_ping': True,
+        'pool_recycle': 300,
+    }
 
     # Upload folder for images
     UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'uploads')
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
-    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
     # ML Models directory
     MODELS_DIR = os.path.join(BASE_DIR, 'models', 'trained_models')
@@ -26,6 +31,16 @@ class Config:
     # Pagination
     CARS_PER_PAGE = 12
 
+    # Session configuration
+    PERMANENT_SESSION_LIFETIME = timedelta(days=7)
+    SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+
+    # CSRF Protection
+    WTF_CSRF_ENABLED = True
+    WTF_CSRF_TIME_LIMIT = 3600  # 1 hour
+
     # Email configuration (for future implementation)
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 587)
@@ -33,23 +48,48 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
+    # Logging
+    LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO')
+
 
 class DevelopmentConfig(Config):
     """Development configuration"""
     DEBUG = True
     TESTING = False
+    SQLALCHEMY_ECHO = False  # Set to True to see SQL queries
 
 
 class ProductionConfig(Config):
     """Production configuration"""
     DEBUG = False
     TESTING = False
+    
+    # Security settings for production
+    SESSION_COOKIE_SECURE = True
+    WTF_CSRF_SSL_STRICT = True
+    
+    # Enforce stronger secret key in production
+    @property
+    def SECRET_KEY(self):
+        secret = os.environ.get('SECRET_KEY')
+        if not secret or secret == 'dev-secret-key-change-in-production':
+            raise ValueError("Production requires a secure SECRET_KEY environment variable")
+        return secret
+    
+    # Database connection pool settings for production
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        'pool_pre_ping': True,
+        'pool_recycle': 300,
+        'pool_size': 10,
+        'max_overflow': 20,
+    }
 
 
 class TestingConfig(Config):
     """Testing configuration"""
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    WTF_CSRF_ENABLED = False
 
 
 config = {

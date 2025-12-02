@@ -17,13 +17,17 @@
 
                         <div class="mb-3">
                             <label class="form-label">Brand *</label>
-                            <input type="text" class="form-control" name="brand" required placeholder="e.g., Hyundai">
+                            <select class="form-select" id="brand" name="brand" required>
+                                <option value="">Select Brand</option>
+                            </select>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label">Model *</label>
-                                <input type="text" class="form-control" name="model" required placeholder="e.g., Creta">
+                                <select class="form-select" id="model" name="model" required>
+                                    <option value="">Select Brand First</option>
+                                </select>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Variant</label>
@@ -186,6 +190,54 @@
 {% block extra_js %}
 <script>
 $(document).ready(function() {
+    // Load brands on page load
+    loadBrands();
+
+    // Load models when brand is selected
+    $('#brand').on('change', function() {
+        var brand = $(this).val();
+        if (brand) {
+            loadModels(brand);
+        } else {
+            $('#model').html('<option value="">Select Brand First</option>');
+        }
+    });
+
+    function loadBrands() {
+        $.ajax({
+            url: '/api/brands',
+            type: 'GET',
+            success: function(brands) {
+                var options = '<option value="">Select Brand</option>';
+                brands.forEach(function(brand) {
+                    options += '<option value="' + brand + '">' + brand + '</option>';
+                });
+                $('#brand').html(options);
+            },
+            error: function() {
+                console.error('Failed to load brands');
+            }
+        });
+    }
+
+    function loadModels(brand) {
+        $.ajax({
+            url: '/api/models/' + encodeURIComponent(brand),
+            type: 'GET',
+            success: function(models) {
+                var options = '<option value="">Select Model</option>';
+                models.forEach(function(model) {
+                    options += '<option value="' + model + '">' + model + '</option>';
+                });
+                $('#model').html(options);
+            },
+            error: function() {
+                console.error('Failed to load models for brand: ' + brand);
+                $('#model').html('<option value="">Error loading models</option>');
+            }
+        });
+    }
+
     $('#valuationForm').on('submit', function(e) {
         e.preventDefault();
 

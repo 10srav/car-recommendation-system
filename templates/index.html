@@ -93,14 +93,24 @@
             {% for car in featured_new_cars %}
             <div class="col-md-4 col-lg-4 mb-4">
                 <div class="card h-100 shadow-sm hover-card border-0">
-                    <div class="card-header bg-gradient text-white text-center py-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="bi bi-car-front-fill fs-1"></i>
-                        <h5 class="mt-2 mb-0">{{ car.brand }} {{ car.model }}</h5>
+                    <div class="position-relative">
+                        <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}" 
+                             class="card-img-top" 
+                             alt="{{ car.brand }} {{ car.model }}"
+                             style="height: 200px; object-fit: cover;"
+                             onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                        <div class="position-absolute top-0 start-0 m-2">
+                            <span class="badge bg-primary">{{ car.year }}</span>
+                        </div>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge bg-success">New</span>
+                        </div>
                     </div>
                     <div class="card-body">
+                        <h5 class="card-title mb-1">{{ car.brand }} {{ car.model }}</h5>
+                        <p class="text-muted small mb-2">{{ car.variant }}</p>
                         <div class="text-center mb-3">
                             <h3 class="text-primary mb-0">₹{{ "{:,.0f}".format(car.price) }}</h3>
-                            <small class="text-muted">{{ car.variant }}</small>
                         </div>
                         <hr>
                         <div class="row text-center g-2">
@@ -126,7 +136,6 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="badge bg-info">{{ car.fuel_type }}</span>
                             <span class="badge bg-secondary">{{ car.body_type }}</span>
-                            <small class="text-muted">{{ car.year }}</small>
                         </div>
                     </div>
                 </div>
@@ -144,12 +153,21 @@
             {% for car in featured_used_cars %}
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm hover-card border-0">
-                    <div class="card-header text-white text-center py-3" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <i class="bi bi-car-front fs-1"></i>
-                        <h5 class="mt-2 mb-0">{{ car.brand }} {{ car.model }}</h5>
-                        <small class="text-white-50">{{ car.registration_year }}</small>
+                    <div class="position-relative">
+                        <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}" 
+                             class="card-img-top" 
+                             alt="{{ car.brand }} {{ car.model }}"
+                             style="height: 200px; object-fit: cover;"
+                             onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                        <div class="position-absolute top-0 start-0 m-2">
+                            <span class="badge bg-warning text-dark">{{ car.registration_year }}</span>
+                        </div>
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge bg-danger">Used</span>
+                        </div>
                     </div>
                     <div class="card-body">
+                        <h5 class="card-title mb-1">{{ car.brand }} {{ car.model }}</h5>
                         <div class="text-center mb-3">
                             <h3 class="text-danger mb-0">₹{{ "{:,.0f}".format(car.current_price) }}</h3>
                         </div>

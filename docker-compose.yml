@@ -1,0 +1,67 @@
+# =====================================================
+# Docker Compose for Car Recommendation System
+# =====================================================
+# Usage: docker-compose up -d
+
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: car-recommendation-app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - SECRET_KEY=${SECRET_KEY:-your-super-secret-key-change-this}
+      - DATABASE_URL=sqlite:///automotive_marketplace.db
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - sqlite_data:/app/instance
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Uncomment for PostgreSQL in production
+  # db:
+  #   image: postgres:15-alpine
+  #   container_name: car-recommendation-db
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+  #     - POSTGRES_DB=automotive_marketplace
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+  # Uncomment for nginx reverse proxy
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: car-recommendation-nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./static:/app/static:ro
+  #   depends_on:
+  #     - web
+  #   restart: unless-stopped
+
+volumes:
+  sqlite_data:
+  # postgres_data:
+
+networks:
+  default:
+    name: car-recommendation-network

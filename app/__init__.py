@@ -22,6 +22,12 @@ def create_app(config_name='development'):
     from app.models import db
     db.init_app(app)
 
+    # Register custom Jinja2 filters for car images
+    from utils.car_images import get_car_image, get_thumbnail_url, get_large_url
+    app.jinja_env.globals['get_car_image'] = get_car_image
+    app.jinja_env.globals['get_thumbnail_url'] = get_thumbnail_url
+    app.jinja_env.globals['get_large_url'] = get_large_url
+
     # Register blueprints
     from app.routes import main_bp
     app.register_blueprint(main_bp)
