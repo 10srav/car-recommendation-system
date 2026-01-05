@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block title %}Car Details - Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Admin Panel</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('admin.users_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-people"></i> Users
+                    </a>
+                    <a href="{{ url_for('admin.cars_list') }}" class="list-group-item list-group-item-action active">
+                        <i class="bi bi-car-front"></i> Car Listings
+                    </a>
+                    <a href="{{ url_for('admin.valuations_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-calculator"></i> Valuations
+                    </a>
+                    <a href="{{ url_for('admin.analytics') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-graph-up"></i> Analytics
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('admin.dashboard') }}">Admin</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('admin.cars_list') }}">Cars</a></li>
+                    <li class="breadcrumb-item active">{{ car.brand }} {{ car.model }}</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                <!-- Car Image & Basic Info -->
+                <div class="col-md-5">
+                    <div class="card shadow-sm mb-4">
+                        <img src="{{ get_car_image(car.brand, car.model) }}" class="card-img-top" alt="{{ car.brand }} {{ car.model }}" style="height: 300px; object-fit: cover;">
+                        <div class="card-body">
+                            <h3>{{ car.brand }} {{ car.model }}</h3>
+                            <h4 class="text-success">{{ "{:,.0f}".format(car.current_price) }}</h4>
+                            <div class="mb-3">
+                                <span class="badge {{ 'bg-success' if not car.is_sold else 'bg-secondary' }} fs-6">
+                                    {{ 'Available' if not car.is_sold else 'Sold' }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admin Actions -->
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h6 class="mb-0">Admin Actions</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-{{ 'danger' if not car.is_sold else 'success' }}" onclick="toggleSold({{ car.listing_id }})">
+                                    <i class="bi bi-tag"></i> Mark as {{ 'Sold' if not car.is_sold else 'Available' }}
+                                </button>
+                                <button class="btn btn-outline-danger" onclick="deleteCar({{ car.listing_id }})">
+                                    <i class="bi bi-trash"></i> Delete Listing
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Details -->
+                <div class="col-md-7">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-info-circle"></i> Car Specifications</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="text-muted">Listing ID</td>
+                                            <td><strong>#{{ car.listing_id }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Brand</td>
+                                            <td><strong>{{ car.brand }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Model</td>
+                                            <td><strong>{{ car.model }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Registration Year</td>
+                                            <td><strong>{{ car.registration_year }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Fuel Type</td>
+                                            <td><strong>{{ car.fuel_type }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Transmission</td>
+                                            <td><strong>{{ car.transmission }}</strong></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="text-muted">Kilometers Driven</td>
+                                            <td><strong>{{ "{:,}".format(car.km_driven) }} km</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Owners</td>
+                                            <td><strong>{{ car.owner_type }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Location</td>
+                                            <td><strong>{{ car.location or 'N/A' }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Mileage</td>
+                                            <td><strong>{{ car.mileage or 'N/A' }} km/l</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Engine</td>
+                                            <td><strong>{{ car.engine_cc or 'N/A' }} cc</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Power</td>
+                                            <td><strong>{{ car.power_bhp or 'N/A' }} bhp</strong></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seller Information -->
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-person"></i> Seller Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td class="text-muted" style="width: 150px;">Seller Name</td>
+                                    <td><strong>{{ car.seller_name or 'N/A' }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Contact</td>
+                                    <td><strong>{{ car.seller_contact or 'N/A' }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Seller Type</td>
+                                    <td><strong>{{ car.seller_type or 'N/A' }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Listed On</td>
+                                    <td><strong>{{ car.listing_date.strftime('%d %b %Y') if car.listing_date else 'N/A' }}</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleSold(listingId) {
+    if (!confirm('Are you sure you want to change this car\'s status?')) return;
+
+    fetch(`/admin/api/cars/${listingId}/toggle-sold`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            location.reload();
+        } else {
+            alert(data.error || 'Failed to update status');
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+}
+
+function deleteCar(listingId) {
+    if (!confirm('Are you sure you want to delete this listing? This cannot be undone.')) return;
+
+    fetch(`/admin/api/cars/${listingId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            window.location.href = '{{ url_for("admin.cars_list") }}';
+        } else {
+            alert(data.error || 'Failed to delete listing');
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+}
+</script>
+{% endblock %}

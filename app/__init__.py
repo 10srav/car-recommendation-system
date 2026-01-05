@@ -11,6 +11,8 @@ from flask_bcrypt import Bcrypt
 from flask_wtf.csrf import CSRFProtect
 import os
 import logging
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 
 # Initialize extensions (will be bound to app in create_app)
 limiter = Limiter(
@@ -26,6 +28,19 @@ csrf = CSRFProtect()
 
 def create_app(config_name='development'):
     """Create and configure the Flask application"""
+
+    # Initialize Sentry for error tracking (production only)
+    sentry_dsn = os.environ.get('SENTRY_DSN')
+    if sentry_dsn and config_name == 'production':
+        sentry_sdk.init(
+            dsn=sentry_dsn,
+            integrations=[FlaskIntegration()],
+            traces_sample_rate=0.1,  # 10% of transactions for performance monitoring
+            profiles_sample_rate=0.1,
+            environment=config_name,
+            send_default_pii=False  # Don't send personally identifiable information
+        )
+
     app = Flask(__name__,
                 template_folder='../templates',
                 static_folder='../static')
@@ -98,12 +113,14 @@ def create_app(config_name='development'):
     # Initialize rate limiter
     limiter.init_app(app)
 
-    # Configure logging
-    if not app.debug:
-        logging.basicConfig(
-            level=getattr(logging, app.config.get('LOG_LEVEL', 'INFO')),
-            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        )
+    # Initialize email service
+    from app.email_service import init_mail
+    init_mail(app)
+
+    # Configure structured logging
+    from app.logging_config import setup_logging, log_request
+    setup_logging(app)
+    log_request(app)
 
     # Register custom Jinja2 filters for car images
     from utils.car_images import get_car_image, get_thumbnail_url, get_large_url
@@ -114,8 +131,12 @@ def create_app(config_name='development'):
     # Register blueprints
     from app.routes import main_bp
     from app.auth import auth_bp
+    from app.api_docs import api_bp
+    from app.admin import admin_bp
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(api_bp)
+    app.register_blueprint(admin_bp)
 
     # Create database tables
     with app.app_context():

@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Auto Marketplace{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Admin Panel</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('admin.users_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-people"></i> Users
+                    </a>
+                    <a href="{{ url_for('admin.cars_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-car-front"></i> Car Listings
+                    </a>
+                    <a href="{{ url_for('admin.valuations_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-calculator"></i> Valuations
+                    </a>
+                    <a href="{{ url_for('admin.analytics') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-graph-up"></i> Analytics
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <h2 class="mb-4"><i class="bi bi-speedometer2"></i> Dashboard Overview</h2>
+
+            <!-- Stats Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="card bg-primary text-white shadow">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="text-uppercase">Total Users</h6>
+                                    <h2 class="mb-0">{{ stats.total_users }}</h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="bi bi-people fs-1 opacity-50"></i>
+                                </div>
+                            </div>
+                            <small>{{ stats.active_users }} active</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-success text-white shadow">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="text-uppercase">Used Cars</h6>
+                                    <h2 class="mb-0">{{ stats.total_used_cars }}</h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="bi bi-car-front fs-1 opacity-50"></i>
+                                </div>
+                            </div>
+                            <small>{{ stats.available_used_cars }} available</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-info text-white shadow">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="text-uppercase">New Cars</h6>
+                                    <h2 class="mb-0">{{ stats.total_new_cars }}</h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="bi bi-stars fs-1 opacity-50"></i>
+                                </div>
+                            </div>
+                            <small>In catalog</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-warning text-dark shadow">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h6 class="text-uppercase">Valuations</h6>
+                                    <h2 class="mb-0">{{ stats.total_valuations }}</h2>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="bi bi-calculator fs-1 opacity-50"></i>
+                                </div>
+                            </div>
+                            <small>{{ stats.pending_valuations }} pending</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Recent Users -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-person-plus"></i> Recent Users</h5>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            {% for user in recent_users %}
+                            <a href="{{ url_for('admin.user_detail', user_id=user.id) }}" class="list-group-item list-group-item-action">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <strong>{{ user.username }}</strong>
+                                        <br><small class="text-muted">{{ user.email }}</small>
+                                    </div>
+                                    <small class="text-muted">{{ user.created_at.strftime('%d %b') if user.created_at else 'N/A' }}</small>
+                                </div>
+                            </a>
+                            {% else %}
+                            <div class="list-group-item text-muted">No recent users</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Listings -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-car-front"></i> Recent Listings</h5>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            {% for car in recent_listings %}
+                            <a href="{{ url_for('admin.car_detail', listing_id=car.listing_id) }}" class="list-group-item list-group-item-action">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <strong>{{ car.brand }} {{ car.model }}</strong>
+                                        <br><small class="text-muted">₹{{ "{:,.0f}".format(car.current_price) }}</small>
+                                    </div>
+                                    <span class="badge {{ 'bg-success' if not car.is_sold else 'bg-secondary' }}">
+                                        {{ 'Available' if not car.is_sold else 'Sold' }}
+                                    </span>
+                                </div>
+                            </a>
+                            {% else %}
+                            <div class="list-group-item text-muted">No recent listings</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Valuations -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-calculator"></i> Recent Valuations</h5>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            {% for val in recent_valuations %}
+                            <a href="{{ url_for('admin.valuation_detail', valuation_id=val.id) }}" class="list-group-item list-group-item-action">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <strong>{{ val.brand }} {{ val.model }}</strong>
+                                        <br><small class="text-muted">{{ val.customer_name }}</small>
+                                    </div>
+                                    <span class="badge {{ 'bg-warning' if val.status == 'pending' else 'bg-success' }}">
+                                        {{ val.status }}
+                                    </span>
+                                </div>
+                            </a>
+                            {% else %}
+                            <div class="list-group-item text-muted">No recent valuations</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

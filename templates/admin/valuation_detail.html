@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block title %}Valuation Details - Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Admin Panel</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('admin.users_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-people"></i> Users
+                    </a>
+                    <a href="{{ url_for('admin.cars_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-car-front"></i> Car Listings
+                    </a>
+                    <a href="{{ url_for('admin.valuations_list') }}" class="list-group-item list-group-item-action active">
+                        <i class="bi bi-calculator"></i> Valuations
+                    </a>
+                    <a href="{{ url_for('admin.analytics') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-graph-up"></i> Analytics
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('admin.dashboard') }}">Admin</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('admin.valuations_list') }}">Valuations</a></li>
+                    <li class="breadcrumb-item active">#{{ valuation.id }}</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                <!-- Valuation Summary -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="bi bi-calculator"></i> Valuation Summary</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <h3>{{ valuation.brand }} {{ valuation.model }}</h3>
+                            <p class="text-muted">{{ valuation.registration_year }}</p>
+
+                            {% if valuation.estimated_price_avg %}
+                            <div class="alert alert-success">
+                                <h4 class="mb-1">Estimated Value</h4>
+                                <h2 class="mb-0">{{ "{:,.0f}".format(valuation.estimated_price_avg) }}</h2>
+                                <small>Range: {{ "{:,.0f}".format(valuation.estimated_price_min) }} - {{ "{:,.0f}".format(valuation.estimated_price_max) }}</small>
+                            </div>
+                            {% else %}
+                            <div class="alert alert-warning">
+                                <h5>Valuation Pending</h5>
+                            </div>
+                            {% endif %}
+
+                            <div class="d-flex justify-content-around mt-3">
+                                <div>
+                                    <h5 class="mb-0">{{ valuation.condition_score or 'N/A' }}</h5>
+                                    <small class="text-muted">Condition</small>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">{{ "%.0f" | format((valuation.confidence_score or 0) * 100) }}%</h5>
+                                    <small class="text-muted">Confidence</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="badge {{ 'bg-warning' if valuation.status == 'pending' else 'bg-info' if valuation.status == 'reviewed' else 'bg-success' if valuation.status == 'completed' else 'bg-secondary' }} fs-6">
+                                {{ valuation.status }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Status Actions -->
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h6 class="mb-0">Update Status</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-warning btn-sm" onclick="updateStatus({{ valuation.id }}, 'pending')" {% if valuation.status == 'pending' %}disabled{% endif %}>
+                                    <i class="bi bi-clock"></i> Pending
+                                </button>
+                                <button class="btn btn-info btn-sm" onclick="updateStatus({{ valuation.id }}, 'reviewed')" {% if valuation.status == 'reviewed' %}disabled{% endif %}>
+                                    <i class="bi bi-eye"></i> Reviewed
+                                </button>
+                                <button class="btn btn-success btn-sm" onclick="updateStatus({{ valuation.id }}, 'completed')" {% if valuation.status == 'completed' %}disabled{% endif %}>
+                                    <i class="bi bi-check-circle"></i> Completed
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="updateStatus({{ valuation.id }}, 'cancelled')" {% if valuation.status == 'cancelled' %}disabled{% endif %}>
+                                    <i class="bi bi-x-circle"></i> Cancelled
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details -->
+                <div class="col-md-8">
+                    <!-- Customer Info -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-person"></i> Customer Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Name:</strong> {{ valuation.customer_name }}</p>
+                                    <p><strong>Email:</strong> {{ valuation.customer_email }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Phone:</strong> {{ valuation.customer_phone or 'N/A' }}</p>
+                                    <p><strong>Submitted:</strong> {{ valuation.created_at.strftime('%d %b %Y %H:%M') if valuation.created_at else 'N/A' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Car Details -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-car-front"></i> Car Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="text-muted">Brand</td>
+                                            <td><strong>{{ valuation.brand }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Model</td>
+                                            <td><strong>{{ valuation.model }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Year</td>
+                                            <td><strong>{{ valuation.registration_year }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Fuel Type</td>
+                                            <td><strong>{{ valuation.fuel_type }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Transmission</td>
+                                            <td><strong>{{ valuation.transmission }}</strong></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td class="text-muted">Kilometers</td>
+                                            <td><strong>{{ "{:,}".format(valuation.km_driven) }} km</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Owners</td>
+                                            <td><strong>{{ valuation.owner_type }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Location</td>
+                                            <td><strong>{{ valuation.location or 'N/A' }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Body Type</td>
+                                            <td><strong>{{ valuation.body_type or 'N/A' }}</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Original Price</td>
+                                            <td><strong>{{ "{:,.0f}".format(valuation.original_price) if valuation.original_price else 'N/A' }}</strong></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Condition Details -->
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-clipboard-check"></i> Condition Assessment</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p><strong>Insurance:</strong> {{ valuation.insurance_validity or 'N/A' }}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><strong>Service History:</strong> {{ valuation.service_history or 'N/A' }}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><strong>Accident History:</strong> {{ 'Yes' if valuation.accident_history else 'No' }}</p>
+                                </div>
+                            </div>
+                            {% if valuation.additional_notes %}
+                            <hr>
+                            <p><strong>Additional Notes:</strong></p>
+                            <p class="text-muted">{{ valuation.additional_notes }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateStatus(valuationId, status) {
+    if (!confirm(`Change valuation status to ${status}?`)) return;
+
+    fetch(`/admin/api/valuations/${valuationId}/status`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify({ status: status })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            location.reload();
+        } else {
+            alert(data.error || 'Failed to update status');
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+}
+</script>
+{% endblock %}

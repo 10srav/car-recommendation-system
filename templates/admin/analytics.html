@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Admin Panel</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('admin.users_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-people"></i> Users
+                    </a>
+                    <a href="{{ url_for('admin.cars_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-car-front"></i> Car Listings
+                    </a>
+                    <a href="{{ url_for('admin.valuations_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-calculator"></i> Valuations
+                    </a>
+                    <a href="{{ url_for('admin.analytics') }}" class="list-group-item list-group-item-action active">
+                        <i class="bi bi-graph-up"></i> Analytics
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <h2 class="mb-4"><i class="bi bi-graph-up"></i> Analytics Dashboard</h2>
+
+            <div class="row">
+                <!-- Daily Registrations Chart -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-person-plus"></i> User Registrations (Last 30 Days)</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="usersChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Valuations Chart -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-calculator"></i> Valuations (Last 30 Days)</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="valuationsChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Top Brands -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-trophy"></i> Top Brands by Listings</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="brandsChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Distribution -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-currency-rupee"></i> Price Distribution</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="priceChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Stats -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-table"></i> Top Brands Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Brand</th>
+                                        <th>Listings</th>
+                                        <th>Share</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% set total = top_brands | map(attribute=1) | sum %}
+                                    {% for brand, count in top_brands %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td><strong>{{ brand }}</strong></td>
+                                        <td>{{ count }}</td>
+                                        <td>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar" role="progressbar"
+                                                     style="width: {{ (count / total * 100) if total > 0 else 0 }}%">
+                                                    {{ "%.1f" | format((count / total * 100) if total > 0 else 0) }}%
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Daily Users Chart
+    const usersCtx = document.getElementById('usersChart').getContext('2d');
+    new Chart(usersCtx, {
+        type: 'line',
+        data: {
+            labels: [{% for item in daily_users %}'{{ item.date }}'{% if not loop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                label: 'New Users',
+                data: [{% for item in daily_users %}{{ item.count }}{% if not loop.last %}, {% endif %}{% endfor %}],
+                borderColor: 'rgb(102, 126, 234)',
+                backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                tension: 0.3,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // Daily Valuations Chart
+    const valuationsCtx = document.getElementById('valuationsChart').getContext('2d');
+    new Chart(valuationsCtx, {
+        type: 'line',
+        data: {
+            labels: [{% for item in daily_valuations %}'{{ item.date }}'{% if not loop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                label: 'Valuations',
+                data: [{% for item in daily_valuations %}{{ item.count }}{% if not loop.last %}, {% endif %}{% endfor %}],
+                borderColor: 'rgb(40, 167, 69)',
+                backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                tension: 0.3,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // Top Brands Chart
+    const brandsCtx = document.getElementById('brandsChart').getContext('2d');
+    new Chart(brandsCtx, {
+        type: 'bar',
+        data: {
+            labels: [{% for brand, count in top_brands %}'{{ brand }}'{% if not loop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                label: 'Listings',
+                data: [{% for brand, count in top_brands %}{{ count }}{% if not loop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: [
+                    'rgba(102, 126, 234, 0.8)',
+                    'rgba(118, 75, 162, 0.8)',
+                    'rgba(40, 167, 69, 0.8)',
+                    'rgba(23, 162, 184, 0.8)',
+                    'rgba(255, 193, 7, 0.8)',
+                    'rgba(220, 53, 69, 0.8)',
+                    'rgba(108, 117, 125, 0.8)',
+                    'rgba(0, 123, 255, 0.8)',
+                    'rgba(111, 66, 193, 0.8)',
+                    'rgba(253, 126, 20, 0.8)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // Price Distribution Chart
+    const priceCtx = document.getElementById('priceChart').getContext('2d');
+    new Chart(priceCtx, {
+        type: 'doughnut',
+        data: {
+            labels: [{% for item in price_distribution %}'{{ item.label }}'{% if not loop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                data: [{% for item in price_distribution %}{{ item.count }}{% if not loop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: [
+                    'rgba(40, 167, 69, 0.8)',
+                    'rgba(23, 162, 184, 0.8)',
+                    'rgba(255, 193, 7, 0.8)',
+                    'rgba(253, 126, 20, 0.8)',
+                    'rgba(220, 53, 69, 0.8)'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

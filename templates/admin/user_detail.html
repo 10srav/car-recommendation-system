@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+
+{% block title %}User Details - Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="bi bi-gear"></i> Admin Panel</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                    <a href="{{ url_for('admin.users_list') }}" class="list-group-item list-group-item-action active">
+                        <i class="bi bi-people"></i> Users
+                    </a>
+                    <a href="{{ url_for('admin.cars_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-car-front"></i> Car Listings
+                    </a>
+                    <a href="{{ url_for('admin.valuations_list') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-calculator"></i> Valuations
+                    </a>
+                    <a href="{{ url_for('admin.analytics') }}" class="list-group-item list-group-item-action">
+                        <i class="bi bi-graph-up"></i> Analytics
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('admin.dashboard') }}">Admin</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('admin.users_list') }}">Users</a></li>
+                    <li class="breadcrumb-item active">{{ user.username }}</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                <!-- User Info Card -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="bi bi-person-circle"></i> User Profile</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-person-circle" style="font-size: 80px; color: #6c757d;"></i>
+                            </div>
+                            <h4>{{ user.username }}</h4>
+                            <p class="text-muted">{{ user.email }}</p>
+                            <div class="mb-3">
+                                <span class="badge {{ 'bg-danger' if user.role == 'admin' else 'bg-info' if user.role == 'moderator' else 'bg-secondary' }} fs-6">
+                                    {{ user.role }}
+                                </span>
+                                <span class="badge {{ 'bg-success' if user.is_active else 'bg-danger' }} fs-6">
+                                    {{ 'Active' if user.is_active else 'Inactive' }}
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>User ID</span>
+                                <strong>{{ user.id }}</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Joined</span>
+                                <strong>{{ user.created_at.strftime('%d %b %Y') if user.created_at else 'N/A' }}</strong>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Last Updated</span>
+                                <strong>{{ user.updated_at.strftime('%d %b %Y') if user.updated_at else 'N/A' }}</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Admin Actions -->
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h6 class="mb-0">Admin Actions</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-warning" onclick="toggleUserActive({{ user.id }})">
+                                    <i class="bi bi-{{ 'pause' if user.is_active else 'play' }}"></i>
+                                    {{ 'Deactivate' if user.is_active else 'Activate' }} User
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-info dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-shield"></i> Change Role
+                                    </button>
+                                    <ul class="dropdown-menu w-100">
+                                        <li><a class="dropdown-item" href="#" onclick="changeRole({{ user.id }}, 'user')">User</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="changeRole({{ user.id }}, 'moderator')">Moderator</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="changeRole({{ user.id }}, 'admin')">Admin</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity -->
+                <div class="col-md-8">
+                    <!-- Recent Valuations -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-calculator"></i> Recent Valuations</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Car</th>
+                                        <th>Estimated Price</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for val in valuations %}
+                                    <tr>
+                                        <td>{{ val.brand }} {{ val.model }}</td>
+                                        <td>{{ "{:,.0f}".format(val.estimated_price_avg) if val.estimated_price_avg else 'N/A' }}</td>
+                                        <td>
+                                            <span class="badge {{ 'bg-warning' if val.status == 'pending' else 'bg-success' }}">
+                                                {{ val.status }}
+                                            </span>
+                                        </td>
+                                        <td>{{ val.created_at.strftime('%d %b %Y') if val.created_at else 'N/A' }}</td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted">No valuations</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Recent Recommendations -->
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="bi bi-star"></i> Recent Recommendations</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Results</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for rec in recommendations %}
+                                    <tr>
+                                        <td>{{ rec.recommendation_type }}</td>
+                                        <td>{{ rec.results_count or 0 }} cars</td>
+                                        <td>{{ rec.created_at.strftime('%d %b %Y %H:%M') if rec.created_at else 'N/A' }}</td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="3" class="text-center text-muted">No recommendation history</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleUserActive(userId) {
+    if (!confirm('Are you sure you want to change this user\'s status?')) return;
+
+    fetch(`/admin/api/users/${userId}/toggle-active`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            location.reload();
+        } else {
+            alert(data.error || 'Failed to update user');
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+}
+
+function changeRole(userId, role) {
+    if (!confirm(`Change user role to ${role}?`)) return;
+
+    fetch(`/admin/api/users/${userId}/change-role`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify({ role: role })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            location.reload();
+        } else {
+            alert(data.error || 'Failed to change role');
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+}
+</script>
+{% endblock %}

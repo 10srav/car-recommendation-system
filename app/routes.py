@@ -524,6 +524,41 @@ def valuation_details(valuation_id):
 
 # ==================== UTILITY ROUTES ====================
 
+@main_bp.route('/health')
+@main_bp.route('/api/health')
+def health_check():
+    """Health check endpoint for monitoring and container orchestration"""
+    import time
+    health_status = {
+        'status': 'healthy',
+        'timestamp': datetime.now().isoformat(),
+        'version': '1.0.0',
+        'checks': {}
+    }
+
+    # Check database connection
+    try:
+        db.session.execute(db.text('SELECT 1'))
+        health_status['checks']['database'] = {'status': 'healthy'}
+    except Exception as e:
+        health_status['checks']['database'] = {'status': 'unhealthy', 'error': str(e)}
+        health_status['status'] = 'unhealthy'
+
+    # Check ML models
+    try:
+        if ml_models.recommendation_engine and ml_models.price_predictor and ml_models.buyback_valuator:
+            health_status['checks']['ml_models'] = {'status': 'healthy'}
+        else:
+            health_status['checks']['ml_models'] = {'status': 'unhealthy', 'error': 'Models not loaded'}
+            health_status['status'] = 'unhealthy'
+    except Exception as e:
+        health_status['checks']['ml_models'] = {'status': 'unhealthy', 'error': str(e)}
+        health_status['status'] = 'unhealthy'
+
+    status_code = 200 if health_status['status'] == 'healthy' else 503
+    return jsonify(health_status), status_code
+
+
 @main_bp.route('/api/brands')
 def get_brands():
     """Get list of brands"""
