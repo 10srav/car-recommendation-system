@@ -621,7 +621,9 @@ class TestBuybackValuationSchema:
         data = {
             'brand': 'Maruti Suzuki',
             'model': 'Swift',
+            'body_type': 'Hatchback',
             'registration_year': 2019,
+            'original_price': 700000,
             'mileage_km': 45000,
             'num_owners': 1,
             'fuel_type': 'Petrol',
@@ -643,12 +645,14 @@ class TestBuybackValuationSchema:
             'brand': 'Honda',
             'model': 'City',
             'variant': 'V CVT',
+            'body_type': 'Sedan',
             'registration_year': 2020,
+            'original_price': 1200000,
             'mileage_km': 30000,
             'num_owners': 1,
             'fuel_type': 'Petrol',
             'transmission': 'Automatic',
-            'service_history': 'Full',
+            'service_history': 'Complete',
             'accident_history': 'Minor',
             'insurance_valid': True,
             'modifications': 'Alloy wheels, tinted windows',
@@ -658,7 +662,7 @@ class TestBuybackValuationSchema:
             'inspection_requested': True
         }
         result = buyback_valuation_schema.load(data)
-        assert result['service_history'] == 'Full'
+        assert result['service_history'] == 'Complete'
         assert result['inspection_requested'] is True
 
     def test_invalid_customer_email(self):
@@ -666,7 +670,9 @@ class TestBuybackValuationSchema:
         data = {
             'brand': 'Maruti',
             'model': 'Swift',
+            'body_type': 'Hatchback',
             'registration_year': 2019,
+            'original_price': 700000,
             'mileage_km': 45000,
             'num_owners': 1,
             'fuel_type': 'Petrol',
@@ -684,12 +690,14 @@ class TestBuybackValuationSchema:
         data = {
             'brand': 'Maruti',
             'model': 'Swift',
+            'body_type': 'Hatchback',
             'registration_year': 2019,
+            'original_price': 700000,
             'mileage_km': 45000,
             'num_owners': 1,
             'fuel_type': 'Petrol',
             'transmission': 'Manual',
-            'service_history': 'Unknown',
+            'service_history': 'InvalidValue',
             'customer_name': 'John',
             'customer_phone': '+919876543210',
             'customer_email': 'john@example.com'
@@ -703,7 +711,9 @@ class TestBuybackValuationSchema:
         data = {
             'brand': 'Maruti',
             'model': 'Swift',
+            'body_type': 'Hatchback',
             'registration_year': 2019,
+            'original_price': 700000,
             'mileage_km': 45000,
             'num_owners': 1,
             'fuel_type': 'Petrol',
