@@ -48,7 +48,7 @@
                         <img src="{{ get_car_image(car.brand, car.model) }}" class="card-img-top" alt="{{ car.brand }} {{ car.model }}" style="height: 300px; object-fit: cover;">
                         <div class="card-body">
                             <h3>{{ car.brand }} {{ car.model }}</h3>
-                            <h4 class="text-success">{{ "{:,.0f}".format(car.current_price) }}</h4>
+                            <h4 class="text-success">{{ "{:,.0f}".format(car.current_price) if car.current_price else 'N/A' }}</h4>
                             <div class="mb-3">
                                 <span class="badge {{ 'bg-success' if not car.is_sold else 'bg-secondary' }} fs-6">
                                     {{ 'Available' if not car.is_sold else 'Sold' }}
@@ -115,7 +115,7 @@
                                     <table class="table table-borderless">
                                         <tr>
                                             <td class="text-muted">Kilometers Driven</td>
-                                            <td><strong>{{ "{:,}".format(car.km_driven) }} km</strong></td>
+                                            <td><strong>{{ "{:,}".format(car.km_driven) if car.km_driven else 'N/A' }} km</strong></td>
                                         </tr>
                                         <tr>
                                             <td class="text-muted">Owners</td>

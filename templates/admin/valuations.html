@@ -78,7 +78,7 @@
                                     <a href="{{ url_for('admin.valuation_detail', valuation_id=val.id) }}">
                                         <strong>{{ val.brand }}</strong> {{ val.model }}
                                     </a>
-                                    <br><small class="text-muted">{{ val.registration_year }} | {{ "{:,}".format(val.km_driven) }} km</small>
+                                    <br><small class="text-muted">{{ val.registration_year }} | {{ "{:,}".format(val.km_driven) if val.km_driven else 'N/A' }} km</small>
                                 </td>
                                 <td>
                                     {{ val.customer_name }}

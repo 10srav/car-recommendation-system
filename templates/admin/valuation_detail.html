@@ -162,7 +162,7 @@
                                     <table class="table table-borderless">
                                         <tr>
                                             <td class="text-muted">Kilometers</td>
-                                            <td><strong>{{ "{:,}".format(valuation.km_driven) }} km</strong></td>
+                                            <td><strong>{{ "{:,}".format(valuation.km_driven) if valuation.km_driven else 'N/A' }} km</strong></td>
                                         </tr>
                                         <tr>
                                             <td class="text-muted">Owners</td>
