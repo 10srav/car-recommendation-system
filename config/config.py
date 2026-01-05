@@ -26,7 +26,7 @@ class Config:
     # Base configuration class
     SECRET_KEY = get_secret_key()
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        f'sqlite:///{os.path.join(BASE_DIR, "automotive_marketplace.db")}'
+        f'sqlite:///{os.path.join(BASE_DIR, "automotive_marketplace_v2.db")}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ENGINE_OPTIONS = {
         'pool_pre_ping': True,

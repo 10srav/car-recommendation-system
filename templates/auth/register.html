@@ -216,7 +216,8 @@ document.getElementById('registerForm').addEventListener('submit', async functio
             alertContainer.innerHTML = `<div class="alert alert-danger">${errorMsg}</div>`;
         }
     } catch (error) {
-        alertContainer.innerHTML = '<div class="alert alert-danger">Network error. Please try again.</div>';
+        console.error('Registration error:', error);
+        alertContainer.innerHTML = `<div class="alert alert-danger">Error: ${error.message || 'Network error. Please try again.'}</div>`;
     } finally {
         btn.innerHTML = originalText;
         btn.disabled = false;
