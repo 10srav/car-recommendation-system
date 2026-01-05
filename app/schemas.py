@@ -1,7 +1,7 @@
 """
 Marshmallow schemas for input validation and serialization
 """
-from marshmallow import Schema, fields, validate, validates, ValidationError, post_load
+from marshmallow import Schema, fields, validate, validates, ValidationError, post_load, pre_load
 import re
 
 
@@ -213,9 +213,17 @@ class BuybackValuationSchema(Schema):
     brand = fields.Str(required=True, validate=validate.Length(min=1, max=50))
     model = fields.Str(required=True, validate=validate.Length(min=1, max=100))
     variant = fields.Str(validate=validate.Length(max=50), allow_none=True)
+    body_type = fields.Str(
+        required=True,
+        validate=validate.OneOf(['Hatchback', 'Sedan', 'SUV', 'MPV', 'MUV', 'Coupe', 'Convertible'])
+    )
     registration_year = fields.Int(
         required=True,
         validate=validate.Range(min=1990, max=2026)
+    )
+    original_price = fields.Int(
+        required=True,
+        validate=validate.Range(min=50000, max=100000000)
     )
     mileage_km = fields.Int(
         required=True,
@@ -231,25 +239,59 @@ class BuybackValuationSchema(Schema):
     )
     transmission = fields.Str(
         required=True,
-        validate=validate.OneOf(['Manual', 'Automatic'])
+        validate=validate.OneOf(['Manual', 'Automatic', 'AMT'])
     )
     service_history = fields.Str(
-        validate=validate.OneOf(['Full', 'Partial', 'None']),
+        validate=validate.OneOf(['Complete', 'Partial', 'Unknown']),
         load_default='Partial'
     )
     accident_history = fields.Str(
-        validate=validate.OneOf(['Yes', 'No', 'Minor']),
+        validate=validate.OneOf(['No', 'Minor', 'Major']),
         load_default='No'
     )
     insurance_valid = fields.Bool(load_default=False)
+    insurance_validity_months = fields.Int(
+        validate=validate.Range(min=0, max=12),
+        load_default=0
+    )
+    seating_capacity = fields.Int(
+        validate=validate.Range(min=2, max=10),
+        load_default=5
+    )
+    engine_cc = fields.Int(
+        validate=validate.Range(min=500, max=6000),
+        load_default=1200
+    )
+    fuel_efficiency_kmpl = fields.Float(
+        validate=validate.Range(min=5.0, max=50.0),
+        load_default=15.0
+    )
     modifications = fields.Str(validate=validate.Length(max=500), allow_none=True)
     customer_name = fields.Str(required=True, validate=validate.Length(min=2, max=100))
     customer_phone = fields.Str(
         required=True,
-        validate=validate.Regexp(r'^\+?[1-9]\d{9,14}$', error="Invalid phone number")
+        validate=validate.Regexp(r'^\+?[\d\s\-]{10,15}$', error="Invalid phone number")
     )
-    customer_email = fields.Email(required=True)
+    customer_email = fields.Str(allow_none=True, load_default=None)
     inspection_requested = fields.Bool(load_default=False)
+
+    @pre_load
+    def clean_empty_strings(self, data, **kwargs):
+        """Convert empty strings to None for optional fields"""
+        optional_fields = ['customer_email', 'variant', 'modifications']
+        for field in optional_fields:
+            if field in data and data[field] == '':
+                data[field] = None
+        return data
+
+    @validates('customer_email')
+    def validate_email(self, value, **kwargs):
+        """Allow None or valid email"""
+        if value is None:
+            return
+        import re
+        if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', value):
+            raise ValidationError('Not a valid email address.')
 
 
 class PricePredictionSchema(Schema):

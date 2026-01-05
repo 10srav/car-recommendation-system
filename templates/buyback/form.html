@@ -254,6 +254,8 @@ $(document).ready(function() {
             }
         });
 
+        console.log('Sending form data:', formData);
+
         $.ajax({
             url: '/api/buyback-valuation',
             type: 'POST',
@@ -272,7 +274,16 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 $('#loadingSpinner').hide();
-                alert('Error getting valuation: ' + error);
+                var errorMsg = 'Error getting valuation: ' + error;
+                if (xhr.responseJSON && xhr.responseJSON.errors) {
+                    errorMsg = 'Validation errors:\n';
+                    for (var field in xhr.responseJSON.errors) {
+                        errorMsg += field + ': ' + xhr.responseJSON.errors[field].join(', ') + '\n';
+                    }
+                }
+                alert(errorMsg);
+                console.log('Form data sent:', formData);
+                console.log('Server response:', xhr.responseJSON);
             }
         });
     });

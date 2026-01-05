@@ -449,7 +449,7 @@ def buyback_valuation():
             confidence_score=valuation_result['confidence_score'],
             customer_name=data['customer_name'],
             customer_phone=data['customer_phone'],
-            customer_email=data['customer_email'],
+            customer_email=data.get('customer_email'),
             inspection_requested=data.get('inspection_requested', False),
             status='pending'
         )
