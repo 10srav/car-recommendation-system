@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile - Auto Marketplace{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5><i class="bi bi-person-circle"></i> Profile</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="bi bi-person-circle" style="font-size: 5rem; color: #6c757d;"></i>
+                    </div>
+                    <h4 id="display-name">Loading...</h4>
+                    <p class="text-muted" id="display-email"></p>
+                    <span class="badge bg-primary" id="display-type"></span>
+                </div>
+            </div>
+
+            <div class="card shadow">
+                <div class="card-header">
+                    <h6><i class="bi bi-shield-lock"></i> Security</h6>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-outline-primary w-100 mb-2" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                        <i class="bi bi-key"></i> Change Password
+                    </button>
+                    <button class="btn btn-outline-danger w-100" id="logoutBtn">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5><i class="bi bi-pencil"></i> Edit Profile</h5>
+                </div>
+                <div class="card-body">
+                    <div id="profile-alert"></div>
+
+                    <form id="profileForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                   pattern="[a-zA-Z0-9_]+" minlength="3" maxlength="80">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="phone">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="user_type" class="form-label">Account Type</label>
+                            <select class="form-select" id="user_type" name="user_type">
+                                <option value="buyer">Buyer</option>
+                                <option value="seller">Seller</option>
+                                <option value="both">Buyer & Seller</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="updateBtn">
+                            <i class="bi bi-save"></i> Save Changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card shadow mt-4">
+                <div class="card-header">
+                    <h5><i class="bi bi-clock-history"></i> Account Info</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Member Since:</strong> <span id="created-at">-</span></p>
+                            <p><strong>Last Login:</strong> <span id="last-login">-</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Account Status:</strong> <span id="account-status" class="badge bg-success">Active</span></p>
+                            <p><strong>Email Verified:</strong> <span id="email-verified">-</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title"><i class="bi bi-key"></i> Change Password</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="password-alert"></div>
+                <form id="passwordForm">
+                    <div class="mb-3">
+                        <label for="current_password" class="form-label">Current Password</label>
+                        <input type="password" class="form-control" id="current_password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="new_password" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="new_password" required minlength="8">
+                        <small class="text-muted">Min 8 chars with uppercase, lowercase, number & special char</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm_new_password" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="confirm_new_password" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="changePasswordBtn">Change Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const accessToken = localStorage.getItem('access_token');
+
+if (!accessToken) {
+    window.location.href = '/auth/login-page?next=/auth/profile-page';
+}
+
+// Load profile data
+async function loadProfile() {
+    try {
+        const response = await fetch('/auth/profile', {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        });
+
+        if (response.status === 401) {
+            localStorage.clear();
+            window.location.href = '/auth/login-page';
+            return;
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            const user = data.user;
+
+            // Update display
+            document.getElementById('display-name').textContent =
+                (user.first_name || '') + ' ' + (user.last_name || '') || user.username;
+            document.getElementById('display-email').textContent = user.email;
+            document.getElementById('display-type').textContent = user.user_type;
+
+            // Fill form
+            document.getElementById('first_name').value = user.first_name || '';
+            document.getElementById('last_name').value = user.last_name || '';
+            document.getElementById('username').value = user.username || '';
+            document.getElementById('phone').value = user.phone || '';
+            document.getElementById('user_type').value = user.user_type || 'buyer';
+
+            // Account info
+            document.getElementById('created-at').textContent =
+                user.created_at ? new Date(user.created_at).toLocaleDateString() : '-';
+            document.getElementById('last-login').textContent =
+                user.last_login ? new Date(user.last_login).toLocaleString() : 'Never';
+            document.getElementById('email-verified').innerHTML =
+                user.is_verified ? '<span class="text-success">Yes</span>' : '<span class="text-warning">Pending</span>';
+        }
+    } catch (error) {
+        console.error('Error loading profile:', error);
+    }
+}
+
+loadProfile();
+
+// Update profile
+document.getElementById('profileForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('updateBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
+
+    try {
+        const response = await fetch('/auth/profile', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+            body: JSON.stringify({
+                username: document.getElementById('username').value,
+                first_name: document.getElementById('first_name').value || null,
+                last_name: document.getElementById('last_name').value || null,
+                phone: document.getElementById('phone').value || null,
+                user_type: document.getElementById('user_type').value
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.getElementById('profile-alert').innerHTML =
+                '<div class="alert alert-success alert-dismissible fade show">Profile updated successfully!<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>';
+            localStorage.setItem('user', JSON.stringify(data.user));
+            loadProfile();
+        } else {
+            let errorMsg = data.error || 'Update failed';
+            if (data.errors) {
+                errorMsg = Object.values(data.errors).flat().join('<br>');
+            }
+            document.getElementById('profile-alert').innerHTML =
+                `<div class="alert alert-danger alert-dismissible fade show">${errorMsg}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`;
+        }
+    } catch (error) {
+        document.getElementById('profile-alert').innerHTML =
+            '<div class="alert alert-danger">Network error. Please try again.</div>';
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-save"></i> Save Changes';
+    }
+});
+
+// Change password
+document.getElementById('changePasswordBtn').addEventListener('click', async function() {
+    const btn = this;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span>';
+
+    try {
+        const response = await fetch('/auth/change-password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+            body: JSON.stringify({
+                current_password: document.getElementById('current_password').value,
+                new_password: document.getElementById('new_password').value,
+                confirm_new_password: document.getElementById('confirm_new_password').value
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.getElementById('password-alert').innerHTML =
+                '<div class="alert alert-success">Password changed successfully!</div>';
+            document.getElementById('passwordForm').reset();
+            setTimeout(() => {
+                bootstrap.Modal.getInstance(document.getElementById('changePasswordModal')).hide();
+            }, 1500);
+        } else {
+            let errorMsg = data.error || 'Password change failed';
+            if (data.errors) {
+                errorMsg = Object.values(data.errors).flat().join('<br>');
+            }
+            document.getElementById('password-alert').innerHTML =
+                `<div class="alert alert-danger">${errorMsg}</div>`;
+        }
+    } catch (error) {
+        document.getElementById('password-alert').innerHTML =
+            '<div class="alert alert-danger">Network error. Please try again.</div>';
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = 'Change Password';
+    }
+});
+
+// Logout
+document.getElementById('logoutBtn').addEventListener('click', async function() {
+    try {
+        await fetch('/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        });
+    } catch (e) {}
+
+    localStorage.clear();
+    window.location.href = '/';
+});
+</script>
+{% endblock %}

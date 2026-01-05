@@ -12,20 +12,20 @@ class NewCar(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     car_id = db.Column(db.Integer, unique=True, nullable=False)
-    brand = db.Column(db.String(50), nullable=False)
+    brand = db.Column(db.String(50), nullable=False, index=True)
     model = db.Column(db.String(100), nullable=False)
     variant = db.Column(db.String(50))
-    body_type = db.Column(db.String(20))
+    body_type = db.Column(db.String(20), index=True)
     year = db.Column(db.Integer)
-    price = db.Column(db.Integer, nullable=False)
-    fuel_type = db.Column(db.String(20))
+    price = db.Column(db.Integer, nullable=False, index=True)
+    fuel_type = db.Column(db.String(20), index=True)
     mileage = db.Column(db.Float)
-    transmission = db.Column(db.String(20))
+    transmission = db.Column(db.String(20), index=True)
     seating_capacity = db.Column(db.Integer)
     engine_cc = db.Column(db.Integer)
     power_hp = db.Column(db.Integer)
     torque_nm = db.Column(db.Integer)
-    safety_rating = db.Column(db.Integer)
+    safety_rating = db.Column(db.Integer, index=True)
     safety_features = db.Column(db.Text)
     comfort_features = db.Column(db.Text)
     ground_clearance_mm = db.Column(db.Integer)
@@ -74,19 +74,19 @@ class UsedCar(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     listing_id = db.Column(db.Integer, unique=True, nullable=False)
-    brand = db.Column(db.String(50), nullable=False)
+    brand = db.Column(db.String(50), nullable=False, index=True)
     model = db.Column(db.String(100), nullable=False)
     variant = db.Column(db.String(50))
-    body_type = db.Column(db.String(20))
-    registration_year = db.Column(db.Integer)
+    body_type = db.Column(db.String(20), index=True)
+    registration_year = db.Column(db.Integer, index=True)
     age_years = db.Column(db.Integer)
-    fuel_type = db.Column(db.String(20))
-    transmission = db.Column(db.String(20))
+    fuel_type = db.Column(db.String(20), index=True)
+    transmission = db.Column(db.String(20), index=True)
     mileage_km = db.Column(db.Integer)
     num_owners = db.Column(db.Integer)
     original_price = db.Column(db.Integer)
-    current_price = db.Column(db.Integer, nullable=False)
-    condition_score = db.Column(db.Float)
+    current_price = db.Column(db.Integer, nullable=False, index=True)
+    condition_score = db.Column(db.Float, index=True)
     insurance_validity_months = db.Column(db.Integer)
     service_history = db.Column(db.String(20))
     accident_history = db.Column(db.String(20))
@@ -95,15 +95,15 @@ class UsedCar(db.Model):
     engine_cc = db.Column(db.Integer)
     fuel_efficiency_kmpl = db.Column(db.Float)
     rto = db.Column(db.String(10))
-    city = db.Column(db.String(50))
+    city = db.Column(db.String(50), index=True)
     features = db.Column(db.Text)
     seller_name = db.Column(db.String(100))
     seller_phone = db.Column(db.String(20))
-    listing_date = db.Column(db.Date)
+    listing_date = db.Column(db.Date, index=True)
     negotiable = db.Column(db.String(5))
     test_drive_available = db.Column(db.String(5))
     image_path = db.Column(db.String(255))
-    is_sold = db.Column(db.Boolean, default=False)
+    is_sold = db.Column(db.Boolean, default=False, index=True)
 
     def __repr__(self):
         return f'<UsedCar {self.brand} {self.model} {self.registration_year}>'
@@ -136,11 +136,31 @@ class User(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    username = db.Column(db.String(80), unique=True, nullable=False, index=True)
+    email = db.Column(db.String(120), unique=True, nullable=False, index=True)
+    password_hash = db.Column(db.String(255), nullable=False)
     phone = db.Column(db.String(20))
-    user_type = db.Column(db.String(20))  # buyer, seller, both
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    user_type = db.Column(db.String(20), default='buyer')  # buyer, seller, both
+    role = db.Column(db.String(20), default='user', index=True)  # user, admin, moderator
+
+    # Account status
+    is_active = db.Column(db.Boolean, default=True, index=True)
+    is_verified = db.Column(db.Boolean, default=False)
+    verified_at = db.Column(db.DateTime)
+
+    # Security fields
+    failed_login_attempts = db.Column(db.Integer, default=0)
+    locked_until = db.Column(db.DateTime)
+    last_login = db.Column(db.DateTime)
+    last_login_ip = db.Column(db.String(45))  # Supports IPv6
+
+    # Profile
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(50))
+
+    # Timestamps
+    created_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # Relationships
     recommendations = db.relationship('RecommendationHistory', backref='user', lazy=True)
@@ -148,6 +168,54 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
+
+    def set_password(self, password):
+        """Hash and set the password"""
+        from flask_bcrypt import generate_password_hash
+        self.password_hash = generate_password_hash(password).decode('utf-8')
+
+    def check_password(self, password):
+        """Check if provided password matches the hash"""
+        from flask_bcrypt import check_password_hash
+        return check_password_hash(self.password_hash, password)
+
+    def is_locked(self):
+        """Check if the account is locked"""
+        if self.locked_until is None:
+            return False
+        return datetime.utcnow() < self.locked_until
+
+    def increment_failed_login(self):
+        """Increment failed login attempts and lock if necessary"""
+        self.failed_login_attempts += 1
+        # Lock account after 5 failed attempts for 30 minutes
+        if self.failed_login_attempts >= 5:
+            from datetime import timedelta
+            self.locked_until = datetime.utcnow() + timedelta(minutes=30)
+
+    def reset_failed_login(self):
+        """Reset failed login attempts on successful login"""
+        self.failed_login_attempts = 0
+        self.locked_until = None
+
+    def to_dict(self, include_private=False):
+        """Convert user to dictionary"""
+        data = {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email if include_private else None,
+            'user_type': self.user_type,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'is_verified': self.is_verified,
+            'created_at': self.created_at.isoformat() if self.created_at else None
+        }
+        if include_private:
+            data['phone'] = self.phone
+            data['role'] = self.role
+            data['is_active'] = self.is_active
+            data['last_login'] = self.last_login.isoformat() if self.last_login else None
+        return data
 
 
 class RecommendationHistory(db.Model):
@@ -201,12 +269,12 @@ class Valuation(db.Model):
     # Contact and status
     customer_name = db.Column(db.String(100))
     customer_phone = db.Column(db.String(20))
-    customer_email = db.Column(db.String(120))
+    customer_email = db.Column(db.String(120), index=True)
     inspection_requested = db.Column(db.Boolean, default=False)
     inspection_date = db.Column(db.Date)
-    status = db.Column(db.String(20), default='pending')  # pending, inspected, offered, completed
+    status = db.Column(db.String(20), default='pending', index=True)  # pending, inspected, offered, completed
 
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow, index=True)
 
     def __repr__(self):
         return f'<Valuation {self.brand} {self.model} {self.registration_year}>'

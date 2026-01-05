@@ -2,13 +2,29 @@
 # Contains all settings and configurations
 
 import os
+import secrets
 from datetime import timedelta
 
 BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
+
+def get_secret_key():
+    """Get secret key from environment or generate a warning for development"""
+    secret = os.environ.get('SECRET_KEY')
+    if secret:
+        return secret
+    # Generate a random key for development (changes on each restart)
+    import warnings
+    warnings.warn(
+        "SECRET_KEY not set! Using random key. Set SECRET_KEY environment variable for production.",
+        RuntimeWarning
+    )
+    return secrets.token_hex(32)
+
+
 class Config:
     # Base configuration class
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
+    SECRET_KEY = get_secret_key()
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         f'sqlite:///{os.path.join(BASE_DIR, "automotive_marketplace.db")}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -16,6 +32,26 @@ class Config:
         'pool_pre_ping': True,
         'pool_recycle': 300,
     }
+
+    # ML Model preloading
+    PRELOAD_ML_MODELS = True
+
+    # Rate limiting defaults
+    RATELIMIT_ENABLED = True
+    RATELIMIT_STORAGE_URL = "memory://"
+    RATELIMIT_STRATEGY = "fixed-window"
+    RATELIMIT_DEFAULT = "200 per day, 50 per hour"
+
+    # CORS settings
+    CORS_ORIGINS = os.environ.get('CORS_ORIGINS', '*')
+
+    # JWT Configuration
+    JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or SECRET_KEY
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
+    JWT_TOKEN_LOCATION = ['headers']
+    JWT_HEADER_NAME = 'Authorization'
+    JWT_HEADER_TYPE = 'Bearer'
 
     # Upload folder for images
     UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'uploads')
@@ -90,6 +126,10 @@ class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
     WTF_CSRF_ENABLED = False
+    SECRET_KEY = 'test-secret-key-for-testing-only'
+    JWT_SECRET_KEY = 'test-jwt-secret-key-for-testing-only'
+    PRELOAD_ML_MODELS = False
+    RATELIMIT_ENABLED = False
 
 
 config = {

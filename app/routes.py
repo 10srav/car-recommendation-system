@@ -2,27 +2,34 @@
 Flask routes for the Indian Automotive Marketplace
 """
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash
-from app.models import db, NewCar, UsedCar, Valuation, RecommendationHistory
-from utils.ml_helper import RecommendationEngine, PricePredictor, BuyBackValuator
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
+from app.models import db, NewCar, UsedCar, Valuation, RecommendationHistory, User
+from app.ml_manager import ml_models
+from app.schemas import (
+    car_recommendation_schema, car_listing_schema,
+    buyback_valuation_schema, price_prediction_schema
+)
+from app import limiter, csrf
+from marshmallow import ValidationError
 import json
 from datetime import datetime
+from functools import wraps
 
 main_bp = Blueprint('main', __name__)
 
-# Initialize ML helpers
-recommendation_engine = None
-price_predictor = None
-buyback_valuator = None
 
-def init_ml_models():
-    """Initialize ML models on first request"""
-    global recommendation_engine, price_predictor, buyback_valuator
-    if recommendation_engine is None:
-        recommendation_engine = RecommendationEngine()
-    if price_predictor is None:
-        price_predictor = PricePredictor()
-    if buyback_valuator is None:
-        buyback_valuator = BuyBackValuator()
+def optional_jwt(fn):
+    """Decorator that allows optional JWT - extracts user if present"""
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        # Try to get user from JWT if present
+        try:
+            from flask_jwt_extended import verify_jwt_in_request
+            verify_jwt_in_request(optional=True)
+        except Exception:
+            pass
+        return fn(*args, **kwargs)
+    return wrapper
 
 
 @main_bp.route('/')
@@ -55,32 +62,45 @@ def recommendations():
 
 
 @main_bp.route('/api/recommendations', methods=['POST'])
+@csrf.exempt
+@limiter.limit("30 per minute")
+@optional_jwt
 def get_recommendations():
     """API endpoint to get car recommendations"""
-    init_ml_models()
+    # Validate input
+    try:
+        preferences = car_recommendation_schema.load(request.get_json() or {})
+    except ValidationError as err:
+        return jsonify({
+            'success': False,
+            'errors': err.messages
+        }), 400
 
     try:
-        data = request.get_json()
+        # Get recommendations from ML model (singleton - loaded once at startup)
+        recommendations = ml_models.recommendation_engine.get_recommendations(preferences, top_n=5)
 
-        # Extract user preferences
-        preferences = {
-            'budget_min': int(data.get('budget_min', 500000)),
-            'budget_max': int(data.get('budget_max', 1500000)),
-            'fuel_type': data.get('fuel_type'),
-            'body_type': data.get('body_type'),
-            'transmission': data.get('transmission'),
-            'usage_type': data.get('usage_type', 'mixed'),
-            'family_size': int(data.get('family_size', 4)),
-            'priority_factor': data.get('priority_factor', 'overall')
-        }
-
-        # Get recommendations from ML model
-        recommendations = recommendation_engine.get_recommendations(preferences, top_n=5)
-
-        # Save to history (optional - would need user_id)
-        # history = RecommendationHistory(...)
-        # db.session.add(history)
-        # db.session.commit()
+        # Save to history if user is authenticated
+        try:
+            user_id = get_jwt_identity()
+            if user_id:
+                history = RecommendationHistory(
+                    user_id=user_id,
+                    budget_min=preferences['budget_min'],
+                    budget_max=preferences['budget_max'],
+                    fuel_type=preferences.get('fuel_type'),
+                    body_type=preferences.get('body_type'),
+                    transmission=preferences.get('transmission'),
+                    usage_type=preferences.get('usage_type'),
+                    family_size=preferences.get('family_size'),
+                    priority_factor=preferences.get('priority_factor'),
+                    recommended_cars=json.dumps([r['car_id'] for r in recommendations]),
+                    model_used='xgboost_recommendation'
+                )
+                db.session.add(history)
+                db.session.commit()
+        except Exception:
+            pass  # Don't fail if history save fails
 
         return jsonify({
             'success': True,
@@ -91,8 +111,8 @@ def get_recommendations():
     except Exception as e:
         return jsonify({
             'success': False,
-            'error': str(e)
-        }), 400
+            'error': 'Failed to get recommendations. Please try again.'
+        }), 500
 
 
 @main_bp.route('/recommendations/compare')
@@ -187,38 +207,75 @@ def car_details(listing_id):
 
 
 @main_bp.route('/marketplace/list', methods=['GET', 'POST'])
+@limiter.limit("10 per hour", methods=["POST"])
 def list_car():
-    """List a car for sale"""
+    """List a car for sale (authentication optional but recommended)"""
     if request.method == 'POST':
+        # Check if it's a JSON API request or form submission
+        if request.is_json:
+            return list_car_api()
+
         try:
-            # Get form data
+            # Form validation - basic sanitization
+            form_data = {
+                'brand': request.form.get('brand', '').strip()[:50],
+                'model': request.form.get('model', '').strip()[:100],
+                'variant': request.form.get('variant', '').strip()[:50],
+                'body_type': request.form.get('body_type', '').strip(),
+                'registration_year': request.form.get('registration_year'),
+                'fuel_type': request.form.get('fuel_type', '').strip(),
+                'transmission': request.form.get('transmission', '').strip(),
+                'mileage_km': request.form.get('mileage_km'),
+                'num_owners': request.form.get('num_owners'),
+                'original_price': request.form.get('original_price'),
+                'current_price': request.form.get('current_price'),
+                'condition_score': request.form.get('condition_score', 70),
+                'color': request.form.get('color', '').strip()[:20],
+                'city': request.form.get('city', '').strip()[:50],
+                'seller_name': request.form.get('seller_name', '').strip()[:100],
+                'seller_phone': request.form.get('seller_phone', '').strip()[:20],
+            }
+
+            # Basic validation
+            required_fields = ['brand', 'model', 'body_type', 'registration_year',
+                             'fuel_type', 'transmission', 'current_price', 'seller_name', 'seller_phone']
+            for field in required_fields:
+                if not form_data.get(field):
+                    flash(f'{field.replace("_", " ").title()} is required', 'danger')
+                    return render_template('marketplace/list_car.html')
+
+            # Generate unique listing ID using max + 1 pattern (safer than count)
+            max_listing = db.session.query(db.func.max(UsedCar.listing_id)).scalar() or 1000
+            new_listing_id = max_listing + 1
+
+            registration_year = int(form_data['registration_year'])
             listing = UsedCar(
-                listing_id=UsedCar.query.count() + 1001,  # Generate unique ID
-                brand=request.form.get('brand'),
-                model=request.form.get('model'),
-                variant=request.form.get('variant'),
-                body_type=request.form.get('body_type'),
-                registration_year=int(request.form.get('registration_year')),
-                age_years=2025 - int(request.form.get('registration_year')),
-                fuel_type=request.form.get('fuel_type'),
-                transmission=request.form.get('transmission'),
-                mileage_km=int(request.form.get('mileage_km')),
-                num_owners=int(request.form.get('num_owners')),
-                original_price=int(request.form.get('original_price')),
-                current_price=int(request.form.get('current_price')),
-                condition_score=float(request.form.get('condition_score', 70)),
+                listing_id=new_listing_id,
+                brand=form_data['brand'],
+                model=form_data['model'],
+                variant=form_data['variant'] or None,
+                body_type=form_data['body_type'],
+                registration_year=registration_year,
+                age_years=datetime.now().year - registration_year,
+                fuel_type=form_data['fuel_type'],
+                transmission=form_data['transmission'],
+                mileage_km=int(form_data.get('mileage_km') or 0),
+                num_owners=int(form_data.get('num_owners') or 1),
+                original_price=int(form_data.get('original_price') or form_data['current_price']),
+                current_price=int(form_data['current_price']),
+                condition_score=float(form_data.get('condition_score') or 70),
                 insurance_validity_months=int(request.form.get('insurance_validity_months', 0)),
-                service_history=request.form.get('service_history'),
-                accident_history=request.form.get('accident_history'),
-                color=request.form.get('color'),
+                service_history=request.form.get('service_history', 'Partial'),
+                accident_history=request.form.get('accident_history', 'No'),
+                color=form_data['color'] or None,
                 seating_capacity=int(request.form.get('seating_capacity', 5)),
                 engine_cc=int(request.form.get('engine_cc', 1200)),
                 fuel_efficiency_kmpl=float(request.form.get('fuel_efficiency_kmpl', 15)),
-                rto=request.form.get('rto'),
-                city=request.form.get('city'),
-                features=request.form.get('features'),
-                seller_name=request.form.get('seller_name'),
-                seller_phone=request.form.get('seller_phone'),
+                rto=request.form.get('rto', '').strip()[:10] or None,
+                city=form_data['city'],
+                features=request.form.get('features', '').strip()[:500] or None,
+                seller_name=form_data['seller_name'],
+                seller_phone=form_data['seller_phone'],
                 listing_date=datetime.now().date(),
                 negotiable=request.form.get('negotiable', 'No'),
                 test_drive_available=request.form.get('test_drive_available', 'Yes'),
@@ -231,34 +288,109 @@ def list_car():
             flash('Your car has been listed successfully!', 'success')
             return redirect(url_for('main.car_details', listing_id=listing.listing_id))
 
+        except ValueError as e:
+            db.session.rollback()
+            flash('Please enter valid numeric values for price, year, and mileage', 'danger')
         except Exception as e:
             db.session.rollback()
-            flash(f'Error listing car: {str(e)}', 'danger')
+            flash('Error listing car. Please try again.', 'danger')
 
     return render_template('marketplace/list_car.html')
 
 
-@main_bp.route('/api/predict-price', methods=['POST'])
-def predict_price():
-    """API endpoint to predict used car price"""
-    init_ml_models()
+@main_bp.route('/api/marketplace/list', methods=['POST'])
+@csrf.exempt
+@jwt_required()
+@limiter.limit("10 per hour")
+def list_car_api():
+    """API endpoint to list a car for sale (requires authentication)"""
+    # Validate input
+    try:
+        data = car_listing_schema.load(request.get_json() or {})
+    except ValidationError as err:
+        return jsonify({
+            'success': False,
+            'errors': err.messages
+        }), 400
 
     try:
-        data = request.get_json()
+        user_id = get_jwt_identity()
 
-        # Use price predictor
-        predicted_price = price_predictor.predict_price(data)
+        # Generate unique listing ID
+        max_listing = db.session.query(db.func.max(UsedCar.listing_id)).scalar() or 1000
+        new_listing_id = max_listing + 1
+
+        registration_year = data['registration_year']
+        listing = UsedCar(
+            listing_id=new_listing_id,
+            brand=data['brand'],
+            model=data['model'],
+            variant=data.get('variant'),
+            body_type=data['body_type'],
+            registration_year=registration_year,
+            age_years=datetime.now().year - registration_year,
+            fuel_type=data['fuel_type'],
+            transmission=data['transmission'],
+            mileage_km=data['mileage_km'],
+            num_owners=data['num_owners'],
+            original_price=data['original_price'],
+            current_price=data['current_price'],
+            condition_score=data.get('condition_score', 70),
+            color=data.get('color'),
+            city=data['city'],
+            seller_name=data['seller_name'],
+            seller_phone=data['seller_phone'],
+            listing_date=datetime.now().date(),
+            is_sold=False
+        )
+
+        db.session.add(listing)
+        db.session.commit()
 
         return jsonify({
             'success': True,
-            'predicted_price': int(predicted_price)
+            'message': 'Car listed successfully',
+            'listing_id': listing.listing_id,
+            'listing': listing.to_dict()
+        }), 201
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({
+            'success': False,
+            'error': 'Failed to list car. Please try again.'
+        }), 500
+
+
+@main_bp.route('/api/predict-price', methods=['POST'])
+@csrf.exempt
+@limiter.limit("30 per minute")
+def predict_price():
+    """API endpoint to predict used car price"""
+    # Validate input
+    try:
+        data = price_prediction_schema.load(request.get_json() or {})
+    except ValidationError as err:
+        return jsonify({
+            'success': False,
+            'errors': err.messages
+        }), 400
+
+    try:
+        # Use price predictor (singleton - loaded once at startup)
+        predicted_price = ml_models.price_predictor.predict_price(data)
+
+        return jsonify({
+            'success': True,
+            'predicted_price': int(predicted_price),
+            'input_data': data
         })
 
     except Exception as e:
         return jsonify({
             'success': False,
-            'error': str(e)
-        }), 400
+            'error': 'Price prediction failed. Please try again.'
+        }), 500
 
 
 # ==================== BUY-BACK VALUATION ROUTES ====================
@@ -270,28 +402,44 @@ def buyback():
 
 
 @main_bp.route('/api/buyback-valuation', methods=['POST'])
+@csrf.exempt
+@limiter.limit("20 per minute")
+@optional_jwt
 def buyback_valuation():
     """API endpoint for buy-back valuation"""
-    init_ml_models()
+    # Validate input
+    try:
+        data = buyback_valuation_schema.load(request.get_json() or {})
+    except ValidationError as err:
+        return jsonify({
+            'success': False,
+            'errors': err.messages
+        }), 400
 
     try:
-        data = request.get_json()
+        # Get valuation (singleton - loaded once at startup)
+        valuation_result = ml_models.buyback_valuator.get_valuation(data)
 
-        # Get valuation
-        valuation_result = buyback_valuator.get_valuation(data)
+        # Get user_id if authenticated
+        user_id = None
+        try:
+            user_id = get_jwt_identity()
+        except Exception:
+            pass
 
         # Save valuation to database
         valuation = Valuation(
-            brand=data.get('brand'),
-            model=data.get('model'),
+            user_id=user_id,
+            brand=data['brand'],
+            model=data['model'],
             variant=data.get('variant'),
-            registration_year=int(data.get('registration_year')),
-            mileage_km=int(data.get('mileage_km')),
-            num_owners=int(data.get('num_owners')),
-            fuel_type=data.get('fuel_type'),
-            transmission=data.get('transmission'),
-            service_history=data.get('service_history'),
-            accident_history=data.get('accident_history'),
+            registration_year=data['registration_year'],
+            mileage_km=data['mileage_km'],
+            num_owners=data['num_owners'],
+            fuel_type=data['fuel_type'],
+            transmission=data['transmission'],
+            service_history=data.get('service_history', 'Partial'),
+            accident_history=data.get('accident_history', 'No'),
             insurance_valid=data.get('insurance_valid', False),
             modifications=data.get('modifications', ''),
             condition_score=valuation_result['condition_score'],
@@ -299,9 +447,9 @@ def buyback_valuation():
             estimated_price_max=valuation_result['estimated_price_max'],
             estimated_price_avg=valuation_result['estimated_price_avg'],
             confidence_score=valuation_result['confidence_score'],
-            customer_name=data.get('customer_name'),
-            customer_phone=data.get('customer_phone'),
-            customer_email=data.get('customer_email'),
+            customer_name=data['customer_name'],
+            customer_phone=data['customer_phone'],
+            customer_email=data['customer_email'],
             inspection_requested=data.get('inspection_requested', False),
             status='pending'
         )
@@ -320,8 +468,8 @@ def buyback_valuation():
         db.session.rollback()
         return jsonify({
             'success': False,
-            'error': str(e)
-        }), 400
+            'error': 'Valuation failed. Please try again.'
+        }), 500
 
 
 @main_bp.route('/buyback/valuation/<int:valuation_id>')

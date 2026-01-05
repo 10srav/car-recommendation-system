@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Auto Marketplace{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4><i class="bi bi-person-plus"></i> Create Account</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div id="alert-container"></div>
+
+                    <form id="registerForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="username" name="username" required
+                                   pattern="[a-zA-Z0-9_]+" minlength="3" maxlength="80"
+                                   title="Letters, numbers, and underscores only">
+                            <small class="text-muted">Letters, numbers, and underscores only (3-80 characters)</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="phone"
+                                   placeholder="+91XXXXXXXXXX">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="user_type" class="form-label">I want to</label>
+                            <select class="form-select" id="user_type" name="user_type">
+                                <option value="buyer">Buy cars</option>
+                                <option value="seller">Sell cars</option>
+                                <option value="both">Buy and Sell</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password"
+                                       required minlength="8">
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                            <small class="text-muted">
+                                Min 8 characters with uppercase, lowercase, number, and special character
+                            </small>
+                            <div id="password-strength" class="mt-1"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirm_password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                            <div id="password-match" class="mt-1"></div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100" id="registerBtn">
+                            <i class="bi bi-person-plus"></i> Create Account
+                        </button>
+                    </form>
+
+                    <hr>
+
+                    <div class="text-center">
+                        <p class="mb-0">Already have an account? <a href="{{ url_for('auth.login_page') }}">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Toggle password visibility
+document.getElementById('togglePassword').addEventListener('click', function() {
+    const password = document.getElementById('password');
+    const icon = this.querySelector('i');
+    if (password.type === 'password') {
+        password.type = 'text';
+        icon.className = 'bi bi-eye-slash';
+    } else {
+        password.type = 'password';
+        icon.className = 'bi bi-eye';
+    }
+});
+
+// Password strength checker
+document.getElementById('password').addEventListener('input', function() {
+    const password = this.value;
+    const strengthDiv = document.getElementById('password-strength');
+    let strength = 0;
+    let feedback = [];
+
+    if (password.length >= 8) strength++;
+    else feedback.push('At least 8 characters');
+
+    if (/[A-Z]/.test(password)) strength++;
+    else feedback.push('One uppercase letter');
+
+    if (/[a-z]/.test(password)) strength++;
+    else feedback.push('One lowercase letter');
+
+    if (/\d/.test(password)) strength++;
+    else feedback.push('One number');
+
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength++;
+    else feedback.push('One special character');
+
+    let color = ['danger', 'danger', 'warning', 'warning', 'info', 'success'][strength];
+    let text = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong', 'Very Strong'][strength];
+
+    if (password.length > 0) {
+        strengthDiv.innerHTML = `
+            <div class="progress" style="height: 5px;">
+                <div class="progress-bar bg-${color}" style="width: ${strength * 20}%"></div>
+            </div>
+            <small class="text-${color}">${text}</small>
+            ${feedback.length > 0 ? `<br><small class="text-muted">Missing: ${feedback.join(', ')}</small>` : ''}
+        `;
+    } else {
+        strengthDiv.innerHTML = '';
+    }
+});
+
+// Password match checker
+document.getElementById('confirm_password').addEventListener('input', function() {
+    const password = document.getElementById('password').value;
+    const confirmPassword = this.value;
+    const matchDiv = document.getElementById('password-match');
+
+    if (confirmPassword.length > 0) {
+        if (password === confirmPassword) {
+            matchDiv.innerHTML = '<small class="text-success"><i class="bi bi-check-circle"></i> Passwords match</small>';
+        } else {
+            matchDiv.innerHTML = '<small class="text-danger"><i class="bi bi-x-circle"></i> Passwords do not match</small>';
+        }
+    } else {
+        matchDiv.innerHTML = '';
+    }
+});
+
+// Form submission
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('registerBtn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Creating account...';
+    btn.disabled = true;
+
+    const alertContainer = document.getElementById('alert-container');
+    alertContainer.innerHTML = '';
+
+    try {
+        const response = await fetch('/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                confirm_password: document.getElementById('confirm_password').value,
+                phone: document.getElementById('phone').value || null,
+                user_type: document.getElementById('user_type').value,
+                first_name: document.getElementById('first_name').value || null,
+                last_name: document.getElementById('last_name').value || null
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Store tokens
+            localStorage.setItem('access_token', data.access_token);
+            localStorage.setItem('refresh_token', data.refresh_token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            alertContainer.innerHTML = '<div class="alert alert-success">Account created successfully! Redirecting...</div>';
+
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 1500);
+        } else {
+            let errorMsg = data.error || 'Registration failed';
+            if (data.errors) {
+                const errors = [];
+                for (const [field, messages] of Object.entries(data.errors)) {
+                    errors.push(`<strong>${field}:</strong> ${messages.join(', ')}`);
+                }
+                errorMsg = errors.join('<br>');
+            }
+            alertContainer.innerHTML = `<div class="alert alert-danger">${errorMsg}</div>`;
+        }
+    } catch (error) {
+        alertContainer.innerHTML = '<div class="alert alert-danger">Network error. Please try again.</div>';
+    } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }
+});
+</script>
+{% endblock %}
