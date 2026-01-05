@@ -8,11 +8,19 @@
     <div class="card shadow-lg mb-4 border-0 overflow-hidden">
         <div class="row g-0">
             <div class="col-lg-6">
-                <img src="{{ get_large_url(get_car_image(car.brand, car.model, car.body_type)) }}" 
-                     class="img-fluid w-100" 
+                {% if car.image_path %}
+                <img src="{{ url_for('static', filename=car.image_path) }}"
+                     class="img-fluid w-100"
                      alt="{{ car.brand }} {{ car.model }}"
                      style="height: 350px; object-fit: cover;"
                      onerror="this.src='https://imgd.aeplcdn.com/1056x594/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                {% else %}
+                <img src="{{ get_large_url(get_car_image(car.brand, car.model, car.body_type)) }}"
+                     class="img-fluid w-100"
+                     alt="{{ car.brand }} {{ car.model }}"
+                     style="height: 350px; object-fit: cover;"
+                     onerror="this.src='https://imgd.aeplcdn.com/1056x594/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                {% endif %}
             </div>
             <div class="col-lg-6 d-flex flex-column justify-content-center">
                 <div class="card-body text-center py-4">

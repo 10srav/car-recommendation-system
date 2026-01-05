@@ -54,11 +54,19 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 hover-card">
                         <div class="position-relative">
-                            <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}" 
-                                 class="card-img-top" 
+                            {% if car.image_path %}
+                            <img src="{{ url_for('static', filename=car.image_path) }}"
+                                 class="card-img-top"
                                  alt="{{ car.brand }} {{ car.model }}"
                                  style="height: 180px; object-fit: cover;"
                                  onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                            {% else %}
+                            <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}"
+                                 class="card-img-top"
+                                 alt="{{ car.brand }} {{ car.model }}"
+                                 style="height: 180px; object-fit: cover;"
+                                 onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                            {% endif %}
                             <div class="position-absolute top-0 start-0 m-2">
                                 <span class="badge bg-warning text-dark">{{ car.registration_year }}</span>
                             </div>

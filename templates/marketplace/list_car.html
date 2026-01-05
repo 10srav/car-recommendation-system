@@ -11,7 +11,7 @@
 
             <div class="card shadow">
                 <div class="card-body p-4">
-                    <form method="POST" action="{{ url_for('main.list_car') }}">
+                    <form method="POST" action="{{ url_for('main.list_car') }}" enctype="multipart/form-data">
                         <h5 class="mb-3">Basic Information</h5>
 
                         <div class="row mb-3">
@@ -157,6 +157,17 @@
                         </div>
 
                         <hr>
+                        <h5 class="mb-3">Car Images</h5>
+
+                        <div class="mb-3">
+                            <label class="form-label">Upload Car Images</label>
+                            <input type="file" class="form-control" name="car_images" multiple accept="image/*">
+                            <small class="text-muted">Upload up to 5 images (JPG, PNG, WebP). Max 5MB each.</small>
+                        </div>
+
+                        <div id="imagePreview" class="row mb-3"></div>
+
+                        <hr>
                         <h5 class="mb-3">Your Contact Information</h5>
 
                         <div class="row mb-3">
@@ -250,6 +261,37 @@ $(document).ready(function() {
             }
         });
     }
+
+    // Image preview functionality
+    $('input[name="car_images"]').on('change', function(e) {
+        var preview = $('#imagePreview');
+        preview.empty();
+
+        var files = e.target.files;
+        if (files.length > 5) {
+            alert('You can only upload up to 5 images');
+            this.value = '';
+            return;
+        }
+
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            if (file.size > 5 * 1024 * 1024) {
+                alert('Image ' + file.name + ' is too large. Max 5MB allowed.');
+                continue;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var col = $('<div class="col-4 col-md-2 mb-2"></div>');
+                var img = $('<img class="img-thumbnail" style="height: 80px; width: 100%; object-fit: cover;">');
+                img.attr('src', e.target.result);
+                col.append(img);
+                preview.append(col);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 });
 </script>
 {% endblock %}

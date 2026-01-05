@@ -1,8 +1,9 @@
 """
 Flask routes for the Indian Automotive Marketplace
 """
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, current_app
 from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
+from werkzeug.utils import secure_filename
 from app.models import db, NewCar, UsedCar, Valuation, RecommendationHistory, User
 from app.ml_manager import ml_models
 from app.schemas import (
@@ -12,8 +13,35 @@ from app.schemas import (
 from app import limiter, csrf
 from marshmallow import ValidationError
 import json
+import os
+import uuid
 from datetime import datetime
 from functools import wraps
+
+
+def allowed_file(filename):
+    """Check if file extension is allowed"""
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def save_uploaded_image(file, listing_id):
+    """Save uploaded image and return the path"""
+    if file and allowed_file(file.filename):
+        # Create unique filename
+        ext = file.filename.rsplit('.', 1)[1].lower()
+        filename = f"car_{listing_id}_{uuid.uuid4().hex[:8]}.{ext}"
+
+        # Ensure upload directory exists
+        upload_folder = current_app.config.get('UPLOAD_FOLDER', 'static/uploads')
+        os.makedirs(upload_folder, exist_ok=True)
+
+        filepath = os.path.join(upload_folder, filename)
+        file.save(filepath)
+
+        # Return relative path for database
+        return f"uploads/{filename}"
+    return None
 
 main_bp = Blueprint('main', __name__)
 
@@ -283,6 +311,21 @@ def list_car():
             )
 
             db.session.add(listing)
+            db.session.flush()  # Get the listing_id before commit
+
+            # Handle uploaded images
+            uploaded_files = request.files.getlist('car_images')
+            saved_images = []
+            for file in uploaded_files[:5]:  # Limit to 5 images
+                if file and file.filename:
+                    image_path = save_uploaded_image(file, listing.listing_id)
+                    if image_path:
+                        saved_images.append(image_path)
+
+            # Store the first image path (or all as JSON if multiple)
+            if saved_images:
+                listing.image_path = saved_images[0]  # Primary image
+
             db.session.commit()
 
             flash('Your car has been listed successfully!', 'success')
