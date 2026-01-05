@@ -32,6 +32,7 @@ CAR_IMAGES = {
     "Hyundai": {
         "i20": "https://imgd.aeplcdn.com/664x374/n/cw/ec/150579/i20-exterior-right-front-three-quarter-5.jpeg",
         "i10": "https://imgd.aeplcdn.com/664x374/n/cw/ec/141113/grand-i10-nios-exterior-right-front-three-quarter-7.jpeg",
+        "Grand i10": "https://imgd.aeplcdn.com/664x374/n/cw/ec/26745/grand-i10-exterior-right-front-three-quarter-2.jpeg",
         "Grand i10 Nios": "https://imgd.aeplcdn.com/664x374/n/cw/ec/141113/grand-i10-nios-exterior-right-front-three-quarter-7.jpeg",
         "Verna": "https://imgd.aeplcdn.com/664x374/n/cw/ec/121943/verna-exterior-right-front-three-quarter.jpeg",
         "Creta": "https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg",
@@ -67,6 +68,7 @@ CAR_IMAGES = {
         "Scorpio N": "https://imgd.aeplcdn.com/664x374/n/cw/ec/99009/scorpio-n-exterior-right-front-three-quarter-10.jpeg",
         "Scorpio": "https://imgd.aeplcdn.com/664x374/n/cw/ec/99009/scorpio-n-exterior-right-front-three-quarter-10.jpeg",
         "XUV700": "https://imgd.aeplcdn.com/664x374/n/cw/ec/42355/xuv700-exterior-right-front-three-quarter.jpeg",
+        "XUV500": "https://imgd.aeplcdn.com/664x374/n/cw/ec/33197/xuv500-exterior-right-front-three-quarter-3.jpeg",
         "XUV300": "https://imgd.aeplcdn.com/664x374/n/cw/ec/102089/xuv300-exterior-right-front-three-quarter-5.jpeg",
         "XUV400": "https://imgd.aeplcdn.com/664x374/n/cw/ec/110119/xuv400-exterior-right-front-three-quarter.jpeg",
         "Bolero": "https://imgd.aeplcdn.com/664x374/n/cw/ec/107605/bolero-exterior-right-front-three-quarter.jpeg",
@@ -102,7 +104,18 @@ CAR_IMAGES = {
         "Jazz": "https://imgd.aeplcdn.com/664x374/n/cw/ec/27074/jazz-exterior-right-front-three-quarter-3.jpeg",
         "WR-V": "https://imgd.aeplcdn.com/664x374/n/cw/ec/27627/wr-v-exterior-right-front-three-quarter.jpeg",
         "CR-V": "https://imgd.aeplcdn.com/664x374/n/cw/ec/27063/cr-v-exterior-right-front-three-quarter.jpeg",
+        "Civic": "https://imgd.aeplcdn.com/664x374/n/cw/ec/27054/civic-exterior-right-front-three-quarter.jpeg",
         "default": "https://imgd.aeplcdn.com/664x374/n/cw/ec/134287/city-exterior-right-front-three-quarter-77.jpeg"
+    },
+
+    # Ford
+    "Ford": {
+        "EcoSport": "https://imgd.aeplcdn.com/664x374/n/cw/ec/34033/ecosport-exterior-right-front-three-quarter-2.jpeg",
+        "Figo": "https://imgd.aeplcdn.com/664x374/n/cw/ec/34036/figo-exterior-right-front-three-quarter-2.jpeg",
+        "Aspire": "https://imgd.aeplcdn.com/664x374/n/cw/ec/33439/aspire-exterior-right-front-three-quarter.jpeg",
+        "Endeavour": "https://imgd.aeplcdn.com/664x374/n/cw/ec/34035/endeavour-exterior-right-front-three-quarter-3.jpeg",
+        "Freestyle": "https://imgd.aeplcdn.com/664x374/n/cw/ec/34037/freestyle-exterior-right-front-three-quarter-3.jpeg",
+        "default": "https://imgd.aeplcdn.com/664x374/n/cw/ec/34033/ecosport-exterior-right-front-three-quarter-2.jpeg"
     },
     
     # Kia
