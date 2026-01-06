@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Indian Automotive Marketplace{% endblock %}</title>
+    <title>{% block title %}MyCar{% endblock %}</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,10 +21,19 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #1a5f7a 0%, #134b5f 100%);">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('main.index') }}">
-                <i class="bi bi-car-front"></i> Auto Marketplace
+            <a class="navbar-brand d-flex align-items-center" href="{{ url_for('main.index') }}">
+                <div class="logo-icon me-2" style="background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 11L6.5 6.5C6.83 5.6 7.69 5 8.64 5H15.36C16.31 5 17.17 5.6 17.5 6.5L19 11" stroke="#1a5f7a" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M3 14C3 12.9 3.9 12 5 12H19C20.1 12 21 12.9 21 14V17C21 17.55 20.55 18 20 18H19C19 19.1 18.1 20 17 20C15.9 20 15 19.1 15 18H9C9 19.1 8.1 20 7 20C5.9 20 5 19.1 5 18H4C3.45 18 3 17.55 3 17V14Z" fill="#1a5f7a"/>
+                        <circle cx="7" cy="18" r="1.5" fill="#fff"/>
+                        <circle cx="17" cy="18" r="1.5" fill="#fff"/>
+                        <path d="M7 14.5H10M14 14.5H17" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="fw-bold fs-4">MyCar</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -114,8 +123,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5><i class="bi bi-car-front"></i> Auto Marketplace</h5>
-                    <p>Smart Indian Automotive Marketplace with Buy-Back and Recommendation System</p>
+                    <h5>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2" style="vertical-align: middle;">
+                            <path d="M5 11L6.5 6.5C6.83 5.6 7.69 5 8.64 5H15.36C16.31 5 17.17 5.6 17.5 6.5L19 11" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 14C3 12.9 3.9 12 5 12H19C20.1 12 21 12.9 21 14V17C21 17.55 20.55 18 20 18H19C19 19.1 18.1 20 17 20C15.9 20 15 19.1 15 18H9C9 19.1 8.1 20 7 20C5.9 20 5 19.1 5 18H4C3.45 18 3 17.55 3 17V14Z" fill="#fff"/>
+                            <circle cx="7" cy="18" r="1.5" fill="#333"/>
+                            <circle cx="17" cy="18" r="1.5" fill="#333"/>
+                        </svg>
+                        MyCar
+                    </h5>
+                    <p>Smart Car Marketplace with Buy-Back and Recommendation System</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
@@ -136,7 +153,7 @@
             </div>
             <hr class="bg-white">
             <div class="text-center">
-                <p>&copy; 2025 Indian Automotive Marketplace. All rights reserved.</p>
+                <p>&copy; 2025 MyCar. All rights reserved.</p>
             </div>
         </div>
     </footer>

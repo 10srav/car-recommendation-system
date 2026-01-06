@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}{{ car.brand }} {{ car.model }} - MyCar{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('main.recommendations') }}">Recommendations</a></li>
+            <li class="breadcrumb-item active">{{ car.brand }} {{ car.model }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Car Image & Basic Info -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}"
+                     class="card-img-top"
+                     alt="{{ car.brand }} {{ car.model }}"
+                     style="height: 350px; object-fit: cover;"
+                     onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-success fs-6">New Car</span>
+                        <span class="badge bg-info fs-6">{{ car.body_type|title }}</span>
+                    </div>
+                    <h2 class="card-title mb-1">{{ car.brand }} {{ car.model }}</h2>
+                    <p class="text-muted fs-5">{{ car.variant }}</p>
+                    <hr>
+                    <div class="text-center">
+                        <p class="text-muted mb-1">Ex-Showroom Price</p>
+                        <h2 class="text-primary mb-0" style="color: #1a5f7a !important;">₹{{ "{:,.0f}".format(car.price) }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header text-white" style="background: linear-gradient(135deg, #1a5f7a 0%, #2d8bba 100%);">
+                    <h5 class="mb-0"><i class="bi bi-list-check"></i> Key Specifications</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="spec-item p-3 rounded" style="background: #f8f9fa;">
+                                <i class="bi bi-fuel-pump fs-4 text-primary"></i>
+                                <p class="mb-0 text-muted small">Fuel Type</p>
+                                <strong>{{ car.fuel_type }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="spec-item p-3 rounded" style="background: #f8f9fa;">
+                                <i class="bi bi-gear fs-4 text-primary"></i>
+                                <p class="mb-0 text-muted small">Transmission</p>
+                                <strong>{{ car.transmission }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="spec-item p-3 rounded" style="background: #f8f9fa;">
+                                <i class="bi bi-speedometer2 fs-4 text-success"></i>
+                                <p class="mb-0 text-muted small">Mileage</p>
+                                <strong>{{ car.mileage }} km/l</strong>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="spec-item p-3 rounded" style="background: #f8f9fa;">
+                                <i class="bi bi-lightning-charge fs-4 text-warning"></i>
+                                <p class="mb-0 text-muted small">Power</p>
+                                <strong>{{ car.power_hp }} HP</strong>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="spec-item p-3 rounded" style="background: #f8f9fa;">
+                                <i class="bi bi-people fs-4 text-info"></i>
+                                <p class="mb-0 text-muted small">Seating</p>
+                                <strong>{{ car.seating_capacity }} Persons</strong>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="spec-item p-3 rounded" style="background: #f8f9fa;">
+                                <i class="bi bi-shield-check fs-4 text-danger"></i>
+                                <p class="mb-0 text-muted small">Safety Rating</p>
+                                <strong>{{ '★' * car.safety_rating }}{{ '☆' * (5 - car.safety_rating) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Specs Row -->
+    <div class="row">
+        <!-- Performance & Features -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header" style="background: #f8f9fa;">
+                    <h5 class="mb-0"><i class="bi bi-graph-up"></i> Performance Scores</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Mileage Score</span>
+                            <span class="fw-bold">{{ (car.mileage_score * 10)|round(1) }}/10</span>
+                        </div>
+                        <div class="progress" style="height: 10px;">
+                            <div class="progress-bar bg-success" style="width: {{ car.mileage_score * 10 }}%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Performance Score</span>
+                            <span class="fw-bold">{{ (car.performance_score * 10)|round(1) }}/10</span>
+                        </div>
+                        <div class="progress" style="height: 10px;">
+                            <div class="progress-bar bg-warning" style="width: {{ car.performance_score * 10 }}%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Safety Score</span>
+                            <span class="fw-bold">{{ (car.safety_score * 10)|round(1) }}/10</span>
+                        </div>
+                        <div class="progress" style="height: 10px;">
+                            <div class="progress-bar bg-danger" style="width: {{ car.safety_score * 10 }}%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Comfort Score</span>
+                            <span class="fw-bold">{{ (car.comfort_score * 10)|round(1) }}/10</span>
+                        </div>
+                        <div class="progress" style="height: 10px;">
+                            <div class="progress-bar bg-info" style="width: {{ car.comfort_score * 10 }}%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ownership Costs -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header" style="background: #f8f9fa;">
+                    <h5 class="mb-0"><i class="bi bi-wallet2"></i> Ownership Details</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><i class="bi bi-tools text-muted me-2"></i> Annual Maintenance</td>
+                            <td class="text-end fw-bold">₹{{ "{:,.0f}".format(car.maintenance_cost_annual) }}</td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-arrow-repeat text-muted me-2"></i> Resale Value (3 Years)</td>
+                            <td class="text-end fw-bold text-success">{{ car.resale_value_3yr_percent }}%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-arrow-repeat text-muted me-2"></i> Resale Value (5 Years)</td>
+                            <td class="text-end fw-bold text-warning">{{ car.resale_value_5yr_percent }}%</td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-building text-muted me-2"></i> City Suitability</td>
+                            <td class="text-end fw-bold">{{ (car.city_suitability_score * 10)|round(1) }}/10</td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-signpost text-muted me-2"></i> Highway Suitability</td>
+                            <td class="text-end fw-bold">{{ (car.highway_suitability_score * 10)|round(1) }}/10</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-3 justify-content-center">
+                        <a href="{{ url_for('main.emi_calculator') }}?price={{ car.price }}" class="btn btn-lg" style="background: linear-gradient(135deg, #1a5f7a 0%, #2d8bba 100%); color: white;">
+                            <i class="bi bi-calculator"></i> Calculate EMI
+                        </a>
+                        <a href="{{ url_for('main.recommendations') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-arrow-left"></i> Back to Recommendations
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar Cars -->
+    {% if similar_cars %}
+    <div class="row">
+        <div class="col-12">
+            <h4 class="mb-4"><i class="bi bi-grid"></i> Similar Cars You Might Like</h4>
+            <div class="row g-4">
+                {% for similar in similar_cars %}
+                <div class="col-md-3">
+                    <div class="card h-100 shadow-sm hover-card">
+                        <img src="{{ get_car_image(similar.brand, similar.model, similar.body_type) }}"
+                             class="card-img-top"
+                             alt="{{ similar.brand }} {{ similar.model }}"
+                             style="height: 150px; object-fit: cover;"
+                             onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ similar.brand }} {{ similar.model }}</h6>
+                            <p class="text-primary fw-bold mb-2" style="color: #1a5f7a !important;">₹{{ "{:,.0f}".format(similar.price) }}</p>
+                            <a href="{{ url_for('main.new_car_details', car_id=similar.car_id) }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

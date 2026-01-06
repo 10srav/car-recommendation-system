@@ -1,12 +1,16 @@
-/* Custom Styles for Indian Automotive Marketplace */
+/* Custom Styles for MyCar */
 
 :root {
-    --primary-color: #0d6efd;
-    --secondary-color: #6c757d;
-    --success-color: #198754;
-    --warning-color: #ffc107;
-    --danger-color: #dc3545;
-    --info-color: #0dcaf0;
+    --primary-color: #1a5f7a;
+    --primary-dark: #134b5f;
+    --primary-light: #2d8bba;
+    --secondary-color: #57837b;
+    --accent-color: #c38e70;
+    --success-color: #2d6a4f;
+    --warning-color: #f4a261;
+    --danger-color: #e63946;
+    --info-color: #48cae4;
+    --dark-color: #1d3557;
 }
 
 /* General Styles */
@@ -23,7 +27,7 @@ main {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a5f7a 0%, #2d8bba 50%, #57837b 100%);
     color: white;
 }
 
@@ -167,7 +171,7 @@ img {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0b5ed7;
+    background: var(--primary-dark);
 }
 
 /* Animations */
@@ -188,7 +192,7 @@ img {
 
 /* Stats Section */
 .stats-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a5f7a 0%, #2d8bba 100%);
 }
 
 /* Price Display */
@@ -232,7 +236,7 @@ img {
 
 /* Gradient Backgrounds */
 .bg-gradient {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a5f7a 0%, #2d8bba 100%);
 }
 
 /* Icon Enhancements */
@@ -249,7 +253,7 @@ img {
 }
 
 .spec-icon-box:hover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a5f7a 0%, #2d8bba 100%);
     color: white;
     transform: scale(1.05);
 }

@@ -13,7 +13,7 @@ if __name__ == '__main__':
         print("Database tables created successfully!")
 
     print("\n" + "="*60)
-    print("Indian Automotive Marketplace - Starting Server")
+    print("MyCar - Starting Server")
     print("="*60)
     print("\nAccess the application at: http://127.0.0.1:5000")
     print("\nPress CTRL+C to stop the server\n")

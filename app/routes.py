@@ -161,6 +161,20 @@ def compare_cars():
     return render_template('recommendations/compare.html', cars=cars)
 
 
+@main_bp.route('/new-car/<int:car_id>')
+def new_car_details(car_id):
+    """New car details page"""
+    car = NewCar.query.filter_by(car_id=car_id).first_or_404()
+
+    # Get similar cars (same brand or body type)
+    similar_cars = NewCar.query.filter(
+        NewCar.car_id != car_id,
+        db.or_(NewCar.brand == car.brand, NewCar.body_type == car.body_type)
+    ).order_by(NewCar.safety_rating.desc()).limit(4).all()
+
+    return render_template('recommendations/car_details.html', car=car, similar_cars=similar_cars)
+
+
 # ==================== MARKETPLACE ROUTES ====================
 
 @main_bp.route('/marketplace')
