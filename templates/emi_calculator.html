@@ -52,6 +52,20 @@
 
 {% block extra_js %}
 <script>
+$(document).ready(function() {
+    // Check for price parameter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const price = urlParams.get('price');
+
+    if (price) {
+        $('#loanAmount').val(price);
+        // Auto-calculate EMI when price is provided
+        setTimeout(function() {
+            $('#emiForm').submit();
+        }, 300);
+    }
+});
+
 $('#emiForm').on('submit', function(e) {
     e.preventDefault();
 
