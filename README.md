@@ -41,20 +41,51 @@ The application features:
 
 ### Prerequisites
 - Python 3.8 or higher
-- pip (Python package manager)
+- Git installed
 
-### Installation
-
+### Step 1: Clone the Repository
 ```bash
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Run the application (datasets and models are pre-included)
-python run.py
-
-# 3. Open in browser
-# http://127.0.0.1:5000
+git clone <repository-url>
+cd car-recommendation-system
 ```
+
+### Step 2: Create Virtual Environment (Recommended)
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Mac/Linux
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Step 3: Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Run the Application
+```bash
+python run.py
+```
+
+### Step 5: Open in Browser
+```
+http://127.0.0.1:5000
+```
+
+### Application URLs
+
+| Feature | URL |
+|---------|-----|
+| Home | http://127.0.0.1:5000 |
+| Recommendations | http://127.0.0.1:5000/recommendations |
+| Marketplace | http://127.0.0.1:5000/marketplace |
+| Buy-Back Valuation | http://127.0.0.1:5000/buyback |
+| EMI Calculator | http://127.0.0.1:5000/emi-calculator |
+| Login | http://127.0.0.1:5000/auth/login-page |
+| Register | http://127.0.0.1:5000/auth/register-page |
 
 ### Full Setup (if starting fresh)
 
@@ -183,17 +214,26 @@ app.run(debug=True, port=5001)
 **Database error:**
 ```bash
 # Windows
-del automotive_marketplace.db
-python utils/load_data.py
+del automotive_marketplace_v2.db
+python run.py
 
 # Linux/Mac
-rm automotive_marketplace.db
-python utils/load_data.py
+rm automotive_marketplace_v2.db
+python run.py
 ```
 
 **Module not found:**
 ```bash
 pip install --upgrade -r requirements.txt
+```
+
+**Virtual environment issues:**
+```bash
+# Deactivate and recreate
+deactivate
+rm -rf venv
+python -m venv venv
+# Then activate and install again
 ```
 
 ## Contributing

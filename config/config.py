@@ -87,6 +87,9 @@ class Config:
     # Logging
     LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO')
 
+    # Redis for token blacklist (optional - falls back to memory if not set)
+    REDIS_URL = os.environ.get('REDIS_URL')
+
 
 class DevelopmentConfig(Config):
     """Development configuration"""

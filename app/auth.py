@@ -339,9 +339,25 @@ def change_password():
 @csrf.exempt
 @jwt_required()
 def logout():
-    """Logout user (client should discard tokens)"""
-    # In a production system, you'd add the token to a blocklist
-    # For now, we just return success and client discards tokens
+    """Logout user and revoke the access token"""
+    from app.token_blacklist import token_blacklist
+    from datetime import timedelta
+
+    # Get the JWT token data
+    jwt_data = get_jwt()
+    jti = jwt_data.get('jti')
+    exp = jwt_data.get('exp')
+
+    # Calculate remaining TTL for the token
+    if exp:
+        remaining = exp - datetime.utcnow().timestamp()
+        ttl = timedelta(seconds=max(remaining, 0))
+    else:
+        ttl = timedelta(hours=1)
+
+    # Add token to blacklist
+    token_blacklist.add(jti, ttl)
+
     return jsonify({
         'success': True,
         'message': 'Logged out successfully'

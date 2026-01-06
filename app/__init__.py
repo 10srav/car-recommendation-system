@@ -65,6 +65,16 @@ def create_app(config_name='development'):
     # Initialize JWT
     jwt.init_app(app)
 
+    # Initialize token blacklist
+    from app.token_blacklist import token_blacklist
+    token_blacklist.init_app(app)
+
+    # JWT token blocklist checker
+    @jwt.token_in_blocklist_loader
+    def check_if_token_revoked(jwt_header, jwt_payload):
+        jti = jwt_payload.get('jti')
+        return token_blacklist.is_blacklisted(jti)
+
     # JWT error handlers
     @jwt.expired_token_loader
     def expired_token_callback(jwt_header, jwt_payload):
