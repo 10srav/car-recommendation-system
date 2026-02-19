@@ -4,7 +4,7 @@ Flask routes for the Indian Automotive Marketplace
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, current_app
 from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from werkzeug.utils import secure_filename
-from app.models import db, NewCar, UsedCar, Valuation, RecommendationHistory, User
+from app.models import db, NewCar, UsedCar, CarImage, Valuation, RecommendationHistory, User
 from app.ml_manager import ml_models
 from app.schemas import (
     car_recommendation_schema, car_listing_schema,
@@ -327,18 +327,23 @@ def list_car():
             db.session.add(listing)
             db.session.flush()  # Get the listing_id before commit
 
-            # Handle uploaded images
+            # Handle uploaded images — save each to CarImage table
             uploaded_files = request.files.getlist('car_images')
-            saved_images = []
-            for file in uploaded_files[:5]:  # Limit to 5 images
+            saved_count = 0
+            for i, file in enumerate(uploaded_files[:10]):  # max 10 images
                 if file and file.filename:
                     image_path = save_uploaded_image(file, listing.listing_id)
                     if image_path:
-                        saved_images.append(image_path)
-
-            # Store the first image path (or all as JSON if multiple)
-            if saved_images:
-                listing.image_path = saved_images[0]  # Primary image
+                        car_image = CarImage(
+                            listing_id=listing.listing_id,
+                            image_path=image_path,
+                            is_primary=(saved_count == 0),
+                            display_order=saved_count
+                        )
+                        db.session.add(car_image)
+                        if saved_count == 0:
+                            listing.image_path = image_path  # backward compat
+                        saved_count += 1
 
             db.session.commit()
 

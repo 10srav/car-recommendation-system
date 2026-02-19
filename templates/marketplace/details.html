@@ -4,31 +4,93 @@
 
 {% block content %}
 <div class="container my-5">
-    <!-- Car Header with Image -->
-    <div class="card shadow-lg mb-4 border-0 overflow-hidden">
+
+    <!-- ── Car Header ──────────────────────────────────────────────── -->
+    <div class="card shadow-lg mb-4 border-0 overflow-hidden" style="background: var(--bg-surface);">
         <div class="row g-0">
+
+            <!-- Image Gallery / Carousel -->
             <div class="col-lg-6">
-                {% if car.image_path %}
+                {% set uploaded_images = car.images %}
+                {% if uploaded_images %}
+                <!-- Bootstrap Carousel for multiple seller images -->
+                <div id="carGallery" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for img in uploaded_images %}
+                        <div class="carousel-item {% if loop.first %}active{% endif %}">
+                            <img src="{{ url_for('static', filename=img.image_path) }}"
+                                 class="d-block w-100"
+                                 alt="{{ car.brand }} {{ car.model }} — photo {{ loop.index }}"
+                                 style="height: 360px; object-fit: cover;"
+                                 onerror="this.src='https://imgd.aeplcdn.com/1056x594/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% if uploaded_images | length > 1 %}
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carGallery" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carGallery" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                    <!-- Image counter badge -->
+                    <div class="position-absolute bottom-0 end-0 m-3">
+                        <span class="badge" style="background: rgba(0,0,0,.65); font-size:.85rem;">
+                            <i class="bi bi-images"></i> {{ uploaded_images | length }} photos
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Thumbnail strip -->
+                {% if uploaded_images | length > 1 %}
+                <div class="d-flex gap-2 p-2 overflow-auto" style="background: var(--bg-base);">
+                    {% for img in uploaded_images %}
+                    <img src="{{ url_for('static', filename=img.image_path) }}"
+                         data-bs-target="#carGallery"
+                         data-bs-slide-to="{{ loop.index0 }}"
+                         class="rounded cursor-pointer flex-shrink-0"
+                         style="height:56px; width:80px; object-fit:cover; opacity:{% if loop.first %}1{% else %}.55{% endif %}; transition:.2s; cursor:pointer;"
+                         onclick="setThumb(this)"
+                         onerror="this.style.display='none'">
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% elif car.image_path %}
+                <!-- Single legacy image_path -->
                 <img src="{{ url_for('static', filename=car.image_path) }}"
                      class="img-fluid w-100"
                      alt="{{ car.brand }} {{ car.model }}"
-                     style="height: 350px; object-fit: cover;"
+                     style="height: 360px; object-fit: cover;"
                      onerror="this.src='https://imgd.aeplcdn.com/1056x594/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
+
                 {% else %}
+                <!-- Fallback CDN image -->
                 <img src="{{ get_large_url(get_car_image(car.brand, car.model, car.body_type)) }}"
                      class="img-fluid w-100"
                      alt="{{ car.brand }} {{ car.model }}"
-                     style="height: 350px; object-fit: cover;"
+                     style="height: 360px; object-fit: cover;"
                      onerror="this.src='https://imgd.aeplcdn.com/1056x594/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
                 {% endif %}
             </div>
+
+            <!-- Price & Badges -->
             <div class="col-lg-6 d-flex flex-column justify-content-center">
                 <div class="card-body text-center py-4">
-                    <span class="badge bg-warning text-dark mb-2">{{ car.registration_year }} Model</span>
-                    <span class="badge bg-info mb-2">{{ car.body_type }}</span>
+                    <div class="d-flex justify-content-center gap-2 mb-2 flex-wrap">
+                        <span class="badge bg-warning text-dark">{{ car.registration_year }} Model</span>
+                        <span class="badge bg-info">{{ car.body_type }}</span>
+                        {% if car.negotiable == "Yes" %}
+                        <span class="badge bg-success">Negotiable</span>
+                        {% endif %}
+                        {% if car.test_drive_available == "Yes" %}
+                        <span class="badge bg-primary">Test Drive</span>
+                        {% endif %}
+                    </div>
                     <h2 class="mt-2 mb-1">{{ car.brand }} {{ car.model }}</h2>
                     <p class="text-muted mb-3">{{ car.variant }}</p>
-                    <h1 class="text-primary display-4 mb-2">₹{{ "{:,.0f}".format(car.current_price) }}</h1>
+                    <h1 class="display-4 mb-2" style="color: var(--accent-blue);">₹{{ "{:,.0f}".format(car.current_price) }}</h1>
                     <p class="text-muted mb-0">
                         <del>Original: ₹{{ "{:,.0f}".format(car.original_price) }}</del>
                         <span class="badge bg-success ms-2">
@@ -42,37 +104,38 @@
 
     <div class="row">
         <div class="col-lg-8">
+
             <!-- Key Highlights -->
-            <div class="card shadow mb-4 border-0">
-                <div class="card-header bg-light">
+            <div class="card shadow mb-4 border-0" style="background: var(--bg-surface);">
+                <div class="card-header" style="background: var(--bg-elevated);">
                     <h5 class="mb-0"><i class="bi bi-star-fill text-warning"></i> Key Highlights</h5>
                 </div>
                 <div class="card-body">
                     <div class="row text-center g-3">
                         <div class="col-md-3 col-6">
-                            <div class="p-3 bg-light rounded">
-                                <i class="bi bi-calendar-check text-primary fs-2 d-block mb-2"></i>
+                            <div class="p-3 rounded" style="background: var(--bg-elevated);">
+                                <i class="bi bi-calendar-check fs-2 d-block mb-2" style="color: var(--accent-blue);"></i>
                                 <div class="text-muted small">Year</div>
                                 <h5 class="mb-0">{{ car.registration_year }}</h5>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
-                            <div class="p-3 bg-light rounded">
-                                <i class="bi bi-speedometer2 text-info fs-2 d-block mb-2"></i>
+                            <div class="p-3 rounded" style="background: var(--bg-elevated);">
+                                <i class="bi bi-speedometer2 fs-2 d-block mb-2 text-info"></i>
                                 <div class="text-muted small">Mileage</div>
                                 <h5 class="mb-0">{{ "{:,.0f}".format(car.mileage_km) }} km</h5>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
-                            <div class="p-3 bg-light rounded">
-                                <i class="bi bi-fuel-pump text-success fs-2 d-block mb-2"></i>
+                            <div class="p-3 rounded" style="background: var(--bg-elevated);">
+                                <i class="bi bi-fuel-pump fs-2 d-block mb-2 text-success"></i>
                                 <div class="text-muted small">Fuel Type</div>
                                 <h5 class="mb-0">{{ car.fuel_type }}</h5>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
-                            <div class="p-3 bg-light rounded">
-                                <i class="bi bi-gear text-danger fs-2 d-block mb-2"></i>
+                            <div class="p-3 rounded" style="background: var(--bg-elevated);">
+                                <i class="bi bi-gear fs-2 d-block mb-2 text-danger"></i>
                                 <div class="text-muted small">Transmission</div>
                                 <h5 class="mb-0">{{ car.transmission }}</h5>
                             </div>
@@ -82,64 +145,32 @@
             </div>
 
             <!-- Detailed Specifications -->
-            <div class="card shadow mb-4 border-0">
-                <div class="card-header bg-light">
+            <div class="card shadow mb-4 border-0" style="background: var(--bg-surface);">
+                <div class="card-header" style="background: var(--bg-elevated);">
                     <h5 class="mb-0"><i class="bi bi-clipboard-data text-info"></i> Detailed Specifications</h5>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <i class="bi bi-truck text-primary"></i>
-                                <strong class="ms-2">Body Type:</strong>
-                                <span class="float-end">{{ car.body_type }}</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="bi bi-people text-warning"></i>
-                                <strong class="ms-2">Previous Owners:</strong>
-                                <span class="float-end">{{ car.num_owners }}</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="bi bi-person-workspace text-success"></i>
-                                <strong class="ms-2">Seating:</strong>
-                                <span class="float-end">{{ car.seating_capacity }} Seats</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="bi bi-gear-fill text-danger"></i>
-                                <strong class="ms-2">Engine:</strong>
-                                <span class="float-end">{{ car.engine_cc }} cc</span>
-                            </div>
+                            <div class="mb-3"><i class="bi bi-truck" style="color: var(--accent-blue);"></i> <strong class="ms-2">Body Type:</strong><span class="float-end">{{ car.body_type }}</span></div>
+                            <div class="mb-3"><i class="bi bi-people text-warning"></i> <strong class="ms-2">Previous Owners:</strong><span class="float-end">{{ car.num_owners }}</span></div>
+                            <div class="mb-3"><i class="bi bi-person-workspace text-success"></i> <strong class="ms-2">Seating:</strong><span class="float-end">{{ car.seating_capacity }} Seats</span></div>
+                            <div class="mb-3"><i class="bi bi-gear-fill text-danger"></i> <strong class="ms-2">Engine:</strong><span class="float-end">{{ car.engine_cc }} cc</span></div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <i class="bi bi-palette text-info"></i>
-                                <strong class="ms-2">Color:</strong>
-                                <span class="float-end">{{ car.color }}</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="bi bi-signpost text-primary"></i>
-                                <strong class="ms-2">RTO:</strong>
-                                <span class="float-end">{{ car.rto }}</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="bi bi-geo-alt text-danger"></i>
-                                <strong class="ms-2">Location:</strong>
-                                <span class="float-end">{{ car.city }}</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="bi bi-shield-check text-success"></i>
-                                <strong class="ms-2">Insurance:</strong>
-                                <span class="float-end">{{ car.insurance_validity_months }} months</span>
-                            </div>
+                            <div class="mb-3"><i class="bi bi-palette text-info"></i> <strong class="ms-2">Color:</strong><span class="float-end">{{ car.color }}</span></div>
+                            <div class="mb-3"><i class="bi bi-signpost" style="color: var(--accent-blue);"></i> <strong class="ms-2">RTO:</strong><span class="float-end">{{ car.rto }}</span></div>
+                            <div class="mb-3"><i class="bi bi-geo-alt text-danger"></i> <strong class="ms-2">Location:</strong><span class="float-end">{{ car.city }}</span></div>
+                            <div class="mb-3"><i class="bi bi-shield-check text-success"></i> <strong class="ms-2">Insurance:</strong><span class="float-end">{{ car.insurance_validity_months }} months</span></div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Condition & History -->
-            <div class="card shadow mb-4 border-0">
-                <div class="card-header bg-light">
-                    <h5 class="mb-0"><i class="bi bi-clipboard-check text-success"></i> Condition & History</h5>
+            <div class="card shadow mb-4 border-0" style="background: var(--bg-surface);">
+                <div class="card-header" style="background: var(--bg-elevated);">
+                    <h5 class="mb-0"><i class="bi bi-clipboard-check text-success"></i> Condition &amp; History</h5>
                 </div>
                 <div class="card-body">
                     <div class="mb-4">
@@ -153,14 +184,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <div class="p-3 bg-light rounded">
-                                <i class="bi bi-tools text-primary fs-4"></i>
+                            <div class="p-3 rounded" style="background: var(--bg-elevated);">
+                                <i class="bi bi-tools fs-4" style="color: var(--accent-blue);"></i>
                                 <strong class="ms-2">Service History:</strong>
                                 <p class="mb-0 mt-2">{{ car.service_history }}</p>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <div class="p-3 bg-light rounded">
+                            <div class="p-3 rounded" style="background: var(--bg-elevated);">
                                 <i class="bi bi-exclamation-triangle text-danger fs-4"></i>
                                 <strong class="ms-2">Accident History:</strong>
                                 <p class="mb-0 mt-2">{{ car.accident_history }}</p>
@@ -171,9 +202,9 @@
             </div>
 
             <!-- Features -->
-            <div class="card shadow mb-4 border-0">
-                <div class="card-header bg-light">
-                    <h5 class="mb-0"><i class="bi bi-star text-warning"></i> Features & Amenities</h5>
+            <div class="card shadow mb-4 border-0" style="background: var(--bg-surface);">
+                <div class="card-header" style="background: var(--bg-elevated);">
+                    <h5 class="mb-0"><i class="bi bi-star text-warning"></i> Features &amp; Amenities</h5>
                 </div>
                 <div class="card-body">
                     <p class="mb-0"><i class="bi bi-check-circle text-success"></i> {{ car.features }}</p>
@@ -183,40 +214,41 @@
 
         <div class="col-lg-4">
             <!-- Seller Contact -->
-            <div class="card shadow mb-4">
-                <div class="card-header bg-primary text-white">
+            <div class="card shadow mb-4 border-0" style="background: var(--bg-surface);">
+                <div class="card-header" style="background: var(--accent-blue); color: #fff;">
                     <h5 class="mb-0">Contact Seller</h5>
                 </div>
                 <div class="card-body">
                     <p><strong>Seller:</strong> {{ car.seller_name }}</p>
                     <p><strong>Phone:</strong> {{ car.seller_phone }}</p>
                     <p><strong>Listed:</strong> {{ car.listing_date }}</p>
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <span class="badge bg-info">{{ "Negotiable" if car.negotiable == "Yes" else "Fixed Price" }}</span>
                         {% if car.test_drive_available == "Yes" %}
                         <span class="badge bg-success">Test Drive Available</span>
                         {% endif %}
                     </div>
-                    <button class="btn btn-primary w-100 mb-2">
+                    <a href="tel:{{ car.seller_phone }}" class="btn btn-primary w-100 mb-2">
                         <i class="bi bi-telephone"></i> Call Seller
-                    </button>
-                    <button class="btn btn-outline-primary w-100">
-                        <i class="bi bi-envelope"></i> Send Message
-                    </button>
+                    </a>
+                    <a href="https://wa.me/91{{ car.seller_phone | replace('+91','') | replace('-','') | replace(' ','') }}"
+                       target="_blank" class="btn btn-success w-100">
+                        <i class="bi bi-whatsapp"></i> WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <!-- Car Facts -->
-            <div class="card shadow">
-                <div class="card-header bg-secondary text-white">
+            <!-- Quick Facts -->
+            <div class="card shadow" style="background: var(--bg-surface);">
+                <div class="card-header" style="background: var(--bg-elevated);">
                     <h5 class="mb-0">Quick Facts</h5>
                 </div>
                 <div class="card-body">
                     <ul class="list-unstyled mb-0">
-                        <li class="mb-2"><i class="bi bi-calendar text-primary"></i> Age: {{ car.age_years }} years</li>
-                        <li class="mb-2"><i class="bi bi-speedometer text-primary"></i> Avg: {{ "{:,.0f}".format(car.mileage_km / car.age_years) }} km/year</li>
-                        <li class="mb-2"><i class="bi bi-droplet text-primary"></i> Efficiency: {{ car.fuel_efficiency_kmpl }} km/l</li>
-                        <li><i class="bi bi-shield-check text-primary"></i> Original Price: ₹{{ "{:,.0f}".format(car.original_price) }}</li>
+                        <li class="mb-2"><i class="bi bi-calendar" style="color: var(--accent-blue);"></i> Age: {{ car.age_years }} years</li>
+                        <li class="mb-2"><i class="bi bi-speedometer" style="color: var(--accent-blue);"></i> Avg: {{ "{:,.0f}".format(car.mileage_km / (car.age_years or 1)) }} km/year</li>
+                        <li class="mb-2"><i class="bi bi-droplet" style="color: var(--accent-blue);"></i> Efficiency: {{ car.fuel_efficiency_kmpl }} km/l</li>
+                        <li><i class="bi bi-shield-check" style="color: var(--accent-blue);"></i> Original: ₹{{ "{:,.0f}".format(car.original_price) }}</li>
                     </ul>
                 </div>
             </div>
@@ -227,28 +259,26 @@
     {% if similar_cars %}
     <div class="row mt-5">
         <div class="col-12">
-            <h3 class="mb-4"><i class="bi bi-collection text-primary"></i> Similar Cars You May Like</h3>
+            <h3 class="mb-4"><i class="bi bi-collection" style="color: var(--accent-blue);"></i> Similar Cars You May Like</h3>
             <div class="row g-3">
                 {% for similar in similar_cars %}
                 <div class="col-md-3 col-sm-6">
-                    <div class="card h-100 shadow-sm border-0 hover-card">
-                        <div class="position-relative">
-                            <img src="{{ get_thumbnail_url(get_car_image(similar.brand, similar.model, similar.body_type)) }}" 
-                                 class="card-img-top" 
+                    <div class="car-card">
+                        <div class="car-img-wrap">
+                            {% set sim_primary = similar.get_primary_image() %}
+                            <img src="{{ url_for('static', filename=sim_primary) if sim_primary else get_car_image(similar.brand, similar.model, similar.body_type) }}"
                                  alt="{{ similar.brand }} {{ similar.model }}"
-                                 style="height: 140px; object-fit: cover;"
+                                 loading="lazy"
                                  onerror="this.src='https://imgd.aeplcdn.com/370x208/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
-                            <div class="position-absolute top-0 end-0 m-2">
-                                <span class="badge bg-warning text-dark">{{ similar.registration_year }}</span>
-                            </div>
+                            <span class="img-badge img-badge-year">{{ similar.registration_year }}</span>
                         </div>
-                        <div class="card-body text-center">
-                            <h6 class="card-title mb-2">{{ similar.brand }} {{ similar.model }}</h6>
-                            <h5 class="text-primary mb-3">₹{{ "{:,.0f}".format(similar.current_price) }}</h5>
+                        <div class="car-card-body">
+                            <div class="car-card-name">{{ similar.brand }} {{ similar.model }}</div>
+                            <div class="car-price price-used">₹{{ "{:,.0f}".format(similar.current_price) }}</div>
+                        </div>
+                        <div class="car-card-foot">
                             <a href="{{ url_for('main.car_details', listing_id=similar.listing_id) }}"
-                               class="btn btn-sm btn-outline-primary w-100">
-                                <i class="bi bi-eye"></i> View Details
-                            </a>
+                               class="btn-card-detail">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -258,4 +288,19 @@
     </div>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Sync thumbnail opacity with active carousel slide
+function setThumb(el) {
+    document.querySelectorAll('[data-bs-target="#carGallery"]').forEach(t => t.style.opacity = '.55');
+    el.style.opacity = '1';
+}
+
+document.getElementById('carGallery')?.addEventListener('slide.bs.carousel', function(e) {
+    const thumbs = document.querySelectorAll('[data-bs-target="#carGallery"]');
+    thumbs.forEach((t, i) => t.style.opacity = i === e.to ? '1' : '.55');
+});
+</script>
 {% endblock %}

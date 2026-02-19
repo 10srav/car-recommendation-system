@@ -157,15 +157,25 @@
                         </div>
 
                         <hr>
-                        <h5 class="mb-3">Car Images</h5>
+                        <h5 class="mb-3"><i class="bi bi-images"></i> Car Photos <span class="badge bg-primary">Up to 10</span></h5>
+                        <p class="text-muted small mb-3">Upload clear photos — exterior, interior, engine bay. First image is the cover photo shown in listings.</p>
 
-                        <div class="mb-3">
-                            <label class="form-label">Upload Car Images</label>
-                            <input type="file" class="form-control" name="car_images" multiple accept="image/*">
-                            <small class="text-muted">Upload up to 5 images (JPG, PNG, WebP). Max 5MB each.</small>
+                        <div id="dropZone" class="border rounded-3 p-4 text-center mb-3"
+                             style="border: 2px dashed #58a6ff !important; cursor:pointer; background: rgba(88,166,255,.04);"
+                             onclick="document.getElementById('carImagesInput').click()"
+                             ondragover="event.preventDefault(); this.style.background='rgba(88,166,255,.12)'"
+                             ondragleave="this.style.background='rgba(88,166,255,.04)'"
+                             ondrop="handleDrop(event)">
+                            <i class="bi bi-cloud-arrow-up fs-1" style="color:#58a6ff;"></i>
+                            <p class="mt-2 mb-1 fw-semibold">Click or drag &amp; drop photos here</p>
+                            <p class="text-muted small mb-0">JPG, PNG, WebP — max 5MB each — up to 10 photos</p>
                         </div>
+                        <input type="file" id="carImagesInput" name="car_images" multiple accept="image/*" class="d-none">
 
-                        <div id="imagePreview" class="row mb-3"></div>
+                        <div id="imagePreview" class="row g-2 mb-2"></div>
+                        <p id="imgCount" class="text-muted small mb-0 d-none">
+                            <i class="bi bi-check-circle text-success"></i> <span id="imgCountText"></span>
+                        </p>
 
                         <hr>
                         <h5 class="mb-3">Your Contact Information</h5>
@@ -262,36 +272,72 @@ $(document).ready(function() {
         });
     }
 
-    // Image preview functionality
-    $('input[name="car_images"]').on('change', function(e) {
-        var preview = $('#imagePreview');
-        preview.empty();
-
-        var files = e.target.files;
-        if (files.length > 5) {
-            alert('You can only upload up to 5 images');
-            this.value = '';
-            return;
-        }
-
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            if (file.size > 5 * 1024 * 1024) {
-                alert('Image ' + file.name + ' is too large. Max 5MB allowed.');
-                continue;
-            }
-
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var col = $('<div class="col-4 col-md-2 mb-2"></div>');
-                var img = $('<img class="img-thumbnail" style="height: 80px; width: 100%; object-fit: cover;">');
-                img.attr('src', e.target.result);
-                col.append(img);
-                preview.append(col);
-            };
-            reader.readAsDataURL(file);
-        }
+    // Image preview (used by both click and drop)
+    $('#carImagesInput').on('change', function() {
+        showPreviews(this.files);
     });
 });
+
+function handleDrop(event) {
+    event.preventDefault();
+    document.getElementById('dropZone').style.background = 'rgba(88,166,255,.04)';
+    var dt = event.dataTransfer;
+    if (dt && dt.files.length) {
+        var input = document.getElementById('carImagesInput');
+        try {
+            var dataTransfer = new DataTransfer();
+            Array.from(dt.files).forEach(function(f) { dataTransfer.items.add(f); });
+            input.files = dataTransfer.files;
+        } catch(e) {}
+        showPreviews(dt.files);
+    }
+}
+
+function showPreviews(files) {
+    var preview = document.getElementById('imagePreview');
+    while (preview.firstChild) { preview.removeChild(preview.firstChild); }
+
+    var countEl = document.getElementById('imgCount');
+    var countText = document.getElementById('imgCountText');
+    var MAX = 10;
+    var validFiles = [];
+
+    Array.from(files).forEach(function(file) {
+        if (!file.type.startsWith('image/')) return;
+        if (file.size > 5 * 1024 * 1024) { alert(file.name + ' exceeds 5MB limit. Skipping.'); return; }
+        if (validFiles.length < MAX) { validFiles.push(file); }
+    });
+
+    validFiles.forEach(function(file, idx) {
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+            var col = document.createElement('div');
+            col.className = 'col-4 col-md-2';
+            var wrap = document.createElement('div');
+            wrap.className = 'position-relative';
+            var img = document.createElement('img');
+            img.src = ev.target.result;
+            img.alt = 'Car photo ' + (idx + 1);
+            img.className = 'img-thumbnail w-100';
+            img.style.cssText = 'height:80px;object-fit:cover;';
+            wrap.appendChild(img);
+            if (idx === 0) {
+                var badge = document.createElement('span');
+                badge.className = 'position-absolute top-0 start-0 badge bg-primary';
+                badge.style.fontSize = '.65rem';
+                badge.textContent = 'Cover';
+                wrap.appendChild(badge);
+            }
+            col.appendChild(wrap);
+            preview.appendChild(col);
+        };
+        reader.readAsDataURL(file);
+    });
+
+    if (validFiles.length > 0) {
+        countEl.classList.remove('d-none');
+        countText.textContent = validFiles.length + ' photo' + (validFiles.length > 1 ? 's' : '') + ' ready — first is the cover image';
+    }
+}
 </script>
 {% endblock %}

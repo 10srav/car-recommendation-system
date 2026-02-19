@@ -105,6 +105,19 @@ class UsedCar(db.Model):
     image_path = db.Column(db.String(255))
     is_sold = db.Column(db.Boolean, default=False, index=True)
 
+    images = db.relationship('CarImage', backref='car', lazy=True,
+                             order_by='CarImage.display_order',
+                             cascade='all, delete-orphan')
+
+    def get_primary_image(self):
+        """Return URL for the primary image, or None if none uploaded."""
+        primary = next((img for img in self.images if img.is_primary), None)
+        if primary:
+            return primary.image_path
+        if self.images:
+            return self.images[0].image_path
+        return None
+
     def __repr__(self):
         return f'<UsedCar {self.brand} {self.model} {self.registration_year}>'
 
@@ -296,6 +309,22 @@ class Valuation(db.Model):
             'status': self.status,
             'created_at': self.created_at.strftime('%Y-%m-%d')
         }
+
+
+class CarImage(db.Model):
+    """Multiple images per used car listing, uploaded by sellers."""
+    __tablename__ = 'car_images'
+
+    id = db.Column(db.Integer, primary_key=True)
+    listing_id = db.Column(db.Integer, db.ForeignKey('used_cars.listing_id', ondelete='CASCADE'),
+                           nullable=False, index=True)
+    image_path = db.Column(db.String(255), nullable=False)  # relative to static/
+    is_primary = db.Column(db.Boolean, default=False)
+    display_order = db.Column(db.Integer, default=0)
+    uploaded_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<CarImage listing={self.listing_id} order={self.display_order}>'
 
 
 class Transaction(db.Model):

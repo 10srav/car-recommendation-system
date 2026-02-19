@@ -1,24 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}Home - MyCar{% endblock %}
+{% block title %}MyCar — Find Your Perfect Car{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="hero bg-light py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-12 text-center">
-                <h1 class="display-3 fw-bold mb-4">Welcome to MyCar</h1>
-                <p class="lead mb-5">Your smart car companion. Get personalized recommendations, instant valuations, and discover the best deals tailored just for you.</p>
-                <div class="d-flex gap-3 justify-content-center flex-wrap">
-                    <a href="{{ url_for('main.recommendations') }}" class="btn btn-primary btn-lg px-5">
-                        <i class="bi bi-stars me-2"></i> Get Recommendations
+
+<!-- ── Hero ──────────────────────────────────────────────────────── -->
+<section class="hero">
+    <div class="container position-relative" style="z-index: 1;">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8 col-xl-7">
+                <h1 class="hero-title fade-in-up">
+                    Find Your<br>
+                    <span class="accent-gradient">Perfect Car</span>
+                </h1>
+                <p class="hero-subtitle fade-in-up delay-1">
+                    AI-powered recommendations, instant price predictions, and competitive buy-back valuations — all in one place.
+                </p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center fade-in-up delay-2">
+                    <a href="{{ url_for('main.recommendations') }}" class="btn-cta-blue">
+                        <i class="bi bi-stars"></i> Get Recommendations
                     </a>
-                    <a href="{{ url_for('main.marketplace') }}" class="btn btn-success btn-lg px-5">
-                        <i class="bi bi-shop me-2"></i> Browse Cars
+                    <a href="{{ url_for('main.marketplace') }}" class="btn-cta-ghost">
+                        <i class="bi bi-shop"></i> Browse Cars
                     </a>
-                    <a href="{{ url_for('main.buyback') }}" class="btn btn-warning btn-lg px-5">
-                        <i class="bi bi-cash-coin me-2"></i> Get Valuation
+                    <a href="{{ url_for('main.buyback') }}" class="btn-cta-gold">
+                        <i class="bi bi-cash-coin"></i> Value My Car
                     </a>
                 </div>
             </div>
@@ -26,116 +32,126 @@
     </div>
 </section>
 
-<!-- Statistics -->
-<section class="py-4 bg-primary text-white">
+<!-- ── Stats ──────────────────────────────────────────────────────── -->
+<div class="stats-bar">
     <div class="container">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <h2 class="fw-bold">{{ total_new_cars }}+</h2>
-                <p>New Cars Listed</p>
+        <div class="row g-0">
+            <div class="col-4 stat-item">
+                <div class="stat-number">{{ total_new_cars }}+</div>
+                <div class="stat-label">New Cars Listed</div>
             </div>
-            <div class="col-md-4">
-                <h2 class="fw-bold">{{ total_used_cars }}+</h2>
-                <p>Used Cars Available</p>
+            <div class="col-4 stat-item">
+                <div class="stat-number">{{ total_used_cars }}+</div>
+                <div class="stat-label">Used Cars Available</div>
             </div>
-            <div class="col-md-4">
-                <h2 class="fw-bold">{{ total_valuations }}+</h2>
-                <p>Valuations Done</p>
+            <div class="col-4 stat-item">
+                <div class="stat-number">{{ total_valuations }}+</div>
+                <div class="stat-label">Valuations Done</div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<!-- Features Section -->
-<section class="py-5">
+<!-- ── Features ──────────────────────────────────────────────────── -->
+<section class="py-5" style="background: var(--bg-base);">
     <div class="container">
-        <h2 class="text-center mb-5">Our Smart Features</h2>
+        <div class="section-header text-center">
+            <h2 class="section-title">Smart Features</h2>
+            <p class="section-subtitle">Everything you need to make the right car decision</p>
+        </div>
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="bi bi-stars display-1 text-primary"></i>
-                        <h4 class="card-title mt-3">Smart Recommendations</h4>
-                        <p class="card-text">Get personalized car recommendations based on your budget, preferences, and lifestyle using advanced ML algorithms.</p>
-                        <a href="{{ url_for('main.recommendations') }}" class="btn btn-primary">Try Now</a>
+                <div class="feature-card">
+                    <div class="feature-icon-box icon-box-blue">
+                        <i class="bi bi-stars"></i>
                     </div>
+                    <h4>Smart Recommendations</h4>
+                    <p>Personalized car picks based on your budget, lifestyle, and preferences using advanced ML algorithms.</p>
+                    <a href="{{ url_for('main.recommendations') }}" class="btn-feature btn-feature-blue">Try Now</a>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="bi bi-shop display-1 text-success"></i>
-                        <h4 class="card-title mt-3">Marketplace</h4>
-                        <p class="card-text">Browse through hundreds of verified used cars with AI-powered price predictions and detailed condition reports.</p>
-                        <a href="{{ url_for('main.marketplace') }}" class="btn btn-success">Browse Cars</a>
+                <div class="feature-card">
+                    <div class="feature-icon-box icon-box-green">
+                        <i class="bi bi-shop"></i>
                     </div>
+                    <h4>Marketplace</h4>
+                    <p>Browse hundreds of verified used cars with AI-powered price predictions and detailed condition reports.</p>
+                    <a href="{{ url_for('main.marketplace') }}" class="btn-feature btn-feature-green">Browse Cars</a>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="bi bi-cash-coin display-1 text-warning"></i>
-                        <h4 class="card-title mt-3">Instant Buy-Back</h4>
-                        <p class="card-text">Get instant valuations for your car with accurate depreciation models and competitive buy-back offers.</p>
-                        <a href="{{ url_for('main.buyback') }}" class="btn btn-warning">Get Valuation</a>
+                <div class="feature-card">
+                    <div class="feature-icon-box icon-box-gold">
+                        <i class="bi bi-cash-coin"></i>
                     </div>
+                    <h4>Instant Buy-Back</h4>
+                    <p>Get accurate valuations for your car with real-time depreciation models and competitive buy-back offers.</p>
+                    <a href="{{ url_for('main.buyback') }}" class="btn-feature btn-feature-gold">Get Valuation</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Featured New Cars -->
-<section class="py-5 bg-light">
+<!-- ── Featured New Cars ──────────────────────────────────────────── -->
+<section class="py-5" style="background: var(--bg-surface); border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default);">
     <div class="container">
-        <h2 class="text-center mb-4">Featured New Cars</h2>
+        <div class="section-header d-flex align-items-end justify-content-between flex-wrap gap-2">
+            <div>
+                <h2 class="section-title mb-1">Featured New Cars</h2>
+                <p class="section-subtitle mb-0">Latest models, best prices</p>
+            </div>
+            <a href="{{ url_for('main.marketplace') }}" class="btn-feature btn-feature-blue mb-1">
+                View All <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+
         <div class="row g-4">
             {% for car in featured_new_cars %}
-            <div class="col-md-4 col-lg-4 mb-4">
-                <div class="card h-100 shadow-sm hover-card border-0">
-                    <div class="position-relative">
-                        <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}" 
-                             class="card-img-top" 
+            <div class="col-md-6 col-lg-4">
+                <div class="car-card">
+                    <!-- Image -->
+                    <div class="car-img-wrap">
+                        <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}"
                              alt="{{ car.brand }} {{ car.model }}"
-                             style="height: 200px; object-fit: cover;"
+                             loading="lazy"
                              onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
-                        <div class="position-absolute top-0 start-0 m-2">
-                            <span class="badge bg-primary">{{ car.year }}</span>
-                        </div>
-                        <div class="position-absolute top-0 end-0 m-2">
-                            <span class="badge bg-success">New</span>
-                        </div>
+                        <span class="img-badge img-badge-year">{{ car.year }}</span>
+                        <span class="img-badge img-badge-new">NEW</span>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-1">{{ car.brand }} {{ car.model }}</h5>
-                        <p class="text-muted small mb-2">{{ car.variant }}</p>
-                        <div class="text-center mb-3">
-                            <h3 class="text-primary mb-0">₹{{ "{:,.0f}".format(car.price) }}</h3>
-                        </div>
-                        <hr>
-                        <div class="row text-center g-2">
-                            <div class="col-6">
+
+                    <!-- Body -->
+                    <div class="car-card-body">
+                        <div class="car-card-name">{{ car.brand }} {{ car.model }}</div>
+                        <div class="car-card-variant">{{ car.variant }}</div>
+                        <div class="car-price price-new">₹{{ "{:,.0f}".format(car.price) }}</div>
+
+                        <div class="specs-grid">
+                            <div class="spec-row">
                                 <i class="bi bi-fuel-pump text-primary"></i>
-                                <p class="mb-0"><small>{{ car.mileage }} km/l</small></p>
+                                {{ car.mileage }} km/l
                             </div>
-                            <div class="col-6">
-                                <i class="bi bi-gear text-success"></i>
-                                <p class="mb-0"><small>{{ car.transmission }}</small></p>
+                            <div class="spec-row">
+                                <i class="bi bi-gear" style="color: var(--accent-green)"></i>
+                                {{ car.transmission }}
                             </div>
-                            <div class="col-6">
+                            <div class="spec-row">
                                 <i class="bi bi-shield-check text-danger"></i>
-                                <p class="mb-0"><small>{{ car.safety_rating }}/5 Safety</small></p>
+                                {{ car.safety_rating }}/5 Safety
                             </div>
-                            <div class="col-6">
-                                <i class="bi bi-people text-info"></i>
-                                <p class="mb-0"><small>{{ car.seating_capacity }} Seats</small></p>
+                            <div class="spec-row">
+                                <i class="bi bi-people" style="color: var(--accent-gold)"></i>
+                                {{ car.seating_capacity }} Seats
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer bg-light border-0">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-info">{{ car.fuel_type }}</span>
-                            <span class="badge bg-secondary">{{ car.body_type }}</span>
+
+                    <!-- Footer -->
+                    <div class="car-card-foot">
+                        <div class="d-flex gap-1 flex-wrap">
+                            <span class="tag-pill tag-fuel">{{ car.fuel_type }}</span>
+                            <span class="tag-pill tag-body-type">{{ car.body_type }}</span>
                         </div>
                     </div>
                 </div>
@@ -145,58 +161,64 @@
     </div>
 </section>
 
-<!-- Featured Used Cars -->
-<section class="py-5">
+<!-- ── Featured Used Cars ─────────────────────────────────────────── -->
+<section class="py-5" style="background: var(--bg-base);">
     <div class="container">
-        <h2 class="text-center mb-4">Featured Used Cars</h2>
+        <div class="section-header d-flex align-items-end justify-content-between flex-wrap gap-2">
+            <div>
+                <h2 class="section-title mb-1">Featured Used Cars</h2>
+                <p class="section-subtitle mb-0">Verified listings with AI price predictions</p>
+            </div>
+            <a href="{{ url_for('main.marketplace') }}" class="btn-feature btn-feature-gold mb-1">
+                View All <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+
         <div class="row g-4">
             {% for car in featured_used_cars %}
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm hover-card border-0">
-                    <div class="position-relative">
-                        <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}" 
-                             class="card-img-top" 
+            <div class="col-md-6 col-lg-4">
+                <div class="car-card">
+                    <!-- Image -->
+                    <div class="car-img-wrap">
+                        <img src="{{ get_car_image(car.brand, car.model, car.body_type) }}"
                              alt="{{ car.brand }} {{ car.model }}"
-                             style="height: 200px; object-fit: cover;"
+                             loading="lazy"
                              onerror="this.src='https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-4.jpeg'">
-                        <div class="position-absolute top-0 start-0 m-2">
-                            <span class="badge bg-warning text-dark">{{ car.registration_year }}</span>
-                        </div>
-                        <div class="position-absolute top-0 end-0 m-2">
-                            <span class="badge bg-danger">Used</span>
-                        </div>
+                        <span class="img-badge img-badge-year">{{ car.registration_year }}</span>
+                        <span class="img-badge img-badge-used">USED</span>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title mb-1">{{ car.brand }} {{ car.model }}</h5>
-                        <div class="text-center mb-3">
-                            <h3 class="text-danger mb-0">₹{{ "{:,.0f}".format(car.current_price) }}</h3>
-                        </div>
-                        <hr>
-                        <div class="row text-center g-2">
-                            <div class="col-6">
+
+                    <!-- Body -->
+                    <div class="car-card-body">
+                        <div class="car-card-name">{{ car.brand }} {{ car.model }}</div>
+                        <div class="car-card-variant">{{ "{:,.0f}".format(car.mileage_km) }} km · {{ car.num_owners }} Owner{% if car.num_owners != 1 %}s{% endif %}</div>
+                        <div class="car-price price-used">₹{{ "{:,.0f}".format(car.current_price) }}</div>
+
+                        <div class="specs-grid">
+                            <div class="spec-row">
                                 <i class="bi bi-speedometer2 text-primary"></i>
-                                <p class="mb-0"><small>{{ "{:,.0f}".format(car.mileage_km) }} km</small></p>
+                                {{ "{:,.0f}".format(car.mileage_km) }} km
                             </div>
-                            <div class="col-6">
-                                <i class="bi bi-fuel-pump text-success"></i>
-                                <p class="mb-0"><small>{{ car.fuel_type }}</small></p>
+                            <div class="spec-row">
+                                <i class="bi bi-fuel-pump" style="color: var(--accent-green)"></i>
+                                {{ car.fuel_type }}
                             </div>
-                            <div class="col-6">
-                                <i class="bi bi-award text-warning"></i>
-                                <p class="mb-0"><small>{{ car.condition_score }}/100</small></p>
+                            <div class="spec-row">
+                                <i class="bi bi-award" style="color: var(--accent-gold)"></i>
+                                {{ car.condition_score }}/100
                             </div>
-                            <div class="col-6">
-                                <i class="bi bi-people text-info"></i>
-                                <p class="mb-0"><small>{{ car.num_owners }} Owner(s)</small></p>
+                            <div class="spec-row">
+                                <i class="bi bi-gear" style="color: var(--accent-blue)"></i>
+                                {{ car.transmission }}
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer bg-light border-0">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-secondary">{{ car.transmission }}</span>
-                            <a href="{{ url_for('main.car_details', listing_id=car.listing_id) }}"
-                               class="btn btn-sm btn-danger">View Details</a>
-                        </div>
+
+                    <!-- Footer -->
+                    <div class="car-card-foot">
+                        <span class="tag-pill tag-transmission">{{ car.transmission }}</span>
+                        <a href="{{ url_for('main.car_details', listing_id=car.listing_id) }}"
+                           class="btn-card-detail">View Details</a>
                     </div>
                 </div>
             </div>
@@ -205,19 +227,22 @@
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="py-5 bg-primary text-white">
-    <div class="container text-center">
-        <h2 class="mb-4">Ready to Find Your Perfect Car?</h2>
-        <p class="lead mb-4">Let MyCar's smart AI guide you to the right choice!</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-center">
-            <a href="{{ url_for('main.recommendations') }}" class="btn btn-light btn-lg">
-                Get Personalized Recommendations
+<!-- ── CTA ────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+    <div class="container text-center position-relative" style="z-index: 1;">
+        <h2>Ready to Find Your<br><span class="accent-gradient">Perfect Car?</span></h2>
+        <p class="mt-3 mb-4" style="font-size: 1.05rem; max-width: 460px; margin-left: auto; margin-right: auto;">
+            Let MyCar's AI guide you to the right choice — whether buying, selling, or just exploring.
+        </p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center">
+            <a href="{{ url_for('main.recommendations') }}" class="btn-cta-blue">
+                <i class="bi bi-stars"></i> Get Recommendations
             </a>
-            <a href="{{ url_for('main.buyback') }}" class="btn btn-outline-light btn-lg">
-                Value My Car
+            <a href="{{ url_for('main.buyback') }}" class="btn-cta-ghost">
+                <i class="bi bi-cash-coin"></i> Value My Car
             </a>
         </div>
     </div>
 </section>
+
 {% endblock %}
